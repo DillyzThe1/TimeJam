@@ -1,8 +1,6 @@
-package;
+package gamestates;
 
-import flixel.FlxState;
-
-class PlayState extends FlxState
+class PlayState extends TJState
 {
 	override public function create()
 	{
