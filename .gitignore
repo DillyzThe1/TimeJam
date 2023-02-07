@@ -4,3 +4,5 @@ art/*.swf
 art/*/*.swf
 *.ini
 *.flp~
+art/flps/*/Backup/*.flp
+*.sf2
