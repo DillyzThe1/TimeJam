@@ -40,9 +40,9 @@ class TitleScreenState extends TJState
 			alpha: 1,
 			"scale.x": 0.65,
 			"scale.y": 0.65,
-			"offset.y": Math.sin(0) * 35,
-			"offset.x": (Math.cos(0) * 25) + 30,
-			"angle": (Math.cos(0) * 2.5) + 2.5
+			"offset.y": Math.sin(logoElapsed) * 35,
+			"offset.x": (Math.cos(logoElapsed) * 25) + 30,
+			"angle": (Math.cos(logoElapsed) * 2.5) + 2.5
 		}, 0.35, {
 			ease: FlxEase.cubeOut,
 			onComplete: function(t:FlxTween)
@@ -56,7 +56,7 @@ class TitleScreenState extends TJState
 	}
 
 	var totalElapsed:Float = 0;
-	var logoElapsed:Float = 0;
+	var logoElapsed:Float = 4.5;
 
 	// var lastStep:Int = -1;
 	var fastStep:Int = -1;
