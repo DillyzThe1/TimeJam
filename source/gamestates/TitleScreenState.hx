@@ -1,15 +1,16 @@
 package gamestates;
 
-import Paths;
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.math.FlxMath;
+import managers.MusicManager;
 
 class TitleScreenState extends TJState
 {
 	var bg:FlxSprite;
 	var logoSpr:FlxSprite;
 
-	override public function create()
+	public override function create()
 	{
 		super.create();
 
@@ -27,14 +28,36 @@ class TitleScreenState extends TJState
 
 	var totalElapsed:Float = 0;
 
-	override public function update(elapsed:Float)
+	// var lastStep:Int = -1;
+	var fastStep:Int = -1;
+	var lastBeat:Int = -1;
+
+	var plusThis:Float = 0;
+
+	public override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 		totalElapsed += elapsed;
 
-		if (FlxG.sound.music == null)
-			FlxG.sound.playMusic(Paths.music("mainMenu"));
+		// lastStep = MusicManager.currentStep;
+		lastBeat = MusicManager.currentBeat;
+		MusicManager.updatePosition();
 
-		bg.angle = totalElapsed * 1.15;
+		if (lastBeat != MusicManager.currentBeat && lastBeat % 2 == 0)
+			plusThis += 25;
+
+		if (plusThis > 1.155)
+			plusThis = FlxMath.lerp(plusThis, 1.15, clampFloat(elapsed * 10 * (120 / FlxG.drawFramerate), 0.01, 0.9));
+
+		bg.angle += elapsed * (1.15 + plusThis);
+	}
+
+	function clampFloat(val:Float, min:Float, max:Float)
+	{
+		if (val > max)
+			return max;
+		if (val < min)
+			return min;
+		return val;
 	}
 }
