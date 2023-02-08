@@ -31,7 +31,7 @@ class TitleScreenState extends TJState
 		logoSpr.screenCenter();
 		add(logoSpr);
 
-		textSpr = new FlxSprite(0, 575);
+		textSpr = new FlxSprite(0, 590);
 		textSpr.frames = Paths.sparrowv2("press enter");
 		textSpr.animation.addByPrefix("begin", "press enter begin", 24, false, false, false);
 		textSpr.animation.addByIndices("static", "press enter static", [1], "", 24, true, false, false);
