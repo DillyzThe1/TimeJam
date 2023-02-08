@@ -16,10 +16,6 @@ class TitleScreenState extends TJState
 	var logoSpr:FlxSprite;
 	var textSpr:FlxSprite;
 
-	#if debug
-	var textSpr_DEBUG:FlxSprite;
-	#end
-
 	var bgTween:FlxTween;
 	var logoTween:FlxTween;
 
@@ -64,17 +60,6 @@ class TitleScreenState extends TJState
 		textSpr.offset.x = 0;
 		textSpr.offset.y = 37;
 		add(textSpr);
-
-		#if debug
-		// delete
-		textSpr_DEBUG = new FlxSprite(textSpr.x, textSpr.y);
-		textSpr_DEBUG.frames = Paths.sparrowv2("press enter");
-		textSpr_DEBUG.animation.addByIndices("vanish", "press enter vanish", [0], "", 24, false, false, false);
-		textSpr_DEBUG.animation.play("vanish", true);
-		add(textSpr_DEBUG);
-		textSpr_DEBUG.alpha = 0.5;
-		//
-		#end
 
 		// intro stuff
 		bg.alpha = logoSpr.alpha = 0;
@@ -179,22 +164,6 @@ class TitleScreenState extends TJState
 				FlxG.switchState(new MainMenuState());
 			});
 		}
-
-		#if debug
-		// delete
-		if (FlxG.keys.justPressed.LEFT)
-			textSpr_DEBUG.offset.x++;
-		if (FlxG.keys.justPressed.RIGHT)
-			textSpr_DEBUG.offset.x--;
-		if (FlxG.keys.justPressed.UP)
-			textSpr_DEBUG.offset.y++;
-		if (FlxG.keys.justPressed.DOWN)
-			textSpr_DEBUG.offset.y--;
-
-		if (FlxG.keys.justPressed.SPACE)
-			trace('textSpr_DEBUG.offset = [${textSpr_DEBUG.offset.x}, ${textSpr_DEBUG.offset.y}]');
-		//
-		#end
 	}
 
 	function clampFloat(val:Float, min:Float, max:Float)
