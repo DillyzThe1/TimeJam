@@ -44,12 +44,21 @@ class TitleScreenState extends TJState
 		MusicManager.updatePosition();
 
 		if (lastBeat != MusicManager.currentBeat && lastBeat % 2 == 0)
+		{
 			plusThis += 25;
+			logoSpr.scale.x = 0.7;
+		}
 
 		if (plusThis > 1.155)
 			plusThis = FlxMath.lerp(plusThis, 1.15, clampFloat(elapsed * 10 * (120 / FlxG.drawFramerate), 0.01, 0.9));
+		if (logoSpr.scale.x > 0.655)
+			logoSpr.scale.x = logoSpr.scale.y = FlxMath.lerp(logoSpr.scale.x, 0.65, clampFloat(elapsed * 3.5 * (120 / FlxG.drawFramerate), 0.01, 0.9));
 
 		bg.angle += elapsed * (1.15 + plusThis);
+
+		logoSpr.offset.y = Math.sin(totalElapsed) * 35;
+		logoSpr.offset.x = (Math.cos(totalElapsed) * 25) + 30;
+		logoSpr.angle = (Math.cos(totalElapsed) * 2.5) + 2.5;
 	}
 
 	function clampFloat(val:Float, min:Float, max:Float)
