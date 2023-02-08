@@ -67,7 +67,6 @@ class TitleScreenState extends TJState
 	var hasPressed:Bool = false;
 
 	var logoScalingAllowed:Bool = false;
-	var logoFloats:Bool = true;
 
 	public override function update(elapsed:Float)
 	{
@@ -92,7 +91,7 @@ class TitleScreenState extends TJState
 
 		bg.angle += elapsed * (1.15 + plusThis);
 
-		if (logoFloats)
+		if (logoScalingAllowed)
 		{
 			logoElapsed += elapsed;
 			logoSpr.offset.y = Math.sin(logoElapsed) * 35;
@@ -104,7 +103,6 @@ class TitleScreenState extends TJState
 		{
 			hasPressed = true;
 			logoScalingAllowed = false;
-			logoFloats = false;
 			logoElapsed = 0;
 			if (FlxG.sound.music != null)
 				FlxG.sound.music.fadeOut(0.5, 0.75);
