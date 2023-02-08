@@ -4,6 +4,7 @@ import flixel.FlxG;
 import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
+import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 
 class MainMenuState extends TJState
@@ -25,9 +26,17 @@ class MainMenuState extends TJState
 		super.update(elapsed);
 
 		if (FlxG.keys.justPressed.ESCAPE)
-			FlxG.switchState(new TitleScreenState());
+		{
+			FlxTween.tween(bruh, {alpha: 0}, 0.25, {ease: FlxEase.cubeOut});
+			new FlxTimer().start(1, function(bruh:FlxTimer)
+			{
+				FlxG.switchState(new TitleScreenState());
+			});
+		}
 		if (FlxG.keys.justPressed.ONE)
 		{
+			FlxG.sound.play(Paths.sound("select"), 1.15);
+			FlxG.camera.flash(FlxColor.WHITE, 0.95);
 			if (FlxG.sound.music != null)
 				FlxG.sound.music.fadeOut(0.75, 0);
 
