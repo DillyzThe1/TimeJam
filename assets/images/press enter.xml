@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="press enter.png">
+	<!-- Created with Adobe Animate version 23.0.1.70 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="press enter begin0000" x="685" y="930" width="681" height="128" frameX="0" frameY="-149" frameWidth="681" frameHeight="128"/>
+	<SubTexture name="press enter begin0001" x="685" y="930" width="681" height="128" frameX="0" frameY="-149" frameWidth="681" frameHeight="128"/>
+	<SubTexture name="press enter begin0002" x="685" y="0" width="681" height="133" frameX="0" frameY="-145" frameWidth="681" frameHeight="278"/>
+	<SubTexture name="press enter begin0003" x="685" y="0" width="681" height="133" frameX="0" frameY="-145" frameWidth="681" frameHeight="278"/>
+	<SubTexture name="press enter begin0004" x="0" y="1809" width="681" height="136" frameX="0" frameY="-141" frameWidth="681" frameHeight="278"/>
+	<SubTexture name="press enter begin0005" x="0" y="1809" width="681" height="136" frameX="0" frameY="-141" frameWidth="681" frameHeight="278"/>
+	<SubTexture name="press enter begin0006" x="0" y="1508" width="681" height="152" frameX="0" frameY="-125" frameWidth="681" frameHeight="278"/>
+	<SubTexture name="press enter begin0007" x="0" y="1508" width="681" height="152" frameX="0" frameY="-125" frameWidth="681" frameHeight="278"/>
+	<SubTexture name="press enter begin0008" x="0" y="460" width="681" height="200" frameX="0" frameY="-77" frameWidth="681" frameHeight="278"/>
+	<SubTexture name="press enter begin0009" x="0" y="460" width="681" height="200" frameX="0" frameY="-77" frameWidth="681" frameHeight="278"/>
+	<SubTexture name="press enter begin0010" x="0" y="0" width="681" height="245" frameX="0" frameY="-23" frameWidth="681" frameHeight="278"/>
+	<SubTexture name="press enter begin0011" x="0" y="0" width="681" height="245" frameX="0" frameY="-23" frameWidth="681" frameHeight="278"/>
+	<SubTexture name="press enter begin0012" x="0" y="249" width="681" height="207" frameX="0" frameY="-12" frameWidth="681" frameHeight="278"/>
+	<SubTexture name="press enter begin0013" x="0" y="249" width="681" height="207" frameX="0" frameY="-12" frameWidth="681" frameHeight="278"/>
+	<SubTexture name="press enter begin0014" x="0" y="664" width="681" height="188" frameX="0" frameY="-9" frameWidth="681" frameHeight="278"/>
+	<SubTexture name="press enter begin0015" x="0" y="664" width="681" height="188" frameX="0" frameY="-9" frameWidth="681" frameHeight="278"/>
+	<SubTexture name="press enter begin0016" x="0" y="1190" width="681" height="156" frameX="0" frameY="-7" frameWidth="681" frameHeight="278"/>
+	<SubTexture name="press enter begin0017" x="0" y="1190" width="681" height="156" frameX="0" frameY="-7" frameWidth="681" frameHeight="278"/>
+	<SubTexture name="press enter begin0018" x="0" y="856" width="681" height="164" frameX="0" frameY="0" frameWidth="681" frameHeight="278"/>
+	<SubTexture name="press enter begin0019" x="0" y="856" width="681" height="164" frameX="0" frameY="0" frameWidth="681" frameHeight="278"/>
+	<SubTexture name="press enter begin0020" x="0" y="1024" width="681" height="162" frameX="0" frameY="-3" frameWidth="681" frameHeight="278"/>
+	<SubTexture name="press enter begin0021" x="0" y="1024" width="681" height="162" frameX="0" frameY="-3" frameWidth="681" frameHeight="278"/>
+	<SubTexture name="press enter begin0022" x="0" y="1350" width="681" height="154" frameX="0" frameY="-11" frameWidth="681" frameHeight="278"/>
+	<SubTexture name="press enter begin0023" x="0" y="1350" width="681" height="154" frameX="0" frameY="-11" frameWidth="681" frameHeight="278"/>
+	<SubTexture name="press enter begin0024" x="0" y="1664" width="681" height="141" frameX="0" frameY="-24" frameWidth="681" frameHeight="278"/>
+	<SubTexture name="press enter begin0025" x="0" y="1664" width="681" height="141" frameX="0" frameY="-24" frameWidth="681" frameHeight="278"/>
+	<SubTexture name="press enter begin0026" x="685" y="403" width="681" height="129" frameX="0" frameY="-36" frameWidth="681" frameHeight="278"/>
+	<SubTexture name="press enter begin0027" x="685" y="403" width="681" height="129" frameX="0" frameY="-36" frameWidth="681" frameHeight="278"/>
+	<SubTexture name="press enter begin0028" x="685" y="536" width="681" height="129" frameX="0" frameY="-36" frameWidth="681" frameHeight="278"/>
+	<SubTexture name="press enter begin0029" x="685" y="536" width="681" height="129" frameX="0" frameY="-36" frameWidth="681" frameHeight="278"/>
+	<SubTexture name="press enter begin0030" x="685" y="536" width="681" height="129" frameX="0" frameY="-36" frameWidth="681" frameHeight="278"/>
+	<SubTexture name="press enter begin0031" x="685" y="536" width="681" height="129" frameX="0" frameY="-36" frameWidth="681" frameHeight="278"/>
+	<SubTexture name="press enter begin0032" x="685" y="536" width="681" height="129" frameX="0" frameY="-36" frameWidth="681" frameHeight="278"/>
+	<SubTexture name="press enter begin0033" x="685" y="536" width="681" height="129" frameX="0" frameY="-36" frameWidth="681" frameHeight="278"/>
+	<SubTexture name="press enter begin0034" x="685" y="536" width="681" height="129" frameX="0" frameY="-36" frameWidth="681" frameHeight="278"/>
+	<SubTexture name="press enter static0000" x="685" y="798" width="681" height="128"/>
+	<SubTexture name="press enter static0001" x="685" y="930" width="681" height="128"/>
+	<SubTexture name="press enter vanish0000" x="685" y="930" width="681" height="128" frameX="-31" frameY="0" frameWidth="681" frameHeight="128"/>
+	<SubTexture name="press enter vanish0001" x="685" y="930" width="681" height="128" frameX="-31" frameY="0" frameWidth="681" frameHeight="128"/>
+	<SubTexture name="press enter vanish0002" x="685" y="270" width="685" height="129" frameX="-31" frameY="-1" frameWidth="747" frameHeight="132"/>
+	<SubTexture name="press enter vanish0003" x="685" y="137" width="689" height="129" frameX="-29" frameY="-1" frameWidth="747" frameHeight="132"/>
+	<SubTexture name="press enter vanish0004" x="685" y="669" width="699" height="125" frameX="-24" frameY="-4" frameWidth="747" frameHeight="132"/>
+	<SubTexture name="press enter vanish0005" x="685" y="1062" width="717" height="114" frameX="-15" frameY="-9" frameWidth="747" frameHeight="132"/>
+	<SubTexture name="press enter vanish0006" x="685" y="1180" width="738" height="90" frameX="-4" frameY="-21" frameWidth="747" frameHeight="132"/>
+	<SubTexture name="press enter vanish0007" x="685" y="1274" width="747" height="48" frameX="0" frameY="-42" frameWidth="747" frameHeight="132"/>
+	<SubTexture name="press enter vanish0008" x="685" y="1377" width="725" height="42" frameX="-11" frameY="-45" frameWidth="747" frameHeight="132"/>
+	<SubTexture name="press enter vanish0009" x="685" y="1326" width="701" height="47" frameX="-23" frameY="-42" frameWidth="747" frameHeight="132"/>
+	<SubTexture name="press enter vanish0010" x="685" y="1423" width="689" height="41" frameX="-29" frameY="-45" frameWidth="747" frameHeight="132"/>
+	<SubTexture name="press enter vanish0011" x="685" y="1468" width="685" height="35" frameX="-31" frameY="-48" frameWidth="747" frameHeight="132"/>
+	<SubTexture name="press enter vanish0012" x="685" y="1507" width="684" height="32" frameX="-31" frameY="-50" frameWidth="747" frameHeight="132"/>
+	<SubTexture name="press enter vanish0013" x="685" y="1543" width="685" height="30" frameX="-31" frameY="-51" frameWidth="747" frameHeight="132"/>
+	<SubTexture name="press enter vanish0014" x="685" y="1577" width="685" height="30" frameX="-31" frameY="-51" frameWidth="747" frameHeight="132"/>
+	<SubTexture name="press enter vanish0015" x="0" y="0" width="1" height="1" frameX="-40" frameY="-9" frameWidth="747" frameHeight="132"/>
+	<SubTexture name="press enter vanish0016" x="0" y="0" width="1" height="1" frameX="-40" frameY="-9" frameWidth="747" frameHeight="132"/>
+	<SubTexture name="press enter vanish0017" x="0" y="0" width="1" height="1" frameX="-40" frameY="-9" frameWidth="747" frameHeight="132"/>
+	<SubTexture name="press enter vanish0018" x="0" y="0" width="1" height="1" frameX="-40" frameY="-9" frameWidth="747" frameHeight="132"/>
+	<SubTexture name="press enter vanish0019" x="0" y="0" width="1" height="1" frameX="-40" frameY="-9" frameWidth="747" frameHeight="132"/>
+	<SubTexture name="press enter vanish0020" x="0" y="0" width="1" height="1" frameX="-40" frameY="-9" frameWidth="747" frameHeight="132"/>
+	<SubTexture name="press enter vanish0021" x="0" y="0" width="1" height="1" frameX="-40" frameY="-9" frameWidth="747" frameHeight="132"/>
+</TextureAtlas>
