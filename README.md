@@ -11,7 +11,7 @@
 
 # TimeJam
 A game made for HaxeJam (Feb 2023) where you must correctly configure the forbidden machine to progress further.<br>
-Jumping from place to place, you'll be fighting your way through enemies to collect a few ancient crystals, which may power the machine.<br>
+Jumping from place to place, you'll be fighting your way through enemies to collect a few archaic crystals, which may power the machine.<br>
 If you get the machine wrong or fail to get sufficent power, you must restart in a slightly altered timeline, losing your progress while gaining a shortcut.<br>
 
 # How To Play
