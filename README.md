@@ -15,7 +15,7 @@ Jumping from place to place, you'll be fighting your way through enemies to coll
 If you get the machine wrong or fail to get sufficent power, you must restart in a slightly altered timeline, losing your progress while gaining a shortcut.<br>
 
 # How To Play
-Download the game [[here]](/releases/latest/) for your platform and run it.<br>
+Download the game [[here]](../../releases/latest/) for your platform and run it.<br>
 <i>Note: Web builds are available [[here]](https://dillyzthe1.itch.io/)!</i><br>
 <br>
 After you've launched the game, you'll be greeted with this screen:<br>
