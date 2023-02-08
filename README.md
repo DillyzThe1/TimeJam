@@ -19,7 +19,7 @@ Download the game [[here]](../../releases/latest/) for your platform and run it.
 <i>Note: Web builds are available [[here]](https://dillyzthe1.itch.io/)!</i><br>
 <br>
 After you've launched the game, you'll be greeted with this screen:<br>
-(screenshot)<br>
+![TimeJam Title Screen](art/title-screen.png)<br>
 Hit enter and realize you are wasting your time, as you are on a pre-release dev build.
 
 # Compiling
