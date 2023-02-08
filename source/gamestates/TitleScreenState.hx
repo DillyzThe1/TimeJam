@@ -1,5 +1,7 @@
 package gamestates;
 
+import Paths;
+import flixel.FlxG;
 import flixel.FlxSprite;
 
 class TitleScreenState extends TJState
@@ -18,5 +20,8 @@ class TitleScreenState extends TJState
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+		if (FlxG.sound.music == null)
+			FlxG.sound.playMusic(Paths.music("mainMenu"));
 	}
 }
