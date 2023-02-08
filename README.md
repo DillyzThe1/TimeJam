@@ -1,5 +1,5 @@
 <p align="center">
-  <img align="center" src="assets/images/glowy logo.png">
+  <img align="center" src="assets/images/glowy logo.png" width=500>
 </p>
 <p align="center">
   An indie game by <a href="https://www.github.com/DillyzThe1">DillyzThe1</a> and <a href="https://www.github.com/Impostor5875">Impostor5875</a>.
