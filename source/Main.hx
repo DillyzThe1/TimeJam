@@ -21,7 +21,5 @@ class Main extends Sprite
 
 		FlxG.sound.volume = 0.5;
 		FlxG.autoPause = false;
-
-		MusicManager.play("menu_main", 174, 1);
 	}
 }

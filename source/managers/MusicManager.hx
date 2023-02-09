@@ -14,9 +14,7 @@ class MusicManager
 	public static function play(song:String, bpm:Int, volume:Float)
 	{
 		// why is vsc formatting this wrongly
-		if (FlxG.sound.music != null
-			&& songTitle == song
-			&& !(FlxG.sound.music.playing || FlxG.sound.music.time < FlxG.sound.music.length - 10))
+		if (FlxG.sound.music != null && songTitle == song && FlxG.sound.music.playing)
 			return;
 		FlxG.sound.playMusic(Paths.music(song), volume);
 		songTitle = song;

@@ -23,6 +23,8 @@ class TitleScreenState extends TJState
 	{
 		super.create();
 
+		MusicManager.play("menu_main", 174, 1);
+
 		bg = new FlxSprite().loadGraphic(Paths.image('bg'));
 		bg.screenCenter();
 		add(bg);
