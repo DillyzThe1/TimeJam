@@ -36,9 +36,14 @@ class PlayState extends TJState
 	override function destroy()
 	{
 		lvl.bgGroup.destroy();
+		lvl.bgGroup = null;
 		lvl.sprGroup.destroy();
+		lvl.sprGroup = null;
 		lvl.objGroup.destroy();
+		lvl.objGroup = null;
 		lvl.fgGroup.destroy();
+		lvl.fgGroup = null;
+		lvl = null;
 		super.destroy();
 	}
 

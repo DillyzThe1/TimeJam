@@ -125,6 +125,7 @@ class CutsceneSubState extends FlxSubState
 		{
 			camTween.cancel();
 			camTween.destroy();
+			camTween = null;
 		}
 		FlxG.cameras.remove(newCam, false);
 		remove(cutscene);
@@ -132,10 +133,15 @@ class CutsceneSubState extends FlxSubState
 		if (Std.isOfType(cutscene.frames, FlxAnimateFrames))
 			for (img in cast(cutscene.frames, FlxAnimateFrames).parents)
 				if (img != null)
+				{
 					img.destroy();
+					img = null;
+				}
 
 		cutscene.destroy();
+		cutscene = null;
 		newCam.destroy();
+		newCam = null;
 		close();
 	}
 }

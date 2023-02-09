@@ -184,17 +184,22 @@ class TitleScreenState extends TJState
 	override function destroy()
 	{
 		bg.destroy();
+		bg = null;
 		logoSpr.destroy();
+		logoSpr = null;
 		textSpr.destroy();
+		textSpr = null;
 		if (bgTween != null)
 		{
 			bgTween.cancel();
 			bgTween.destroy();
+			bgTween = null;
 		}
 		if (logoTween != null)
 		{
 			logoTween.cancel();
 			logoTween.destroy();
+			logoTween = null;
 		}
 		super.destroy();
 	}
