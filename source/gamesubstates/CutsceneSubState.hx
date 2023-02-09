@@ -94,7 +94,7 @@ class CutsceneSubState extends FlxSubState
 							newCam.zoom = 2;
 							doCamEvent(1.8, 90, FlxEase.cubeOut);
 						case 96:
-							doCamEvent(1.25, 108, FlxEase.cubeInOut);
+							doCamEvent(1.325, 108, FlxEase.cubeInOut);
 					}
 			}
 	}
