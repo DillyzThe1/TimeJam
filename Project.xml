@@ -88,6 +88,6 @@
 	<!-- _________________________________ Custom _______________________________ -->
 
 	<!--Place custom nodes like icons here (higher priority to override the HaxeFlixel icon)-->
-	<!--icon path="art/icon.png" /-->
+	<icon path="art/icon.png" />
 	<!--assets path='art/README.txt' rename="README.txt" /-->
 </project>
