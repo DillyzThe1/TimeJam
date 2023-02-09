@@ -9,6 +9,7 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxTimer;
 import flxanimate.FlxAnimate;
 import flxanimate.animate.FlxSymbol;
+import managers.MusicManager;
 import openfl.utils.Assets;
 
 class CutsceneSubState extends FlxSubState
@@ -34,6 +35,15 @@ class CutsceneSubState extends FlxSubState
 		FlxG.cameras.add(newCam, false);
 		newCam.zoom = 1.45;
 
+		switch (nextCutscene)
+		{
+			case "cutscene 1":
+				FlxG.sound.cache(Paths.music("cutscene_generic"));
+				FlxG.sound.cache(Paths.sound("guhverb"));
+				FlxG.sound.cache(Paths.sound("scratch"));
+				FlxG.sound.cache(Paths.sound("blanket"));
+		}
+
 		cutscene = new FlxAnimate(nextOffset.x, nextOffset.y, Paths.texAtlas("cutscenes/" + nextCutscene));
 		cutscene.anim.addBySymbol("play", "CUTSCENE", 24, false, 0, 0);
 		// cutscene.anim.addByAnimIndices("static", [0], 24);
@@ -53,6 +63,8 @@ class CutsceneSubState extends FlxSubState
 	{
 		trace("aaaa");
 		cutscene.anim.play("play", true, false, 0);
+		MusicManager.play("cutscene_generic", 105, 0.1);
+		FlxG.sound.music.fadeIn(0.25, 0.1, 0.775);
 		endOnComplete = true;
 	}
 
@@ -90,9 +102,16 @@ class CutsceneSubState extends FlxSubState
 								camTween.destroy();
 							}
 							newCam.zoom += 0.075;
+							doneEvents.push(cutscene.anim.curFrame);
 						case 76:
+							MusicManager.forceStop();
+							FlxG.sound.play(Paths.sound("guhverb"), 2.5);
+							FlxG.sound.play(Paths.sound("scratch"), 0.85);
 							newCam.zoom = 2;
 							doCamEvent(1.8, 90, FlxEase.cubeOut);
+						case 94:
+							FlxG.sound.play(Paths.sound("blanket"), 1);
+							doneEvents.push(cutscene.anim.curFrame);
 						case 96:
 							doCamEvent(1.325, 108, FlxEase.cubeInOut);
 					}

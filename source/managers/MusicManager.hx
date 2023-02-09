@@ -29,6 +29,13 @@ class MusicManager
 		trace("Playing " + songTitle + "!");
 	}
 
+	public static function forceStop()
+	{
+		if (FlxG.sound.music == null)
+			return;
+		FlxG.sound.music.stop();
+	}
+
 	public static var currentStep:Int = -1;
 	public static var currentBeat:Int = -1;
 
