@@ -3,12 +3,12 @@ package gamesubstates;
 import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.FlxSubState;
+import flixel.graphics.FlxGraphic;
 import flixel.math.FlxPoint;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
-import flixel.util.FlxTimer;
 import flxanimate.FlxAnimate;
-import flxanimate.animate.FlxSymbol;
+import flxanimate.frames.FlxAnimateFrames;
 import managers.MusicManager;
 import openfl.utils.Assets;
 
@@ -128,9 +128,14 @@ class CutsceneSubState extends FlxSubState
 		}
 		FlxG.cameras.remove(newCam, false);
 		remove(cutscene);
+
+		if (Std.isOfType(cutscene.frames, FlxAnimateFrames))
+			for (img in cast(cutscene.frames, FlxAnimateFrames).parents)
+				if (img != null)
+					img.destroy();
+
 		cutscene.destroy();
 		newCam.destroy();
-		Assets.cache.clear(Paths.texAtlas("cutscenes/"));
 		close();
 	}
 }
