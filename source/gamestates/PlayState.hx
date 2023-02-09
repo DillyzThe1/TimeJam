@@ -1,6 +1,7 @@
 package gamestates;
 
 import flixel.FlxG;
+import gamesubstates.CutsceneSubState;
 import objects.TMXLevel;
 
 class PlayState extends TJState
@@ -25,5 +26,8 @@ class PlayState extends TJState
 
 		if (FlxG.keys.justPressed.ESCAPE)
 			FlxG.switchState(new TitleScreenState());
+
+		if (FlxG.keys.justPressed.ONE)
+			openSubState(new CutsceneSubState());
 	}
 }
