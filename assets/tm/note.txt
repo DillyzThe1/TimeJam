@@ -1,0 +1,13 @@
+the code for loading this is solely based off of https://haxeflixel.com/demos/TiledEditor/
+
+your projects should be structured like this:
+https://github.com/HaxeFlixel/flixel-demos/tree/dev/Editors/TiledEditor/assets/tiled
+
+if you wanna download the above example, use this link:
+https://cdn.discordapp.com/attachments/849292573230104576/1073039526072696916/tiled_map_example.zip
+
+to open/edit them, you need tiled:
+https://www.mapeditor.org/
+
+oh and the project files pretty much ARE the tmx files we're using in game
+you just need the assets next to the thing as well

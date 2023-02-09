@@ -2,6 +2,8 @@ package;
 
 import flixel.graphics.frames.FlxAtlasFrames;
 
+using StringTools;
+
 enum PathAssetType
 {
 	TXT;
@@ -15,6 +17,8 @@ enum PathAssetType
 	FONT_TTF;
 	FONT_OTF;
 	TEXTUREATLAS;
+	TMX;
+	IMAGETMX;
 }
 
 // common file paths so you only have to type simplistic strings out. fun!
@@ -57,6 +61,12 @@ class Paths
 			case TEXTUREATLAS:
 				subFolder = 'images';
 				fileExtension = null;
+			case TMX:
+				subFolder = 'tm';
+				fileExtension = 'tmx';
+			case IMAGETMX:
+				subFolder = 'tm';
+				fileExtension = 'png';
 			default:
 				subFolder = 'data';
 				fileExtension = 'txt';
@@ -96,4 +106,10 @@ class Paths
 
 	inline public static function texAtlas(path:String)
 		return asset(path, TEXTUREATLAS);
+
+	inline public static function tmx(path:String)
+		return asset(path, TMX);
+
+	inline public static function imagetmx(path:String)
+		return asset(path.replace(".png", ""), IMAGETMX);
 }

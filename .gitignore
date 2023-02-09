@@ -6,3 +6,5 @@ art/*/*.swf
 *.flp~
 art/flps/*/Backup/*.flp
 *.sf2
+*.tiled-session
+*.tiled-project
