@@ -14,7 +14,7 @@ class TJState extends FlxState
 	private var camMAIN:FlxCamera;
 	private var camHUD:FlxCamera;
 
-	private var targetObject:FlxObject;
+	public var targetObject:FlxObject;
 
 	public var targetPoint:FlxPoint;
 

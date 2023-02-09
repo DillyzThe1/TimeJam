@@ -134,6 +134,7 @@ class CutsceneSubState extends FlxSubState
 			for (img in cast(cutscene.frames, FlxAnimateFrames).parents)
 				if (img != null)
 				{
+					img.bitmap.dispose();
 					img.destroy();
 					img = null;
 				}

@@ -14,7 +14,7 @@ class PlayState extends TJState
 	{
 		super.create();
 
-		lvl = new TMXLevel(Paths.tmx("the fred"));
+		lvl = new TMXLevel(Paths.tmx("tutorial"));
 
 		add(lvl.bgGroup);
 		add(lvl.sprGroup);
@@ -31,6 +31,28 @@ class PlayState extends TJState
 
 		if (FlxG.keys.justPressed.ONE)
 			openSubState(new CutsceneSubState());
+
+		var controls:Array<Bool> = [
+			FlxG.keys.pressed.LEFT,
+			FlxG.keys.pressed.RIGHT,
+			FlxG.keys.pressed.UP,
+			FlxG.keys.pressed.DOWN
+		];
+		for (i in 0...controls.length)
+			if (controls[i])
+				switch (i)
+				{
+					case 0:
+						targetObject.x -= 5;
+					case 1:
+						targetObject.x += 5;
+					case 2:
+						targetObject.y -= 5;
+					case 3:
+						targetObject.y += 5;
+				}
+
+		zoomMAIN = FlxG.keys.pressed.SPACE ? 0.2 : 1;
 	}
 
 	override function destroy()
