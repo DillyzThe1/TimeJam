@@ -1,5 +1,6 @@
 package gamestates;
 
+import flixel.FlxG;
 import objects.TMXLevel;
 
 class PlayState extends TJState
@@ -10,7 +11,7 @@ class PlayState extends TJState
 	{
 		super.create();
 
-		lvl = new TMXLevel(Paths.tmx("you know who else"));
+		lvl = new TMXLevel(Paths.tmx("the fred"));
 
 		add(lvl.bgGroup);
 		add(lvl.sprGroup);
@@ -21,5 +22,8 @@ class PlayState extends TJState
 	override public function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+		if (FlxG.keys.justPressed.ESCAPE)
+			FlxG.switchState(new TitleScreenState());
 	}
 }
