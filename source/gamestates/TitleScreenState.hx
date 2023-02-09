@@ -142,12 +142,18 @@ class TitleScreenState extends TJState
 			textSpr.offset.y = 0;
 
 			if (bgTween != null)
+			{
 				bgTween.cancel();
+				bgTween.destroy();
+			}
 			FlxTween.tween(bg, {alpha: 0}, 0.5, {ease: FlxEase.cubeInOut});
 
 			// vsc please stop trolling me
 			if (logoTween != null)
+			{
 				logoTween.cancel();
+				logoTween.destroy();
+			}
 			FlxTween.tween(logoSpr, {
 				alpha: 0,
 				"scale.x": 0.1,
@@ -171,5 +177,23 @@ class TitleScreenState extends TJState
 		if (val < min)
 			return min;
 		return val;
+	}
+
+	override function destroy()
+	{
+		bg.destroy();
+		logoSpr.destroy();
+		textSpr.destroy();
+		if (bgTween != null)
+		{
+			bgTween.cancel();
+			bgTween.destroy();
+		}
+		if (logoTween != null)
+		{
+			logoTween.cancel();
+			logoTween.destroy();
+		}
+		super.destroy();
 	}
 }

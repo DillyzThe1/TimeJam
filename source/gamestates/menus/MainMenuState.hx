@@ -51,4 +51,10 @@ class MainMenuState extends TJState
 		if (FlxG.keys.justPressed.THREE)
 			Sys.exit(0);
 	}
+
+	override function destroy()
+	{
+		bruh.destroy();
+		super.destroy();
+	}
 }

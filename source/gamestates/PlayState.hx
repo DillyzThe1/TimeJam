@@ -30,4 +30,13 @@ class PlayState extends TJState
 		if (FlxG.keys.justPressed.ONE)
 			openSubState(new CutsceneSubState());
 	}
+
+	override function destroy()
+	{
+		lvl.bgGroup.destroy();
+		lvl.sprGroup.destroy();
+		lvl.objGroup.destroy();
+		lvl.fgGroup.destroy();
+		super.destroy();
+	}
 }
