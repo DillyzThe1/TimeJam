@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="menu buttons.png">
+	<!-- Created with Adobe Animate version 23.0.0.407 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="issues hover animated0000" x="384" y="509" width="283" height="160"/>
+	<SubTexture name="issues hover animated0001" x="384" y="509" width="283" height="160"/>
+	<SubTexture name="issues hover animated0002" x="667" y="509" width="275" height="156" frameX="-4" frameY="-2" frameWidth="283" frameHeight="160"/>
+	<SubTexture name="issues hover animated0003" x="667" y="509" width="275" height="156" frameX="-4" frameY="-2" frameWidth="283" frameHeight="160"/>
+	<SubTexture name="issues static0000" x="0" y="664" width="185" height="85"/>
+	<SubTexture name="options hover animated0000" x="0" y="0" width="489" height="185"/>
+	<SubTexture name="options hover animated0001" x="0" y="0" width="489" height="185"/>
+	<SubTexture name="options hover animated0002" x="478" y="185" width="478" height="182" frameX="-5" frameY="-2" frameWidth="489" frameHeight="185"/>
+	<SubTexture name="options hover animated0003" x="478" y="185" width="478" height="182" frameX="-5" frameY="-2" frameWidth="489" frameHeight="185"/>
+	<SubTexture name="options static0000" x="0" y="369" width="384" height="142"/>
+	<SubTexture name="play hover animated0000" x="489" y="0" width="488" height="185"/>
+	<SubTexture name="play hover animated0001" x="489" y="0" width="488" height="185"/>
+	<SubTexture name="play hover animated0002" x="0" y="185" width="478" height="184" frameX="-5" frameY="-1" frameWidth="488" frameHeight="185"/>
+	<SubTexture name="play hover animated0003" x="0" y="185" width="478" height="184" frameX="-5" frameY="-1" frameWidth="488" frameHeight="185"/>
+	<SubTexture name="play static0000" x="478" y="367" width="384" height="142"/>
+	<SubTexture name="quit hover0000" x="0" y="511" width="266" height="153"/>
+	<SubTexture name="quit static0000" x="185" y="664" width="184" height="85"/>
+</TextureAtlas>
