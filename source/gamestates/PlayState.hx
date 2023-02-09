@@ -1,6 +1,8 @@
 package gamestates;
 
 import flixel.FlxG;
+import flixel.FlxSubState;
+import flixel.util.FlxColor;
 import gamesubstates.CutsceneSubState;
 import objects.TMXLevel;
 
@@ -38,5 +40,20 @@ class PlayState extends TJState
 		lvl.objGroup.destroy();
 		lvl.fgGroup.destroy();
 		super.destroy();
+	}
+
+	override function closeSubState()
+	{
+		@:privateAccess
+		var subname:String = Type.getClassName(Type.getClass(subState));
+		trace("closing sub " + subname);
+
+		switch (subname)
+		{
+			case "gamesubstates.CutsceneSubState":
+				camHUD.flash(FlxColor.BLACK);
+		}
+
+		super.closeSubState();
 	}
 }
