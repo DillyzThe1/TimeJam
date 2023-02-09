@@ -37,7 +37,6 @@ class TitleScreenState extends TJState
 		textSpr.animation.addByIndices("static", "press enter static", [1], "", 24, true, false, false);
 		textSpr.animation.addByPrefix("vanish", "press enter vanish", 24, false, false, false);
 		textSpr.screenCenter(X);
-		textSpr.antialiasing = true;
 
 		textSpr.animation.finishCallback = function(n:String)
 		{
@@ -64,7 +63,6 @@ class TitleScreenState extends TJState
 		// intro stuff
 		bg.alpha = logoSpr.alpha = 0;
 		logoSpr.scale.set(0.35, 0.35);
-		bg.antialiasing = logoSpr.antialiasing = true;
 
 		bgTween = FlxTween.tween(bg, {alpha: 1}, 0.65, {ease: FlxEase.cubeInOut});
 		logoTween = FlxTween.tween(logoSpr, {

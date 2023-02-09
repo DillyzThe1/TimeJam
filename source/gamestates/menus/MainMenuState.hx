@@ -17,6 +17,7 @@ class MainMenuState extends TJState
 
 		bruh = new FlxText(0, 0, 0, "press escape to go to the title screen,\npress 1 to start the game,\npress 2 to go to settings,\nand hit 3 to exit.");
 		bruh.size = 32;
+		bruh.antialiasing = false;
 		add(bruh);
 		bruh.screenCenter();
 	}

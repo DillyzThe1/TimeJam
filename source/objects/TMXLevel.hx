@@ -55,9 +55,7 @@ class TMXLevel extends TiledMap
 			if (layer.type != TiledLayerType.IMAGE)
 				continue;
 			var imgLayer:TiledImageLayer = cast layer;
-			var spr:FlxSprite = new FlxSprite(imgLayer.x, imgLayer.y, Paths.imagetmx(imgLayer.imagePath));
-			spr.antialiasing = true;
-			sprGroup.add(spr);
+			sprGroup.add(new FlxSprite(imgLayer.x, imgLayer.y, Paths.imagetmx(imgLayer.imagePath)));
 		}
 	}
 
@@ -84,8 +82,6 @@ class TMXLevel extends TiledMap
 		var imgCollection:TiledTileSet = getTileSet("imageCollection");
 		var imgSource:TiledImageTile = imgCollection.getImageSourceByGid(obj.gid);
 		var spr:FlxSprite = new FlxSprite().loadGraphic(Paths.imagetmx(imgSource.source));
-
-		spr.antialiasing = true;
 
 		if (spr.width != obj.width || spr.height != obj.height)
 			spr.setGraphicSize(obj.width, obj.height);
