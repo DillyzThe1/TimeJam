@@ -55,7 +55,9 @@ class TMXLevel extends TiledMap
 			if (layer.type != TiledLayerType.IMAGE)
 				continue;
 			var imgLayer:TiledImageLayer = cast layer;
-			sprGroup.add(new FlxSprite(imgLayer.x, imgLayer.y, Paths.imagetmx(imgLayer.imagePath)));
+			var spr:FlxSprite = new FlxSprite(imgLayer.x, imgLayer.y, Paths.imagetmx(imgLayer.imagePath));
+			spr.antialiasing = true;
+			sprGroup.add(spr);
 		}
 	}
 
@@ -155,6 +157,7 @@ class TMXLevel extends TiledMap
 			var tilemap:FlxTilemapExt = new FlxTilemapExt();
 			tilemap.loadMapFromArray(tileLayer.tileArray, width, height, Paths.imagetmx(tileSet.imageSource), tileSet.tileWidth, tileSet.tileHeight,
 				FlxTilemapAutoTiling.OFF, tileSet.firstGID, 1, 1);
+			tilemap.antialiasing = true;
 
 			if (tileLayer.properties.contains("animated"))
 			{
