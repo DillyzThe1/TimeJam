@@ -147,9 +147,7 @@ class PlayState extends TJState
 			var causedByTime:Bool = (totalTime - lastTimeOnGround) < 0.15;
 			if (causedByTime || player.mayDoubleJump)
 			{
-				if (causedByTime)
-					trace('You had ${0.15 - (totalTime - lastTimeOnGround)} seconds left to jump.');
-				else
+				if (!causedByTime)
 					player.mayDoubleJump = false;
 				player.jump();
 			}

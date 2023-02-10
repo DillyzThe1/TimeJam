@@ -22,7 +22,8 @@ class Main extends Sprite
 		super();
 
 		#if html5
-		initState = UnsupportedPlatformState;
+		if (FlxG.onMobile)
+			initState = UnsupportedPlatformState;
 		#end
 
 		PlayerPreferenceManager.load();

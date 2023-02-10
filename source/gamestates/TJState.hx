@@ -34,6 +34,10 @@ class TJState extends FlxState
 		camMAIN.follow(targetObject, LOCKON, 0.01 / (60 / FlxG.updateFramerate));
 		targetPoint = targetObject.getPosition();
 		camMAIN.focusOn(targetPoint);
+
+		#if html5
+		FlxG.keys.preventDefaultKeys = [];
+		#end
 	}
 
 	override public function update(e:Float)
