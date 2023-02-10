@@ -59,9 +59,7 @@ class PlayState extends TJState
 		trace(lvl.collisionTiles.length);
 
 		player = new Player(lvl.playerStart.x, lvl.playerStart.y - 175);
-		#if debug
 		lvl.objGroup.add(player);
-		#end
 		add(player.playerSpr);
 
 		leftBound = new FlxSprite(FlxG.worldBounds.x - 50, FlxG.worldBounds.y);
