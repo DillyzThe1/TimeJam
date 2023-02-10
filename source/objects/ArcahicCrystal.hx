@@ -41,12 +41,19 @@ class ArchaicCrystal extends FlxSprite
 
 		fullElapsed += e;
 
-		offset.x = Math.cos(fullElapsed) * 5.65;
-		offset.y = Math.sin(fullElapsed) * 5.65;
-		angle = Math.cos(fullElapsed) * 2.65 + Math.sin(fullElapsed) * 3.65;
+		var sine:Float = Math.sin(fullElapsed);
+		var cosine:Float = Math.cos(fullElapsed);
 
-		var scaleeeeee:Float = 0.725 + Math.sin(fullElapsed) / 25;
+		offset.x = cosine * 5.65;
+		offset.y = sine * 5.65;
+		angle = cosine * 2.65 + sine * 3.65;
+
+		var scaleeeeee:Float = 0.725 + sine / 25;
 		scale.set(scaleeeeee, scaleeeeee);
+
+		alpha = 0.75 + sine / 10;
+
+		color.saturation = Math.abs(sine / 5);
 	}
 
 	public override function destroy()

@@ -132,14 +132,23 @@ class Player extends FlxSprite
 
 	public override function destroy()
 	{
-		playerSpr.destroy();
-		playerSpr = null;
-		for (offset in offsetMap)
-			offset.put();
-		offsetMap.clear();
-		offsetMap = null;
-		curOffset.put();
-		curOffset = null;
+		if (playerSpr != null)
+		{
+			playerSpr.destroy();
+			playerSpr = null;
+		}
+		if (offsetMap != null)
+		{
+			for (offset in offsetMap)
+				offset.put();
+			offsetMap.clear();
+			offsetMap = null;
+		}
+		if (curOffset != null)
+		{
+			curOffset.put();
+			curOffset = null;
+		}
 		super.destroy();
 	}
 }
