@@ -136,11 +136,7 @@ class PlayState extends TJState
 					trace('You had ${0.15 - (totalTime - lastTimeOnGround)} seconds left to jump.');
 				else
 					player.mayDoubleJump = false;
-
-				player.velocity.y = -player.maxVelocity.y * 0.415;
-				player.onGround = false;
-				player.playAnim("jump", true);
-				lastTimeOnGround = 0;
+				player.jump();
 			}
 			// case 3:
 			// player.y += 5;
