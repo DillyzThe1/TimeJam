@@ -180,6 +180,7 @@ class TMXLevel extends TiledMap
 				bgGroup.add(tilemap);
 			else
 			{
+				trace("adding " + tileLayer.name + " to the collision");
 				fgGroup.add(tilemap);
 				collisionTiles.push(tilemap);
 			}

@@ -22,15 +22,13 @@ class PlayState extends TJState
 	{
 		super.create();
 
-		#if desktop
 		skyObject = new FlxSprite().loadGraphic(Paths.image("sky"));
 		skyObject.screenCenter();
 		skyObject.scale.set(1.15, 1.2);
-		skyObject.scrollFactor.set(0.05, 0.05);
+		skyObject.scrollFactor.set(0, 0);
 		skyObject.offset.y = 50;
 		skyObject.alpha = 0.875;
 		add(skyObject);
-		#end
 
 		lvl = new TMXLevel(Paths.tmx("tutorial"));
 
