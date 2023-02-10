@@ -108,12 +108,14 @@ class TMXLevel extends TiledMap
 		if (obj.gid != -1)
 			pos.y -= objLayer.map.getGidOwner(obj.gid).tileHeight;
 
-		switch (obj.type.toLowerCase())
+		var summonName:String = obj.properties.get("summon");
+
+		switch (summonName)
 		{
 			case "player_start":
 				playerStart.set(pos.x, pos.y);
 			default:
-				trace('Warning! Object type  "${obj.type}" unaccounted for!');
+				trace('Warning! Object summon "$summonName" unaccounted for! (On object "${obj.name}")');
 		}
 
 		pos.put();
