@@ -32,12 +32,12 @@ class Player extends FlxSprite
 		playerSpr.animation.addByPrefix("walk", "jason walk0", 24, false, false, false);
 		playerSpr.animation.addByIndices("jump", "jason jump0", [1, 2, 3, 4, 5, 6, 7, 8], "", 24, false, false, false);
 
-		offsetMap["idle"] = FlxPoint.get(5, 5);
-		offsetMap["idle__flip"] = FlxPoint.get(-5, 5);
-		offsetMap["walk"] = FlxPoint.get();
-		offsetMap["walk__flip"] = FlxPoint.get();
-		offsetMap["jump"] = FlxPoint.get();
-		offsetMap["jump__flip"] = FlxPoint.get();
+		offsetMap["idle"] = FlxPoint.get(5, 2);
+		offsetMap["idle__flip"] = FlxPoint.get(-2, 2);
+		offsetMap["walk"] = FlxPoint.get(-35, -6);
+		offsetMap["walk__flip"] = FlxPoint.get(-50, -6);
+		offsetMap["jump"] = FlxPoint.get(-30, -12);
+		offsetMap["jump__flip"] = FlxPoint.get(-30, -12);
 
 		playAnim("idle");
 	}
@@ -45,7 +45,11 @@ class Player extends FlxSprite
 	public override function update(e:Float)
 	{
 		super.update(e);
+		updateSpr();
+	}
 
+	public function updateSpr()
+	{
 		playerSpr.setPosition(x + curOffset.x, y + curOffset.y);
 		playerSpr.flipX = facingLeft;
 	}
@@ -75,6 +79,7 @@ class Player extends FlxSprite
 			curOffset = FlxPoint.get();
 			freeNextOffset = true;
 		}
+		updateSpr();
 	}
 
 	public function playAnim(anim:String, ?fullForce:Bool = false)
