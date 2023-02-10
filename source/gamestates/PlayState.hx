@@ -43,7 +43,7 @@ class PlayState extends TJState
 		add(player.playerSpr);
 
 		player.maxVelocity.set(450, 550);
-		player.drag.set(75, 75);
+		player.drag.set(250, 385);
 	}
 
 	override public function update(elapsed:Float)
@@ -80,9 +80,10 @@ class PlayState extends TJState
 						player.y += 5;
 				}
 
-		zoomMAIN = FlxG.keys.pressed.SPACE ? 0.2 : 1;
+		if (!controls[0] && !controls[1])
+			player.acceleration.x = 0;
 
-		player.acceleration.x -= player.acceleration.x * elapsed * 50;
+		zoomMAIN = FlxG.keys.pressed.SPACE ? 0.2 : 1;
 
 		var lastBeat:Int = MusicManager.currentBeat;
 		MusicManager.updatePosition();
