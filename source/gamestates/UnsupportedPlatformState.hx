@@ -13,10 +13,11 @@ class UnsupportedPlatformState extends TJState
 	{
 		super.create();
 
-		platformText = new FlxText(0, 0, 0,
+		platformText = new FlxText(0, 0, FlxG.width * 0.95,
 			"Hey!\nWe appreciate the enthusiasm, however, we have bad news.\nThis game may only be played on keyboard & mouse, not touch screen.\nSupport may be added in the future.\n\nSorry!\n-DillyzThe1\n\n(pss! hey! if this is a mistake, then hit any key to continue!)");
-		platformText.size = 32;
+		platformText.size = 24;
 		platformText.antialiasing = false;
+		platformText.alignment = CENTER;
 		add(platformText);
 		platformText.screenCenter();
 	}
