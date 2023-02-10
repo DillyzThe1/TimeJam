@@ -42,8 +42,9 @@ class PlayState extends TJState
 		#end
 		add(player.playerSpr);
 
-		player.maxVelocity.set(450, 550);
-		player.drag.set(500, 385);
+		player.maxVelocity.set(525, 550);
+		// 475 for ice physics
+		player.drag.set(2150, 385);
 	}
 
 	override public function update(elapsed:Float)
@@ -67,13 +68,19 @@ class PlayState extends TJState
 				switch (i)
 				{
 					case 0:
-						player.acceleration.x -= 50;
+						player.acceleration.x -= 95;
 						player.facingLeft = true;
 						player.evaluateOffset(player.getAnim());
+
+						if (player.acceleration.x > 0)
+							player.acceleration.x *= 0.15;
 					case 1:
-						player.acceleration.x += 50;
+						player.acceleration.x += 95;
 						player.facingLeft = false;
 						player.evaluateOffset(player.getAnim());
+
+						if (player.acceleration.x < 0)
+							player.acceleration.x *= 0.15;
 					case 2:
 						player.y -= 5;
 					case 3:
