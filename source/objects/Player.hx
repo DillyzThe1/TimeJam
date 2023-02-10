@@ -1,7 +1,9 @@
 package objects;
 
+import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.math.FlxPoint;
+import flixel.system.FlxSound;
 import flixel.util.FlxColor;
 import managers.MusicManager;
 
@@ -25,6 +27,8 @@ class Player extends FlxSprite
 
 	var walkFirst:Bool = true;
 	var lastWalkDir:Bool = false;
+
+	public var grassSfx:Array<FlxSound>;
 
 	public function new(x:Float, y:Float)
 	{
@@ -53,6 +57,14 @@ class Player extends FlxSprite
 		offsetMap["jump hit__flip"] = FlxPoint.get(-25, -3);
 		offsetMap["skid"] = FlxPoint.get(0, 0);
 		offsetMap["skid__flip"] = FlxPoint.get(0, 0);
+
+		grassSfx = [
+			new FlxSound().loadEmbedded(Paths.sound("grass0")), new FlxSound().loadEmbedded(Paths.sound("grass1")),
+			new FlxSound().loadEmbedded(Paths.sound("grass2")), new FlxSound().loadEmbedded(Paths.sound("grass3"))
+		];
+
+		for (s in grassSfx)
+			s.volume = 0.45;
 
 		playAnim("idle");
 	}
@@ -89,6 +101,8 @@ class Player extends FlxSprite
 		{
 			walkFirst = !walkFirst;
 			playAnim('walk${walkFirst ? 1 : 2}', true);
+
+			grassSfx[FlxG.random.int(0, grassSfx.length - 1)].play(true, 0.001);
 		}
 	}
 
