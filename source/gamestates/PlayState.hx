@@ -92,30 +92,19 @@ class PlayState extends TJState
 	var totalTime:Float = 0;
 	var lastTimeOnGround:Float = 0;
 
-	var controls:Array<Bool> = [false, false, false, false, false];
-	var controlsalt:Array<Bool> = [false, false, false, false];
-
 	override public function update(elapsed:Float)
 	{
 		totalTime += elapsed;
 
 		player.acceleration.y = player.maxVelocity.y * 0.875;
-
-		// SCREW YOU HTML SCREW YOU HTML SCREW YOU HTML SCREW YOU HTML SCREW YOU HTML SCREW YOU HTML SCREW YOU HTML SCREW YOU HTML
-		#if !html5
-		controls[0] = FlxG.keys.pressed.LEFT;
-		controls[1] = FlxG.keys.pressed.RIGHT;
-		controls[2] = FlxG.keys.justPressed.UP;
-		controls[3] = FlxG.keys.justPressed.DOWN;
-		controls[4] = FlxG.keys.justPressed.SPACE;
-
-		controlsalt[0] = FlxG.keys.pressed.A;
-		controlsalt[1] = FlxG.keys.pressed.D;
-		controlsalt[2] = FlxG.keys.justPressed.W;
-		controlsalt[3] = FlxG.keys.justPressed.S;
-		#end
-
-		if (controls[1] || controlsalt[1])
+		var controls:Array<Bool> = [
+			FlxG.keys.pressed.LEFT,
+			FlxG.keys.pressed.RIGHT,
+			FlxG.keys.justPressed.UP,
+			FlxG.keys.justPressed.DOWN,
+			FlxG.keys.justPressed.SPACE
+		];
+		if (controls[1])
 		{
 			player.facingLeft = false;
 			if (player.onGround || (player.getAnim() == "skid" && player.animFinished()))
@@ -133,7 +122,7 @@ class PlayState extends TJState
 				}
 			}
 		}
-		else if (controls[0] || controlsalt[0])
+		else if (controls[0])
 		{
 			player.facingLeft = true;
 			if (player.onGround || (player.getAnim() == "skid" && player.animFinished()))
@@ -151,7 +140,7 @@ class PlayState extends TJState
 				}
 			}
 		}
-		if (controls[2] || controls[4] || controlsalt[2])
+		if (controls[2] || controls[4])
 		{
 			var causedByTime:Bool = (totalTime - lastTimeOnGround) < 0.15;
 			if (causedByTime || player.mayDoubleJump)
@@ -267,20 +256,6 @@ class PlayState extends TJState
 
 		if (FlxG.keys.justPressed.ONE)
 			openSubState(new CutsceneSubState());
-
-		// SCREW YOU HTML SCREW YOU HTML SCREW YOU HTML SCREW YOU HTML SCREW YOU HTML SCREW YOU HTML SCREW YOU HTML SCREW YOU HTML
-		#if html5
-		controls[0] = FlxG.keys.pressed.LEFT;
-		controls[1] = FlxG.keys.pressed.RIGHT;
-		controls[2] = FlxG.keys.justPressed.UP;
-		controls[3] = FlxG.keys.justPressed.DOWN;
-		controls[4] = FlxG.keys.justPressed.SPACE;
-
-		controlsalt[0] = FlxG.keys.pressed.A;
-		controlsalt[1] = FlxG.keys.pressed.D;
-		controlsalt[2] = FlxG.keys.justPressed.W;
-		controlsalt[3] = FlxG.keys.justPressed.S;
-		#end
 	}
 
 	override function destroy()
