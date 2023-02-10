@@ -1,6 +1,7 @@
 package gamestates;
 
 import flixel.FlxG;
+import flixel.FlxSprite;
 import flixel.FlxSubState;
 import flixel.util.FlxColor;
 import gamesubstates.CutsceneSubState;
@@ -12,12 +13,21 @@ using TJUtil;
 
 class PlayState extends TJState
 {
+	public var skyObject:FlxSprite;
 	public var player:Player;
 	public var lvl:TMXLevel;
 
 	override public function create()
 	{
 		super.create();
+
+		skyObject = new FlxSprite().loadGraphic(Paths.image("sky"));
+		skyObject.screenCenter();
+		skyObject.scale.set(1.15, 1.2);
+		skyObject.scrollFactor.set(0, 0);
+		skyObject.offset.y = 50;
+		skyObject.alpha = 0.875;
+		add(skyObject);
 
 		lvl = new TMXLevel(Paths.tmx("tutorial"));
 
@@ -31,6 +41,9 @@ class PlayState extends TJState
 		add(player);
 		#end
 		add(player.playerSpr);
+
+		player.maxVelocity.set(450, 550);
+		player.drag.set(75, 75);
 	}
 
 	override public function update(elapsed:Float)
@@ -54,11 +67,11 @@ class PlayState extends TJState
 				switch (i)
 				{
 					case 0:
-						player.x -= 5;
+						player.acceleration.x -= 25;
 						player.facingLeft = true;
 						player.evaluateOffset(player.getAnim());
 					case 1:
-						player.x += 5;
+						player.acceleration.x += 25;
 						player.facingLeft = false;
 						player.evaluateOffset(player.getAnim());
 					case 2:
@@ -68,6 +81,8 @@ class PlayState extends TJState
 				}
 
 		zoomMAIN = FlxG.keys.pressed.SPACE ? 0.2 : 1;
+
+		player.acceleration.x -= player.acceleration.x * elapsed * 500;
 
 		var lastBeat:Int = MusicManager.currentBeat;
 		MusicManager.updatePosition();
@@ -80,6 +95,8 @@ class PlayState extends TJState
 
 	override function destroy()
 	{
+		skyObject.destroy();
+		skyObject = null;
 		lvl.bgGroup.destroy();
 		lvl.bgGroup = null;
 		lvl.sprGroup.destroy();
@@ -89,6 +106,8 @@ class PlayState extends TJState
 		lvl.fgGroup.destroy();
 		lvl.fgGroup = null;
 		lvl = null;
+		player.destroy();
+		player = null;
 		super.destroy();
 	}
 
