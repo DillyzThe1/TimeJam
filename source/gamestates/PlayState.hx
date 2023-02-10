@@ -4,10 +4,13 @@ import flixel.FlxG;
 import flixel.FlxSubState;
 import flixel.util.FlxColor;
 import gamesubstates.CutsceneSubState;
+import managers.MusicManager;
+import objects.Player;
 import objects.TMXLevel;
 
 class PlayState extends TJState
 {
+	public var player:Player;
 	public var lvl:TMXLevel;
 
 	override public function create()
@@ -20,6 +23,12 @@ class PlayState extends TJState
 		add(lvl.sprGroup);
 		add(lvl.objGroup);
 		add(lvl.fgGroup);
+
+		player = new Player(lvl.playerStart.x, lvl.playerStart.y - 175);
+		#if debug
+		add(player);
+		#end
+		add(player.playerSpr);
 	}
 
 	override public function update(elapsed:Float)
@@ -53,6 +62,11 @@ class PlayState extends TJState
 				}
 
 		zoomMAIN = FlxG.keys.pressed.SPACE ? 0.2 : 1;
+
+		var lastBeat:Int = MusicManager.currentBeat;
+		MusicManager.updatePosition();
+		if (MusicManager.currentBeat != lastBeat && lastBeat % 4 == 0)
+			player.idleDance();
 	}
 
 	override function destroy()

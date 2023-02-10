@@ -30,7 +30,7 @@ class TMXLevel extends TiledMap
 
 	var collisionTiles:Array<FlxTilemap>;
 
-	var playerStart:FlxPoint = FlxPoint.get();
+	public var playerStart:FlxPoint = FlxPoint.get();
 
 	public function new(tilelevel:FlxTiledMapAsset)
 	{
