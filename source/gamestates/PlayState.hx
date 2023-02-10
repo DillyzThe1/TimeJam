@@ -5,6 +5,7 @@ import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxSubState;
 import flixel.util.FlxColor;
+import flixel.util.FlxDirection;
 import gamesubstates.CutsceneSubState;
 import managers.MusicManager;
 import objects.Player;
@@ -18,7 +19,8 @@ class PlayState extends TJState
 	public var player:Player;
 	public var lvl:TMXLevel;
 
-	public var sss:FlxSprite;
+	public var leftBound:FlxSprite;
+	public var rightBound:FlxSprite;
 
 	override public function create()
 	{
@@ -53,9 +55,11 @@ class PlayState extends TJState
 		#end
 		add(player.playerSpr);
 
-		sss = new FlxSprite(0, 0);
-		sss.makeGraphic(100, 100, 0xff00ff00);
-		lvl.objGroup.add(sss);
+		leftBound = new FlxSprite(FlxG.worldBounds.x - 50, FlxG.worldBounds.y);
+		leftBound.makeGraphic(50, Std.int(FlxG.worldBounds.height), 0xff00ff00);
+
+		rightBound = new FlxSprite(FlxG.worldBounds.x + FlxG.worldBounds.width, FlxG.worldBounds.y);
+		rightBound.makeGraphic(50, Std.int(FlxG.worldBounds.height), 0xff00ff00);
 
 		player.maxVelocity.set(625, 1550);
 		// 475 for ice physics
@@ -83,44 +87,51 @@ class PlayState extends TJState
 				switch (i)
 				{
 					case 0:
-						player.acceleration.x -= player.maxVelocity.x * 3.75;
 						player.facingLeft = true;
 						player.evaluateOffset(player.getAnim());
 
-						if (player.acceleration.x > 0)
-							player.acceleration.x *= 0.15;
+						if (player.onGround)
+						{
+							player.acceleration.x -= player.maxVelocity.x * 3.75;
+							if (player.acceleration.x > 0)
+								player.acceleration.x *= 0.15;
+						}
 					case 1:
-						player.acceleration.x += player.maxVelocity.x * 3.75;
 						player.facingLeft = false;
 						player.evaluateOffset(player.getAnim());
 
-						if (player.acceleration.x < 0)
-							player.acceleration.x *= 0.15;
+						if (player.onGround)
+						{
+							player.acceleration.x += player.maxVelocity.x * 3.75;
+							if (player.acceleration.x < 0)
+								player.acceleration.x *= 0.15;
+						}
 					case 2 | 4:
-						player.velocity.y = -player.maxVelocity.y * 0.55;
+						if (player.onGround)
+						{
+							player.velocity.y = -player.maxVelocity.y * 0.55;
+							player.onGround = false;
+						}
 						// case 3:
 						// player.y += 5;
 				}
 		super.update(elapsed);
 
-		if (!controls[0] && !controls[1])
+		player.maxVelocity.x = player.onGround ? 425 : 535;
+
+		if (!controls[0] && !controls[1] && player.onGround)
 			player.acceleration.x = 0;
 
 		zoomMAIN = FlxG.keys.pressed.SPACE ? 0.2 : 1;
 
-		targetObject.setPosition(Std.int(player.x + player.width / 2).clampInt(0, lvl.width * lvl.tileWidth), player.y + player.height / 2);
+		targetObject.setPosition((player.x + player.width / 2).clampFloat(FlxG.worldBounds.x, FlxG.worldBounds.width),
+			(player.y + player.height / 2).clampFloat(FlxG.worldBounds.y, FlxG.worldBounds.height));
 
 		lvl.checkCollisionAlt(player);
+		player.onGround = player.isTouching(FlxDirection.DOWN);
 
-		if (sss != null && FlxG.collide(sss, player))
-		{
-			trace("death");
-			sss.destroy();
-			sss = null;
-		}
-
-		if (player.y > 4800)
-			player.y = 0;
+		if (player.y + player.height > FlxG.worldBounds.y + FlxG.worldBounds.height)
+			player.y = FlxG.worldBounds.y;
 	}
 
 	override function destroy()
