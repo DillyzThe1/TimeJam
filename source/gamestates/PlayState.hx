@@ -118,7 +118,8 @@ class PlayState extends TJState
 
 		zoomMAIN = FlxG.keys.pressed.SPACE ? 0.2 : 1;
 
-		targetObject.setPosition((player.x + player.width / 2).clampFloat(FlxG.worldBounds.x + FlxG.width / 2, FlxG.worldBounds.width - FlxG.width / 2),
+		targetObject.setPosition((player.x + player.width / 2 + (player.facingLeft ? 0 : 300)).clampFloat(FlxG.worldBounds.x + FlxG.width / 2,
+			FlxG.worldBounds.width - FlxG.width / 2),
 			(player.y + player.height / 2).clampFloat(FlxG.worldBounds.y + FlxG.height / 2, FlxG.worldBounds.height - FlxG.height / 2));
 
 		lvl.checkCollisionAlt(player);
