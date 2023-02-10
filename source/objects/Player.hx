@@ -29,6 +29,7 @@ class Player extends FlxSprite
 		playerSpr.animation.addByPrefix("idle", "jason idle0", 24, false, false, false);
 
 		offsetMap["idle"] = FlxPoint.get(5, 5);
+		offsetMap["idle__flip"] = FlxPoint.get(-5, 5);
 
 		playAnim("idle");
 	}
@@ -37,7 +38,7 @@ class Player extends FlxSprite
 	{
 		super.update(e);
 
-		playerSpr.setPosition(x + (facingLeft ? -curOffset.x : curOffset.x), y + curOffset.y);
+		playerSpr.setPosition(x + curOffset.x, y + curOffset.y);
 		playerSpr.flipX = facingLeft;
 	}
 
@@ -47,21 +48,30 @@ class Player extends FlxSprite
 			playAnim("idle");
 	}
 
-	public function playAnim(anim:String)
+	public function evaluateOffset(anim:String)
 	{
+		var _anim:String = anim;
+		if (facingLeft)
+			_anim += "__flip";
+
 		if (freeNextOffset)
 		{
 			curOffset.put();
 			freeNextOffset = false;
 		}
 
-		if (offsetMap.exists(anim))
-			curOffset = offsetMap[anim];
+		if (offsetMap.exists(_anim))
+			curOffset = offsetMap[_anim];
 		else
 		{
 			curOffset = FlxPoint.get();
 			freeNextOffset = true;
 		}
+	}
+
+	public function playAnim(anim:String)
+	{
+		evaluateOffset(anim);
 		playerSpr.animation.play(anim, true);
 	}
 

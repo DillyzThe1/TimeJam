@@ -56,9 +56,11 @@ class PlayState extends TJState
 					case 0:
 						player.x -= 5;
 						player.facingLeft = true;
+						player.evaluateOffset(player.getAnim());
 					case 1:
 						player.x += 5;
 						player.facingLeft = false;
+						player.evaluateOffset(player.getAnim());
 					case 2:
 						player.y -= 5;
 					case 3:
