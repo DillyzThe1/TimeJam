@@ -3,20 +3,28 @@ package;
 import flixel.FlxG;
 import flixel.FlxGame;
 import flixel.FlxSprite;
+import flixel.FlxState;
 import flixel.util.FlxColor;
 import gamestates.TitleScreenState;
+import gamestates.UnsupportedPlatformState;
 import managers.MusicManager;
 import openfl.display.FPS;
 import openfl.display.Sprite;
 
 class Main extends Sprite
 {
+	public static var initState:Class<FlxState> = TitleScreenState;
+
 	public function new()
 	{
 		super();
 		FlxSprite.defaultAntialiasing = true;
 
-		addChild(new FlxGame(0, 0, TitleScreenState, #if desktop 120, 120 #else 60, 60 #end, true, #if !desktop true #else false #end));
+		#if html5
+		initState = UnsupportedPlatformState;
+		#end
+
+		addChild(new FlxGame(1280, 720, initState, #if desktop 120, 120 #else 60, 60 #end, true, #if !desktop true #else false #end));
 		addChild(new FPS(0, 0, FlxColor.WHITE));
 
 		FlxG.sound.volume = 0.5;
