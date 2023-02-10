@@ -31,6 +31,8 @@ class Player extends FlxSprite
 		playerSpr.animation.addByPrefix("idle", "jason idle0", 24, false, false, false);
 		playerSpr.animation.addByPrefix("walk", "jason walk0", 24, false, false, false);
 		playerSpr.animation.addByIndices("jump", "jason jump0", [1, 2, 3, 4, 5, 6, 7, 8], "", 24, false, false, false);
+		playerSpr.animation.addByPrefix("jump hit", "jason jump hit0", 24, false, false, false);
+		playerSpr.animation.addByPrefix("skid", "jason skid0", 24, false, false, false);
 
 		offsetMap["idle"] = FlxPoint.get(5, 2);
 		offsetMap["idle__flip"] = FlxPoint.get(-2, 2);
@@ -38,6 +40,10 @@ class Player extends FlxSprite
 		offsetMap["walk__flip"] = FlxPoint.get(-50, -6);
 		offsetMap["jump"] = FlxPoint.get(-30, -12);
 		offsetMap["jump__flip"] = FlxPoint.get(-30, -12);
+		offsetMap["jump hit"] = FlxPoint.get(-30, -12);
+		offsetMap["jump hit__flip"] = FlxPoint.get(-30, -12);
+		offsetMap["skid"] = FlxPoint.get(0, 0);
+		offsetMap["skid__flip"] = FlxPoint.get(0, 0);
 
 		playAnim("idle");
 	}
@@ -91,6 +97,11 @@ class Player extends FlxSprite
 	public function getAnim()
 	{
 		return playerSpr.animation.curAnim == null ? "" : playerSpr.animation.curAnim.name;
+	}
+
+	public function animFinished()
+	{
+		return playerSpr.animation.curAnim == null || playerSpr.animation.curAnim.finished;
 	}
 
 	public override function destroy()
