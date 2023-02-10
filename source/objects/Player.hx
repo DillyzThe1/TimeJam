@@ -30,7 +30,7 @@ class Player extends FlxSprite
 		playerSpr.frames = Paths.sparrowv2("characters/jason");
 		playerSpr.animation.addByPrefix("idle", "jason idle0", 24, false, false, false);
 		playerSpr.animation.addByPrefix("walk", "jason walk0", 24, false, false, false);
-		playerSpr.animation.addByPrefix("jump", "jason jump0", 24, false, false, false);
+		playerSpr.animation.addByIndices("jump", "jason jump0", [1, 2, 3, 4, 5, 6, 7, 8], "", 24, false, false, false);
 
 		offsetMap["idle"] = FlxPoint.get(5, 5);
 		offsetMap["idle__flip"] = FlxPoint.get(-5, 5);
