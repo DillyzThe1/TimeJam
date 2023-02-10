@@ -18,6 +18,7 @@ import flixel.group.FlxGroup;
 import flixel.math.FlxPoint;
 import flixel.tile.FlxBaseTilemap.FlxTilemapAutoTiling;
 import flixel.tile.FlxTilemap;
+import managers.PlayerPreferenceManager;
 
 using StringTools; // based on https://github.com/HaxeFlixel/flixel-demos/blob/dev/Editors/TiledEditor/source/TiledLevel.hx
 
@@ -178,7 +179,7 @@ class TMXLevel extends TiledMap
 			var tilemap:FlxTilemapExt = new FlxTilemapExt();
 			tilemap.loadMapFromArray(tileLayer.tileArray, width, height, Paths.imagetmx(tileSet.imageSource), tileSet.tileWidth, tileSet.tileHeight,
 				FlxTilemapAutoTiling.OFF, tileSet.firstGID, 1, 1);
-			tilemap.antialiasing = true;
+			tilemap.antialiasing = PlayerPreferenceManager.antialiasing;
 
 			if (tileLayer.properties.contains("animated"))
 			{

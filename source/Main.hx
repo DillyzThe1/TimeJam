@@ -19,7 +19,6 @@ class Main extends Sprite
 	public function new()
 	{
 		super();
-		FlxSprite.defaultAntialiasing = true;
 
 		#if html5
 		initState = UnsupportedPlatformState;

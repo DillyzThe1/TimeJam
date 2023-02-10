@@ -1,13 +1,14 @@
 package managers;
 
 import flixel.FlxG;
+import flixel.FlxSprite;
 import flixel.util.FlxSave;
 
 class PlayerPreferenceManager
 {
 	private static var playerPrefs:FlxSave;
 
-	public static var antialiasing:Bool = false;
+	public static var antialiasing:Bool = true;
 
 	public static function save()
 	{
@@ -18,7 +19,7 @@ class PlayerPreferenceManager
 			return false;
 		}
 
-		playerPrefs.data.antialiasing = antialiasing;
+		playerPrefs.data.antialiasing = FlxSprite.defaultAntialiasing = antialiasing;
 		playerPrefs.data.hasSaved = true;
 
 		if (!playerPrefs.flush())
@@ -45,7 +46,7 @@ class PlayerPreferenceManager
 			return false;
 		}
 
-		antialiasing = playerPrefs.data.antialiasing;
+		FlxSprite.defaultAntialiasing = antialiasing = playerPrefs.data.antialiasing;
 
 		trace('Loaded preferences from disk!');
 		return true;
