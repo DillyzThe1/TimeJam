@@ -68,15 +68,13 @@ class PlayState extends TJState
 
 	override public function update(elapsed:Float)
 	{
-		var uhhhhh:Float = elapsed / (1 / 120);
-
 		if (FlxG.keys.justPressed.ESCAPE)
 			FlxG.switchState(new TitleScreenState());
 
 		if (FlxG.keys.justPressed.ONE)
 			openSubState(new CutsceneSubState());
 
-		player.acceleration.y = player.maxVelocity.y * 0.85 * uhhhhh;
+		player.acceleration.y = player.maxVelocity.y * 0.85;
 		var controls:Array<Bool> = [
 			FlxG.keys.pressed.LEFT,
 			FlxG.keys.pressed.RIGHT,
@@ -93,7 +91,7 @@ class PlayState extends TJState
 						if (player.onGround)
 							player.playAnim("walk");
 
-						player.acceleration.x -= player.maxVelocity.x * (player.onGround ? 3.75 : 2.25) * uhhhhh;
+						player.acceleration.x -= player.maxVelocity.x * (player.onGround ? 3.75 : 2.25);
 						if (player.acceleration.x > 0)
 							player.acceleration.x *= (player.onGround ? 0.15 : 0.35);
 					case 1:
@@ -101,7 +99,7 @@ class PlayState extends TJState
 						if (player.onGround)
 							player.playAnim("walk");
 
-						player.acceleration.x += player.maxVelocity.x * (player.onGround ? 3.75 : 2.25) * uhhhhh;
+						player.acceleration.x += player.maxVelocity.x * (player.onGround ? 3.75 : 2.25);
 						if (player.acceleration.x < 0)
 							player.acceleration.x *= (player.onGround ? 0.15 : 0.35);
 					case 2 | 4:
