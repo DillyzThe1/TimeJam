@@ -40,8 +40,8 @@ class Player extends FlxSprite
 		offsetMap["walk__flip"] = FlxPoint.get(-50, -6);
 		offsetMap["jump"] = FlxPoint.get(-30, -12);
 		offsetMap["jump__flip"] = FlxPoint.get(-30, -12);
-		offsetMap["jump hit"] = FlxPoint.get(-65, -12);
-		offsetMap["jump hit__flip"] = FlxPoint.get(-65, -12);
+		offsetMap["jump hit"] = FlxPoint.get(-25, -3);
+		offsetMap["jump hit__flip"] = FlxPoint.get(-25, -3);
 		offsetMap["skid"] = FlxPoint.get(0, 0);
 		offsetMap["skid__flip"] = FlxPoint.get(0, 0);
 
