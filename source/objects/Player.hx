@@ -29,9 +29,15 @@ class Player extends FlxSprite
 		playerSpr = new FlxSprite();
 		playerSpr.frames = Paths.sparrowv2("characters/jason");
 		playerSpr.animation.addByPrefix("idle", "jason idle0", 24, false, false, false);
+		playerSpr.animation.addByPrefix("walk", "jason walk0", 24, false, false, false);
+		playerSpr.animation.addByPrefix("jump", "jason jump0", 24, false, false, false);
 
 		offsetMap["idle"] = FlxPoint.get(5, 5);
 		offsetMap["idle__flip"] = FlxPoint.get(-5, 5);
+		offsetMap["walk"] = FlxPoint.get();
+		offsetMap["walk__flip"] = FlxPoint.get();
+		offsetMap["jump"] = FlxPoint.get();
+		offsetMap["jump__flip"] = FlxPoint.get();
 
 		playAnim("idle");
 	}
@@ -47,7 +53,7 @@ class Player extends FlxSprite
 	public function idleDance()
 	{
 		if (playerSpr.animation.curAnim == null || getAnim() == "idle")
-			playAnim("idle");
+			playAnim("idle", true);
 	}
 
 	public function evaluateOffset(anim:String)
@@ -71,10 +77,10 @@ class Player extends FlxSprite
 		}
 	}
 
-	public function playAnim(anim:String)
+	public function playAnim(anim:String, ?fullForce:Bool = false)
 	{
-		evaluateOffset(anim);
-		playerSpr.animation.play(anim, true);
+		playerSpr.animation.play(anim, getAnim() != anim || fullForce);
+		evaluateOffset(getAnim());
 	}
 
 	public function getAnim()

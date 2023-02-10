@@ -88,14 +88,16 @@ class PlayState extends TJState
 				{
 					case 0:
 						player.facingLeft = true;
-						player.evaluateOffset(player.getAnim());
+						if (player.onGround)
+							player.playAnim("walk");
 
 						player.acceleration.x -= player.maxVelocity.x * (player.onGround ? 3.75 : 2.25);
 						if (player.acceleration.x > 0)
 							player.acceleration.x *= (player.onGround ? 0.15 : 0.35);
 					case 1:
 						player.facingLeft = false;
-						player.evaluateOffset(player.getAnim());
+						if (player.onGround)
+							player.playAnim("walk");
 
 						player.acceleration.x += player.maxVelocity.x * (player.onGround ? 3.75 : 2.25);
 						if (player.acceleration.x < 0)
@@ -105,6 +107,7 @@ class PlayState extends TJState
 						{
 							player.velocity.y = -player.maxVelocity.y * 0.55;
 							player.onGround = false;
+							player.playAnim("jump", true);
 						}
 						// case 3:
 						// player.y += 5;
@@ -114,9 +117,17 @@ class PlayState extends TJState
 		player.maxVelocity.x = player.onGround ? 550 : 635;
 
 		if (!controls[0] && !controls[1] && player.onGround)
+		{
 			player.acceleration.x = 0;
+			player.playAnim("idle");
+		}
 
 		zoomMAIN = FlxG.keys.pressed.SPACE ? 0.2 : 1;
+
+		var lastBeat:Int = MusicManager.currentBeat;
+		MusicManager.updatePosition();
+		if (MusicManager.currentBeat != lastBeat && lastBeat % 4 == 0)
+			player.idleDance();
 
 		targetObject.setPosition((player.x + player.width / 2 + (player.facingLeft ? 0 : 300)).clampFloat(FlxG.worldBounds.x + FlxG.width / 2,
 			FlxG.worldBounds.width - FlxG.width / 2),
