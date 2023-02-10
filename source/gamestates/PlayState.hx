@@ -98,7 +98,7 @@ class PlayState extends TJState
 						{
 							player.acceleration.x *= (player.onGround ? 0.15 : 0.35);
 
-							if (lastSkid != 2)
+							if (lastSkid != 2 && player.onGround && player.getAnim() == "walk")
 							{
 								player.playAnim("skid", true);
 								lastSkid = 2;
@@ -114,7 +114,7 @@ class PlayState extends TJState
 						{
 							player.acceleration.x *= (player.onGround ? 0.15 : 0.35);
 
-							if (lastSkid != 1)
+							if (lastSkid != 1 && player.onGround && player.getAnim() == "walk")
 							{
 								player.playAnim("skid", true);
 								lastSkid = 1;
