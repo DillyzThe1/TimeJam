@@ -16,6 +16,8 @@ class Player extends FlxSprite
 	var curOffset:FlxPoint = FlxPoint.get();
 	var freeNextOffset:Bool = true;
 
+	public var facingLeft:Bool = false;
+
 	public function new(x:Float, y:Float)
 	{
 		super(x, y);
@@ -36,6 +38,7 @@ class Player extends FlxSprite
 		super.update(e);
 
 		playerSpr.setPosition(x + curOffset.x, y + curOffset.y);
+		playerSpr.flipX = facingLeft;
 	}
 
 	public function idleDance()

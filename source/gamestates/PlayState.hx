@@ -8,6 +8,8 @@ import managers.MusicManager;
 import objects.Player;
 import objects.TMXLevel;
 
+using TJUtil;
+
 class PlayState extends TJState
 {
 	public var player:Player;
@@ -52,13 +54,15 @@ class PlayState extends TJState
 				switch (i)
 				{
 					case 0:
-						targetObject.x -= 5;
+						player.x -= 5;
+						player.facingLeft = true;
 					case 1:
-						targetObject.x += 5;
+						player.x += 5;
+						player.facingLeft = false;
 					case 2:
-						targetObject.y -= 5;
+						player.y -= 5;
 					case 3:
-						targetObject.y += 5;
+						player.y += 5;
 				}
 
 		zoomMAIN = FlxG.keys.pressed.SPACE ? 0.2 : 1;
@@ -67,6 +71,9 @@ class PlayState extends TJState
 		MusicManager.updatePosition();
 		if (MusicManager.currentBeat != lastBeat && lastBeat % 4 == 0)
 			player.idleDance();
+
+		targetObject.setPosition(Std.int(player.x + player.width / 2 + (player.facingLeft ? -175 : 175)).clampInt(0, lvl.width * lvl.tileWidth),
+			player.y + player.height / 2);
 	}
 
 	override function destroy()
