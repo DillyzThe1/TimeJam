@@ -7,6 +7,8 @@ import flixel.FlxState;
 import flixel.math.FlxMath;
 import flixel.math.FlxPoint;
 
+using TJUtil;
+
 class TJState extends FlxState
 {
 	public static var stateInstance:TJState;
@@ -38,9 +40,10 @@ class TJState extends FlxState
 
 	override public function update(e:Float)
 	{
+		var uhhhhh:Float = e / (1 / 120);
 		super.update(e);
 
-		camMAIN.zoom = FlxMath.lerp(zoomMAIN, camMAIN.zoom, e * 114);
-		camHUD.zoom = FlxMath.lerp(zoomHUD, camHUD.zoom, e * 114);
+		camMAIN.zoom = FlxMath.lerp(zoomMAIN, camMAIN.zoom, (e * 114 * uhhhhh).clampFloat(0.001, 0.99));
+		camHUD.zoom = FlxMath.lerp(zoomHUD, camHUD.zoom, (e * 114 * uhhhhh).clampFloat(0.001, 0.99));
 	}
 }
