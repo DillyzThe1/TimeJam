@@ -23,6 +23,10 @@ class TitleScreenState extends TJState
 	{
 		super.create();
 
+		#if discord_presence
+		managers.DiscordManager.setStatus(null, 'Title Screen');
+		#end
+
 		MusicManager.play("menu_main", 174, 1);
 
 		bg = new FlxSprite().loadGraphic(Paths.image('bg'));

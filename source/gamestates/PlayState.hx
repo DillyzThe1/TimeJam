@@ -11,6 +11,7 @@ import managers.MusicManager;
 import objects.Player;
 import objects.TMXLevel;
 
+using StringTools;
 using TJUtil;
 
 class PlayState extends TJState
@@ -21,6 +22,8 @@ class PlayState extends TJState
 
 	public var leftBound:FlxSprite;
 	public var rightBound:FlxSprite;
+
+	public static var levelName:String = "Tutorial";
 
 	override public function create()
 	{
@@ -34,7 +37,7 @@ class PlayState extends TJState
 		skyObject.alpha = 0.875;
 		add(skyObject);
 
-		lvl = new TMXLevel(Paths.tmx("tutorial"));
+		lvl = new TMXLevel(Paths.tmx(levelName.toLowerCase().replace(" ", "-")));
 
 		add(lvl.bgGroup);
 		add(lvl.sprGroup);
@@ -64,18 +67,16 @@ class PlayState extends TJState
 		player.maxVelocity.set(625, 2175);
 		// 475 for ice physics
 		player.drag.set(2150, 3250);
+
+		#if discord_presence
+		managers.DiscordManager.setStatus('Exploring ${PlayState.levelName}', 'In Game');
+		#end
 	}
 
 	public var lastSkid:Int = -1;
 
 	override public function update(elapsed:Float)
 	{
-		if (FlxG.keys.justPressed.ESCAPE)
-			FlxG.switchState(new TitleScreenState());
-
-		if (FlxG.keys.justPressed.ONE)
-			openSubState(new CutsceneSubState());
-
 		player.acceleration.y = player.maxVelocity.y * 0.875;
 		var controls:Array<Bool> = [
 			FlxG.keys.pressed.LEFT,
@@ -181,6 +182,12 @@ class PlayState extends TJState
 			player.x = FlxG.worldBounds.x + FlxG.worldBounds.width - player.width;
 			player.velocity.x = 0;
 		}
+
+		if (FlxG.keys.justPressed.ESCAPE)
+			FlxG.switchState(new TitleScreenState());
+
+		if (FlxG.keys.justPressed.ONE)
+			openSubState(new CutsceneSubState());
 	}
 
 	override function destroy()

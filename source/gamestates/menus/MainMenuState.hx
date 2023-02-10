@@ -21,6 +21,10 @@ class MainMenuState extends TJState
 		bruh.antialiasing = false;
 		add(bruh);
 		bruh.screenCenter();
+
+		#if discord_presence
+		managers.DiscordManager.setStatus(null, 'Main Menu');
+		#end
 	}
 
 	override public function update(elapsed:Float)

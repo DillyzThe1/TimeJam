@@ -26,6 +26,10 @@ class Main extends Sprite
 
 		PlayerPreferenceManager.load();
 
+		#if discord_presence
+		managers.DiscordManager.initClient();
+		#end
+
 		addChild(new FlxGame(1280, 720, initState, #if desktop 120, 120 #else 60, 60 #end, true, #if !desktop true #else false #end));
 		addChild(new FPS(0, 0, FlxColor.WHITE));
 

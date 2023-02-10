@@ -29,6 +29,11 @@ class CutsceneSubState extends FlxSubState
 	public override function create()
 	{
 		super.create();
+
+		#if discord_presence
+		managers.DiscordManager.setStatus('Exploring ${gamestates.PlayState.levelName}', 'In Cutscene');
+		#end
+
 		trace("hi");
 		newCam = new FlxCamera();
 		newCam.bgColor.alpha = 0;
@@ -143,6 +148,10 @@ class CutsceneSubState extends FlxSubState
 		cutscene = null;
 		newCam.destroy();
 		newCam = null;
+
+		#if discord_presence
+		managers.DiscordManager.setStatus('Exploring ${gamestates.PlayState.levelName}', 'In Game');
+		#end
 		close();
 	}
 }
