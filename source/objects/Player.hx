@@ -47,7 +47,10 @@ class Player extends FlxSprite
 	public function playAnim(anim:String)
 	{
 		if (freeNextOffset)
+		{
 			curOffset.put();
+			freeNextOffset = false;
+		}
 
 		if (offsetMap.exists(anim))
 			curOffset = offsetMap[anim];
@@ -56,6 +59,7 @@ class Player extends FlxSprite
 			curOffset = FlxPoint.get();
 			freeNextOffset = true;
 		}
+
 		playerSpr.animation.play(anim, true);
 	}
 
