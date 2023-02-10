@@ -73,10 +73,14 @@ class PlayState extends TJState
 		#end
 	}
 
-	public var lastSkid:Int = -1;
+	var lastSkid:Int = -1;
+	var totalTime:Float = 0;
+	var lastTimeOnGround:Float = 0;
 
 	override public function update(elapsed:Float)
 	{
+		totalTime += elapsed;
+
 		player.acceleration.y = player.maxVelocity.y * 0.875;
 		var controls:Array<Bool> = [
 			FlxG.keys.pressed.LEFT,
@@ -122,11 +126,15 @@ class PlayState extends TJState
 							}
 						}
 					case 2 | 4:
-						if (player.onGround)
+						if ((totalTime - lastTimeOnGround) < 0.15)
 						{
-							player.velocity.y = -player.maxVelocity.y * 0.375;
+							if (!player.onGround)
+								trace('You had ${0.15 - (totalTime - lastTimeOnGround)} seconds left to jump.');
+
+							player.velocity.y = -player.maxVelocity.y * 0.415;
 							player.onGround = false;
 							player.playAnim("jump", true);
+							lastTimeOnGround = 0;
 						}
 						// case 3:
 						// player.y += 5;
@@ -157,7 +165,11 @@ class PlayState extends TJState
 		lvl.checkCollisionAlt(player);
 		FlxG.collide(leftBound, player);
 		FlxG.collide(rightBound, player);
+
 		player.onGround = player.isTouching(FlxDirection.DOWN);
+		if (player.onGround)
+			lastTimeOnGround = totalTime;
+
 		if (player.isTouching(FlxDirection.LEFT) || player.isTouching(FlxDirection.RIGHT))
 			player.acceleration.x = 0;
 		if (player.isTouching(FlxDirection.UP) && player.acceleration.y > 0)
