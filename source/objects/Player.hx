@@ -5,6 +5,8 @@ import flixel.math.FlxPoint;
 import flixel.util.FlxColor;
 import managers.MusicManager;
 
+using StringTools;
+
 // the player extends it's hitbox, playing the animations above it on a character
 class Player extends FlxSprite
 {
@@ -21,6 +23,9 @@ class Player extends FlxSprite
 	public var onGround:Bool = false;
 	public var mayDoubleJump:Bool = false;
 
+	var walkFirst:Bool = true;
+	var lastWalkDir:Bool = false;
+
 	public function new(x:Float, y:Float)
 	{
 		super(x, y);
@@ -30,15 +35,18 @@ class Player extends FlxSprite
 		playerSpr = new FlxSprite();
 		playerSpr.frames = Paths.sparrowv2("characters/jason");
 		playerSpr.animation.addByPrefix("idle", "jason idle0", 24, false, false, false);
-		playerSpr.animation.addByPrefix("walk", "jason walk0", 24, false, false, false);
+		playerSpr.animation.addByIndices("walk1", "jason walk0", [0, 1, 2, 3, 4, 5, 6, 7, 8], "", 24, false, false, false);
+		playerSpr.animation.addByIndices("walk2", "jason walk0", [9, 10, 11, 12, 13, 14, 15, 16, 17], "", 24, false, false, false);
 		playerSpr.animation.addByIndices("jump", "jason jump0", [1, 2, 3, 4, 5, 6, 7, 8], "", 24, false, false, false);
 		playerSpr.animation.addByPrefix("jump hit", "jason jump hit0", 24, false, false, false);
 		playerSpr.animation.addByPrefix("skid", "jason skid0", 24, false, false, false);
 
 		offsetMap["idle"] = FlxPoint.get(5, 2);
 		offsetMap["idle__flip"] = FlxPoint.get(-2, 2);
-		offsetMap["walk"] = FlxPoint.get(-35, -6);
-		offsetMap["walk__flip"] = FlxPoint.get(-50, -6);
+		offsetMap["walk1"] = FlxPoint.get(-35, -6);
+		offsetMap["walk1__flip"] = FlxPoint.get(-50, -6);
+		offsetMap["walk2"] = FlxPoint.get(-35, -6);
+		offsetMap["walk2__flip"] = FlxPoint.get(-50, -6);
 		offsetMap["jump"] = FlxPoint.get(-30, -12);
 		offsetMap["jump__flip"] = FlxPoint.get(-30, -12);
 		offsetMap["jump hit"] = FlxPoint.get(-25, -3);
@@ -65,6 +73,23 @@ class Player extends FlxSprite
 	{
 		if (playerSpr.animation.curAnim == null || getAnim() == "idle")
 			playAnim("idle", true);
+	}
+
+	public function walkCycle()
+	{
+		if (!getAnim().startsWith("walk") || lastWalkDir != facingLeft)
+		{
+			walkFirst = true;
+			lastWalkDir = facingLeft;
+			playAnim("walk1", true);
+			return;
+		}
+
+		if (animFinished())
+		{
+			walkFirst = !walkFirst;
+			playAnim('walk${walkFirst ? 1 : 2}', true);
+		}
 	}
 
 	public function evaluateOffset(anim:String)

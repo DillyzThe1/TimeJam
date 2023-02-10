@@ -97,14 +97,14 @@ class PlayState extends TJState
 					case 0:
 						player.facingLeft = true;
 						if (player.onGround || (player.getAnim() == "skid" && player.animFinished()))
-							player.playAnim("walk");
+							player.walkCycle();
 
 						player.acceleration.x -= player.maxVelocity.x * (player.onGround ? 3.75 : 2.25);
 						if (player.acceleration.x > 0)
 						{
 							player.acceleration.x *= (player.onGround ? 0.15 : 0.35);
 
-							if (lastSkid != 2 && player.onGround && player.getAnim() == "walk")
+							if (lastSkid != 2 && player.onGround && player.getAnim().startsWith("walk"))
 							{
 								player.playAnim("skid", true);
 								lastSkid = 2;
@@ -113,14 +113,14 @@ class PlayState extends TJState
 					case 1:
 						player.facingLeft = false;
 						if (player.onGround || (player.getAnim() == "skid" && player.animFinished()))
-							player.playAnim("walk");
+							player.walkCycle();
 
 						player.acceleration.x += player.maxVelocity.x * (player.onGround ? 3.75 : 2.25);
 						if (player.acceleration.x < 0)
 						{
 							player.acceleration.x *= (player.onGround ? 0.15 : 0.35);
 
-							if (lastSkid != 1 && player.onGround && player.getAnim() == "walk")
+							if (lastSkid != 1 && player.onGround && player.getAnim().startsWith("walk"))
 							{
 								player.playAnim("skid", true);
 								lastSkid = 1;
