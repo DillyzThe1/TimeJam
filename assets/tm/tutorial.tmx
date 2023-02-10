@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="64" height="32" tilewidth="100" tileheight="100" infinite="0" nextlayerid="4" nextobjectid="2">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" width="64" height="32" tilewidth="100" tileheight="100" infinite="0" nextlayerid="4" nextobjectid="3">
  <tileset firstgid="1" name="groundtiles" tilewidth="100" tileheight="100" tilecount="84" columns="12">
   <image source="groundtiles.png" width="1280" height="720"/>
  </tileset>
@@ -46,6 +46,11 @@
   <object id="1" name="start" x="300" y="2500" width="100" height="100">
    <properties>
     <property name="summon" value="player_start"/>
+   </properties>
+  </object>
+  <object id="2" name="floor" x="0" y="3100" width="6400" height="100">
+   <properties>
+    <property name="summon" value="floor"/>
    </properties>
   </object>
  </objectgroup>

@@ -6,6 +6,7 @@ import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
+import managers.MusicManager;
 
 class MainMenuState extends TJState
 {
@@ -38,7 +39,7 @@ class MainMenuState extends TJState
 		{
 			FlxG.sound.play(Paths.sound("select"), 1.15);
 			FlxG.camera.flash(FlxColor.WHITE, 0.95);
-			if (FlxG.sound.music != null)
+			if (MusicManager.exists())
 				FlxG.sound.music.fadeOut(0.75, 0);
 
 			FlxTween.tween(bruh, {alpha: 0}, 0.75, {ease: FlxEase.cubeOut});
@@ -48,8 +49,10 @@ class MainMenuState extends TJState
 				FlxG.switchState(new PlayState());
 			});
 		}
+		#if desktop
 		if (FlxG.keys.justPressed.THREE)
 			Sys.exit(0);
+		#end
 	}
 
 	override function destroy()

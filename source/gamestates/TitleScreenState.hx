@@ -82,7 +82,7 @@ class TitleScreenState extends TJState
 			}
 		});
 
-		if (FlxG.sound.music != null)
+		if (MusicManager.exists())
 			FlxG.sound.music.fadeIn(1, FlxG.sound.music.volume);
 	}
 
@@ -135,7 +135,7 @@ class TitleScreenState extends TJState
 			hasPressed = true;
 			logoScalingAllowed = false;
 			logoElapsed = 0;
-			if (FlxG.sound.music != null)
+			if (MusicManager.exists())
 				FlxG.sound.music.fadeOut(0.5, 0.75);
 			FlxG.camera.flash(FlxColor.WHITE, 1.15);
 			FlxG.sound.play(Paths.sound("select"), 1.15);

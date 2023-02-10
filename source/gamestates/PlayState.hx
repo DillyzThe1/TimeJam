@@ -1,6 +1,7 @@
 package gamestates;
 
 import flixel.FlxG;
+import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxSubState;
 import flixel.util.FlxColor;
@@ -21,13 +22,15 @@ class PlayState extends TJState
 	{
 		super.create();
 
+		#if desktop
 		skyObject = new FlxSprite().loadGraphic(Paths.image("sky"));
 		skyObject.screenCenter();
 		skyObject.scale.set(1.15, 1.2);
-		skyObject.scrollFactor.set(0, 0);
+		skyObject.scrollFactor.set(0.05, 0.05);
 		skyObject.offset.y = 50;
 		skyObject.alpha = 0.875;
 		add(skyObject);
+		#end
 
 		lvl = new TMXLevel(Paths.tmx("tutorial"));
 
@@ -36,56 +39,65 @@ class PlayState extends TJState
 		add(lvl.objGroup);
 		add(lvl.fgGroup);
 
+		trace(lvl.bgGroup.length);
+		trace(lvl.sprGroup.length);
+		trace(lvl.objGroup.length);
+		trace(lvl.fgGroup.length);
+
+		@:privateAccess
+		trace(lvl.collisionTiles.length);
+
 		player = new Player(lvl.playerStart.x, lvl.playerStart.y - 175);
 		#if debug
 		add(player);
 		#end
 		add(player.playerSpr);
 
-		player.maxVelocity.set(525, 550);
+		player.maxVelocity.set(625, 1550);
 		// 475 for ice physics
-		player.drag.set(2150, 385);
+		player.drag.set(2150, 1125);
 	}
 
 	override public function update(elapsed:Float)
 	{
-		super.update(elapsed);
-
 		if (FlxG.keys.justPressed.ESCAPE)
 			FlxG.switchState(new TitleScreenState());
 
 		if (FlxG.keys.justPressed.ONE)
 			openSubState(new CutsceneSubState());
 
+		player.acceleration.y = player.maxVelocity.y * 0.85;
 		var controls:Array<Bool> = [
 			FlxG.keys.pressed.LEFT,
 			FlxG.keys.pressed.RIGHT,
-			FlxG.keys.pressed.UP,
-			FlxG.keys.pressed.DOWN
+			FlxG.keys.justPressed.UP,
+			FlxG.keys.justPressed.DOWN,
+			FlxG.keys.justPressed.SPACE
 		];
 		for (i in 0...controls.length)
 			if (controls[i])
 				switch (i)
 				{
 					case 0:
-						player.acceleration.x -= 95;
+						player.acceleration.x -= player.maxVelocity.x * 3.75;
 						player.facingLeft = true;
 						player.evaluateOffset(player.getAnim());
 
 						if (player.acceleration.x > 0)
 							player.acceleration.x *= 0.15;
 					case 1:
-						player.acceleration.x += 95;
+						player.acceleration.x += player.maxVelocity.x * 3.75;
 						player.facingLeft = false;
 						player.evaluateOffset(player.getAnim());
 
 						if (player.acceleration.x < 0)
 							player.acceleration.x *= 0.15;
-					case 2:
-						player.y -= 5;
-					case 3:
-						player.y += 5;
+					case 2 | 4:
+						player.velocity.y = -player.maxVelocity.y * 0.55;
+						// case 3:
+						// player.y += 5;
 				}
+		super.update(elapsed);
 
 		if (!controls[0] && !controls[1])
 			player.acceleration.x = 0;
@@ -99,6 +111,11 @@ class PlayState extends TJState
 
 		targetObject.setPosition(Std.int(player.x + player.width / 2 + (player.facingLeft ? -175 : 175)).clampInt(0, lvl.width * lvl.tileWidth),
 			player.y + player.height / 2);
+
+		lvl.checkCollision(player);
+
+		if (player.y > 4800)
+			player.y = 0;
 	}
 
 	override function destroy()

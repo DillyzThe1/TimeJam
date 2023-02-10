@@ -48,4 +48,9 @@ class MusicManager
 		currentStep = Math.floor(FlxG.sound.music.time / stepLength);
 		currentBeat = Math.floor(currentStep / 4);
 	}
+
+	public static function exists()
+	{
+		return FlxG.sound.music != null && FlxG.sound.music.playing;
+	}
 }
