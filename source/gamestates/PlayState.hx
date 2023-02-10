@@ -82,7 +82,7 @@ class PlayState extends TJState
 
 		zoomMAIN = FlxG.keys.pressed.SPACE ? 0.2 : 1;
 
-		player.acceleration.x -= player.acceleration.x * elapsed * 500;
+		player.acceleration.x -= player.acceleration.x * elapsed * 50;
 
 		var lastBeat:Int = MusicManager.currentBeat;
 		MusicManager.updatePosition();
