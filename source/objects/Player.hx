@@ -37,7 +37,7 @@ class Player extends FlxSprite
 	{
 		super.update(e);
 
-		playerSpr.setPosition(x + curOffset.x, y + curOffset.y);
+		playerSpr.setPosition(x + (facingLeft ? -curOffset.x : curOffset.x), y + curOffset.y);
 		playerSpr.flipX = facingLeft;
 	}
 
@@ -62,7 +62,6 @@ class Player extends FlxSprite
 			curOffset = FlxPoint.get();
 			freeNextOffset = true;
 		}
-
 		playerSpr.animation.play(anim, true);
 	}
 
