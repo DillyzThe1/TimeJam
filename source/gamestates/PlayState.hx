@@ -171,8 +171,10 @@ class PlayState extends TJState
 		if (MusicManager.currentBeat != lastBeat && lastBeat % 4 == 0)
 			player.idleDance();
 
-		targetObject.setPosition((player.x + player.width / 2 + (player.facingLeft ? -175 : 300)).clampFloat(FlxG.worldBounds.x + FlxG.width / 2,
-			FlxG.worldBounds.width - FlxG.width / 2),
+		targetObject.setPosition((player.x
+			+ player.width / 2
+			+ (player.facingLeft ? (controls[0] ? -250 : -175) : (controls[1] ? 375 : 300))).clampFloat(FlxG.worldBounds.x + FlxG.width / 2,
+				FlxG.worldBounds.width - FlxG.width / 2),
 			(player.y + player.height / 2).clampFloat(FlxG.worldBounds.y + FlxG.height / 2, FlxG.worldBounds.height - FlxG.height / 2));
 
 		lvl.checkCollisionAlt(player);
