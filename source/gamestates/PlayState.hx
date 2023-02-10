@@ -18,6 +18,8 @@ class PlayState extends TJState
 	public var player:Player;
 	public var lvl:TMXLevel;
 
+	public var sss:FlxSprite;
+
 	override public function create()
 	{
 		super.create();
@@ -47,9 +49,13 @@ class PlayState extends TJState
 
 		player = new Player(lvl.playerStart.x, lvl.playerStart.y - 175);
 		#if debug
-		add(player);
+		lvl.objGroup.add(player);
 		#end
 		add(player.playerSpr);
+
+		sss = new FlxSprite(0, 0);
+		sss.makeGraphic(100, 100, 0xff00ff00);
+		lvl.objGroup.add(sss);
 
 		player.maxVelocity.set(625, 1550);
 		// 475 for ice physics
@@ -102,15 +108,16 @@ class PlayState extends TJState
 
 		zoomMAIN = FlxG.keys.pressed.SPACE ? 0.2 : 1;
 
-		var lastBeat:Int = MusicManager.currentBeat;
-		MusicManager.updatePosition();
-		if (MusicManager.currentBeat != lastBeat && lastBeat % 4 == 0)
-			player.idleDance();
+		targetObject.setPosition(Std.int(player.x + player.width / 2).clampInt(0, lvl.width * lvl.tileWidth), player.y + player.height / 2);
 
-		targetObject.setPosition(Std.int(player.x + player.width / 2 + (player.facingLeft ? -175 : 175)).clampInt(0, lvl.width * lvl.tileWidth),
-			player.y + player.height / 2);
+		lvl.checkCollisionAlt(player);
 
-		lvl.checkCollision(player);
+		if (sss != null && FlxG.collide(sss, player))
+		{
+			trace("death");
+			sss.destroy();
+			sss = null;
+		}
 
 		if (player.y > 4800)
 			player.y = 0;

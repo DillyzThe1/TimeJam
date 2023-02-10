@@ -38,6 +38,8 @@ class TMXLevel extends TiledMap
 	{
 		super(tilelevel);
 
+		FlxG.worldBounds.set(0, 0, 100, 100);
+
 		bgGroup = new FlxGroup();
 		sprGroup = new FlxGroup();
 		objGroup = new FlxGroup();
@@ -48,6 +50,27 @@ class TMXLevel extends TiledMap
 		initiateGraphics();
 		initiateAllObjects();
 		loadTiles();
+
+		for (layer in layers)
+		{
+			if (layer.type != TiledLayerType.TILE)
+				continue;
+			var tileLayer:TiledTileLayer = cast layer;
+
+			for (set in tilesets)
+			{
+				if (tileLayer.offsetX < FlxG.worldBounds.x)
+					FlxG.worldBounds.x = tileLayer.offsetX;
+				if (tileLayer.offsetY < FlxG.worldBounds.y)
+					FlxG.worldBounds.y = tileLayer.offsetY;
+				if (tileLayer.width * set.tileWidth > FlxG.worldBounds.width)
+					FlxG.worldBounds.width = tileLayer.width * set.tileWidth;
+				if (tileLayer.height * set.tileHeight > FlxG.worldBounds.height)
+					FlxG.worldBounds.height = tileLayer.height * set.tileHeight;
+			}
+		}
+
+		trace('[${FlxG.worldBounds.x}, ${FlxG.worldBounds.y}, ${FlxG.worldBounds.width}, ${FlxG.worldBounds.height}]');
 	}
 
 	function initiateGraphics()
@@ -202,6 +225,14 @@ class TMXLevel extends TiledMap
 	{
 		for (map in collisionTiles)
 			if (FlxG.overlap(map, target, notifyCallback, processCallback != null ? processCallback : FlxObject.separate))
+				return true;
+		return false;
+	}
+
+	public function checkCollisionAlt(target:FlxObject)
+	{
+		for (map in collisionTiles)
+			if (FlxG.collide(map, target))
 				return true;
 		return false;
 	}
