@@ -63,4 +63,17 @@ class Player extends FlxSprite
 	{
 		return playerSpr.animation.curAnim == null ? "" : playerSpr.animation.curAnim.name;
 	}
+
+	public override function destroy()
+	{
+		playerSpr.destroy();
+		playerSpr = null;
+		for (offset in offsetMap)
+			offset.put();
+		offsetMap.clear();
+		offsetMap = null;
+		curOffset.put();
+		curOffset = null;
+		super.destroy();
+	}
 }
