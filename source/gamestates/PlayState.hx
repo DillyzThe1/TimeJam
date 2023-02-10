@@ -4,6 +4,7 @@ import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxSubState;
+import flixel.system.FlxSound;
 import flixel.util.FlxColor;
 import flixel.util.FlxDirection;
 import gamesubstates.CutsceneSubState;
@@ -26,6 +27,9 @@ class PlayState extends TJState
 	public var rightBound:FlxSprite;
 
 	public static var levelName:String = "Tutorial";
+
+	var crystal_pickupSfx:Array<FlxSound>;
+	var crystal_swooshSfx:FlxSound;
 
 	override public function create()
 	{
@@ -73,6 +77,17 @@ class PlayState extends TJState
 		#if discord_presence
 		managers.DiscordManager.setStatus('Exploring ${PlayState.levelName}', 'In Game');
 		#end
+
+		crystal_pickupSfx = [
+			new FlxSound().loadEmbedded(Paths.sound("crystal0")), new FlxSound().loadEmbedded(Paths.sound("crystal1")),
+			new FlxSound().loadEmbedded(Paths.sound("crystal2")), new FlxSound().loadEmbedded(Paths.sound("crystal3"))
+		];
+
+		for (s in crystal_pickupSfx)
+			s.volume = 0.5;
+
+		crystal_swooshSfx = new FlxSound().loadEmbedded(Paths.sound("swoosh low"));
+		crystal_swooshSfx.volume = 2.5;
 	}
 
 	var lastSkid:Int = -1;
@@ -173,13 +188,16 @@ class PlayState extends TJState
 		{
 			lastTimeOnGround = totalTime;
 			player.mayDoubleJump = PlayerDataManager.hasDoubleJump
-				|| (levelName != "Tutorial" || ArchaicCrystal.crystalsCollected.contains(0));
+				&& (levelName != "Tutorial" || ArchaicCrystal.crystalsCollected.contains(0));
 		}
 
 		for (crystal in ArchaicCrystal.allCrystals)
 			if (FlxG.overlap(crystal, player))
 			{
 				ArchaicCrystal.crystalsCollected.push(crystal.curIndex);
+
+				crystal_pickupSfx[FlxG.random.int(0, crystal_pickupSfx.length - 1)].play(true, 0.001);
+				crystal_swooshSfx.play();
 
 				switch (levelName.toLowerCase())
 				{
