@@ -111,7 +111,7 @@ class PlayState extends TJState
 				}
 		super.update(elapsed);
 
-		player.maxVelocity.x = player.onGround ? 425 : 535;
+		player.maxVelocity.x = player.onGround ? 550 : 635;
 
 		if (!controls[0] && !controls[1] && player.onGround)
 			player.acceleration.x = 0;
@@ -131,7 +131,20 @@ class PlayState extends TJState
 			player.acceleration.y = 0;
 
 		if (player.y + player.height > FlxG.worldBounds.y + FlxG.worldBounds.height)
+		{
 			player.y = FlxG.worldBounds.y;
+			player.velocity.y = 0;
+		}
+		if (player.x < FlxG.worldBounds.x)
+		{
+			player.x = FlxG.worldBounds.x;
+			player.velocity.x = 0;
+		}
+		else if (player.x + player.width > FlxG.worldBounds.x + FlxG.worldBounds.width)
+		{
+			player.x = FlxG.worldBounds.x + FlxG.worldBounds.width - player.width;
+			player.velocity.x = 0;
+		}
 	}
 
 	override function destroy()
