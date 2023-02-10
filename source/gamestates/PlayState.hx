@@ -91,59 +91,60 @@ class PlayState extends TJState
 			FlxG.keys.justPressed.DOWN,
 			FlxG.keys.justPressed.SPACE
 		];
-		for (i in 0...controls.length)
-			if (controls[i])
-				switch (i)
+		if (controls[1])
+		{
+			player.facingLeft = false;
+			if (player.onGround || (player.getAnim() == "skid" && player.animFinished()))
+				player.walkCycle();
+
+			player.acceleration.x += player.maxVelocity.x * (player.onGround ? 3.75 : 2.25);
+			if (player.acceleration.x < 0)
+			{
+				player.acceleration.x *= (player.onGround ? 0.15 : 0.35);
+
+				if (lastSkid != 1 && player.onGround && player.getAnim().startsWith("walk"))
 				{
-					case 0:
-						player.facingLeft = true;
-						if (player.onGround || (player.getAnim() == "skid" && player.animFinished()))
-							player.walkCycle();
-
-						player.acceleration.x -= player.maxVelocity.x * (player.onGround ? 3.75 : 2.25);
-						if (player.acceleration.x > 0)
-						{
-							player.acceleration.x *= (player.onGround ? 0.15 : 0.35);
-
-							if (lastSkid != 2 && player.onGround && player.getAnim().startsWith("walk"))
-							{
-								player.playAnim("skid", true);
-								lastSkid = 2;
-							}
-						}
-					case 1:
-						player.facingLeft = false;
-						if (player.onGround || (player.getAnim() == "skid" && player.animFinished()))
-							player.walkCycle();
-
-						player.acceleration.x += player.maxVelocity.x * (player.onGround ? 3.75 : 2.25);
-						if (player.acceleration.x < 0)
-						{
-							player.acceleration.x *= (player.onGround ? 0.15 : 0.35);
-
-							if (lastSkid != 1 && player.onGround && player.getAnim().startsWith("walk"))
-							{
-								player.playAnim("skid", true);
-								lastSkid = 1;
-							}
-						}
-					case 2 | 4:
-						var causedByTime:Bool = (totalTime - lastTimeOnGround) < 0.15;
-						if (causedByTime || player.mayDoubleJump)
-						{
-							if (causedByTime)
-								trace('You had ${0.15 - (totalTime - lastTimeOnGround)} seconds left to jump.');
-							else
-								player.mayDoubleJump = false;
-
-							player.velocity.y = -player.maxVelocity.y * 0.415;
-							player.onGround = false;
-							player.playAnim("jump", true);
-							lastTimeOnGround = 0;
-						}
-						// case 3:
-						// player.y += 5;
+					player.playAnim("skid", true);
+					lastSkid = 1;
 				}
+			}
+		}
+		else if (controls[0])
+		{
+			player.facingLeft = true;
+			if (player.onGround || (player.getAnim() == "skid" && player.animFinished()))
+				player.walkCycle();
+
+			player.acceleration.x -= player.maxVelocity.x * (player.onGround ? 3.75 : 2.25);
+			if (player.acceleration.x > 0)
+			{
+				player.acceleration.x *= (player.onGround ? 0.15 : 0.35);
+
+				if (lastSkid != 2 && player.onGround && player.getAnim().startsWith("walk"))
+				{
+					player.playAnim("skid", true);
+					lastSkid = 2;
+				}
+			}
+		}
+		if (controls[2] || controls[4])
+		{
+			var causedByTime:Bool = (totalTime - lastTimeOnGround) < 0.15;
+			if (causedByTime || player.mayDoubleJump)
+			{
+				if (causedByTime)
+					trace('You had ${0.15 - (totalTime - lastTimeOnGround)} seconds left to jump.');
+				else
+					player.mayDoubleJump = false;
+
+				player.velocity.y = -player.maxVelocity.y * 0.415;
+				player.onGround = false;
+				player.playAnim("jump", true);
+				lastTimeOnGround = 0;
+			}
+			// case 3:
+			// player.y += 5;
+		}
 		super.update(elapsed);
 
 		player.maxVelocity.x = player.onGround ? 550 : 635;
