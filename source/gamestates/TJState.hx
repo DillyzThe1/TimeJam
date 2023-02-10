@@ -7,6 +7,8 @@ import flixel.FlxState;
 import flixel.math.FlxMath;
 import flixel.math.FlxPoint;
 
+using TJUtil;
+
 class TJState extends FlxState
 {
 	public static var stateInstance:TJState;
@@ -31,7 +33,7 @@ class TJState extends FlxState
 		FlxG.cameras.reset(camMAIN);
 		FlxG.cameras.add(camHUD, false);
 		targetObject = new FlxObject(FlxG.width / 2, FlxG.height / 2, 1, 1);
-		camMAIN.follow(targetObject, LOCKON, 0.01 / (60 / FlxG.updateFramerate));
+		camMAIN.follow(targetObject, LOCKON, 0.0315 / (FlxG.updateFramerate / 60));
 		targetPoint = targetObject.getPosition();
 		camMAIN.focusOn(targetPoint);
 
@@ -44,7 +46,9 @@ class TJState extends FlxState
 	{
 		super.update(e);
 
-		camMAIN.zoom = FlxMath.lerp(zoomMAIN, camMAIN.zoom, e * 114);
-		camHUD.zoom = FlxMath.lerp(zoomHUD, camHUD.zoom, e * 114);
+		var lerp:Float = (e * 114 * (FlxG.updateFramerate / 120)).clampFloat(0.01, 0.99);
+
+		camMAIN.zoom = FlxMath.lerp(zoomMAIN, camMAIN.zoom, lerp);
+		camHUD.zoom = FlxMath.lerp(zoomHUD, camHUD.zoom, lerp);
 	}
 }
