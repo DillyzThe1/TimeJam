@@ -19,6 +19,7 @@ class PlayerDataManager
 		}
 
 		playerData.data.hasDoubleJump = hasDoubleJump;
+		playerData.data.hasSaved = true;
 
 		if (!playerData.flush())
 		{
