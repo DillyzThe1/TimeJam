@@ -63,7 +63,7 @@ class PlayState extends TJState
 
 		player.maxVelocity.set(625, 1550);
 		// 475 for ice physics
-		player.drag.set(2150, 1125);
+		player.drag.set(2150, 2250);
 	}
 
 	override public function update(elapsed:Float)
@@ -90,22 +90,16 @@ class PlayState extends TJState
 						player.facingLeft = true;
 						player.evaluateOffset(player.getAnim());
 
-						if (player.onGround)
-						{
-							player.acceleration.x -= player.maxVelocity.x * 3.75;
-							if (player.acceleration.x > 0)
-								player.acceleration.x *= 0.15;
-						}
+						player.acceleration.x -= player.maxVelocity.x * (player.onGround ? 3.75 : 2.25);
+						if (player.acceleration.x > 0)
+							player.acceleration.x *= (player.onGround ? 0.15 : 0.35);
 					case 1:
 						player.facingLeft = false;
 						player.evaluateOffset(player.getAnim());
 
-						if (player.onGround)
-						{
-							player.acceleration.x += player.maxVelocity.x * 3.75;
-							if (player.acceleration.x < 0)
-								player.acceleration.x *= 0.15;
-						}
+						player.acceleration.x += player.maxVelocity.x * (player.onGround ? 3.75 : 2.25);
+						if (player.acceleration.x < 0)
+							player.acceleration.x *= (player.onGround ? 0.15 : 0.35);
 					case 2 | 4:
 						if (player.onGround)
 						{
@@ -124,11 +118,17 @@ class PlayState extends TJState
 
 		zoomMAIN = FlxG.keys.pressed.SPACE ? 0.2 : 1;
 
-		targetObject.setPosition((player.x + player.width / 2).clampFloat(FlxG.worldBounds.x, FlxG.worldBounds.width),
-			(player.y + player.height / 2).clampFloat(FlxG.worldBounds.y, FlxG.worldBounds.height));
+		targetObject.setPosition((player.x + player.width / 2).clampFloat(FlxG.worldBounds.x + FlxG.width / 2, FlxG.worldBounds.width - FlxG.width / 2),
+			(player.y + player.height / 2).clampFloat(FlxG.worldBounds.y + FlxG.height / 2, FlxG.worldBounds.height - FlxG.height / 2));
 
 		lvl.checkCollisionAlt(player);
+		FlxG.collide(leftBound, player);
+		FlxG.collide(rightBound, player);
 		player.onGround = player.isTouching(FlxDirection.DOWN);
+		if (player.isTouching(FlxDirection.LEFT) || player.isTouching(FlxDirection.RIGHT))
+			player.acceleration.x = 0;
+		if (player.isTouching(FlxDirection.UP) && player.acceleration.y > 0)
+			player.acceleration.y = 0;
 
 		if (player.y + player.height > FlxG.worldBounds.y + FlxG.worldBounds.height)
 			player.y = FlxG.worldBounds.y;
