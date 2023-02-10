@@ -28,8 +28,6 @@ class TMXLevel extends TiledMap
 	public var objGroup:FlxGroup;
 	public var fgGroup:FlxGroup;
 
-	public var floor:FlxObject;
-
 	var collisionTiles:Array<FlxTilemap>;
 
 	public var playerStart:FlxPoint = FlxPoint.get();
@@ -139,8 +137,6 @@ class TMXLevel extends TiledMap
 		{
 			case "player_start":
 				playerStart.set(pos.x, pos.y);
-			case "floor":
-				floor = new FlxObject(pos.x, pos.y, obj.width, obj.height);
 			default:
 				trace('Warning! Object summon "$summonName" unaccounted for! (On object "${obj.name}")');
 		}

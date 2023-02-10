@@ -48,10 +48,5 @@
     <property name="summon" value="player_start"/>
    </properties>
   </object>
-  <object id="2" name="floor" x="0" y="3100" width="6400" height="100">
-   <properties>
-    <property name="summon" value="floor"/>
-   </properties>
-  </object>
  </objectgroup>
 </map>
