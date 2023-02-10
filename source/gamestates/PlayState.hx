@@ -43,7 +43,7 @@ class PlayState extends TJState
 		add(player.playerSpr);
 
 		player.maxVelocity.set(450, 550);
-		player.drag.set(250, 385);
+		player.drag.set(500, 385);
 	}
 
 	override public function update(elapsed:Float)
@@ -67,11 +67,11 @@ class PlayState extends TJState
 				switch (i)
 				{
 					case 0:
-						player.acceleration.x -= 25;
+						player.acceleration.x -= 50;
 						player.facingLeft = true;
 						player.evaluateOffset(player.getAnim());
 					case 1:
-						player.acceleration.x += 25;
+						player.acceleration.x += 50;
 						player.facingLeft = false;
 						player.evaluateOffset(player.getAnim());
 					case 2:
