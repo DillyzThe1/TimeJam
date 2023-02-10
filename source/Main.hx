@@ -8,6 +8,7 @@ import flixel.util.FlxColor;
 import gamestates.TitleScreenState;
 import gamestates.UnsupportedPlatformState;
 import managers.MusicManager;
+import managers.PlayerDataManager;
 import managers.PlayerPreferenceManager;
 import openfl.display.FPS;
 import openfl.display.Sprite;
@@ -25,6 +26,7 @@ class Main extends Sprite
 		#end
 
 		PlayerPreferenceManager.load();
+		PlayerDataManager.load(0);
 
 		#if discord_presence
 		managers.DiscordManager.initClient();

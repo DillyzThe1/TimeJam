@@ -8,6 +8,7 @@ import flixel.util.FlxColor;
 import flixel.util.FlxDirection;
 import gamesubstates.CutsceneSubState;
 import managers.MusicManager;
+import managers.PlayerDataManager;
 import objects.Player;
 import objects.TMXLevel;
 
@@ -126,10 +127,13 @@ class PlayState extends TJState
 							}
 						}
 					case 2 | 4:
-						if ((totalTime - lastTimeOnGround) < 0.15)
+						var causedByTime:Bool = (totalTime - lastTimeOnGround) < 0.15;
+						if (causedByTime || player.mayDoubleJump)
 						{
-							if (!player.onGround)
+							if (causedByTime)
 								trace('You had ${0.15 - (totalTime - lastTimeOnGround)} seconds left to jump.');
+							else
+								player.mayDoubleJump = false;
 
 							player.velocity.y = -player.maxVelocity.y * 0.415;
 							player.onGround = false;
@@ -168,7 +172,23 @@ class PlayState extends TJState
 
 		player.onGround = player.isTouching(FlxDirection.DOWN);
 		if (player.onGround)
+		{
 			lastTimeOnGround = totalTime;
+			player.mayDoubleJump = PlayerDataManager.hasDoubleJump;
+		}
+
+		#if debug
+		if (FlxG.keys.justPressed.I)
+		{
+			PlayerDataManager.hasDoubleJump = true;
+			PlayerDataManager.save();
+		}
+		if (FlxG.keys.justPressed.O)
+		{
+			PlayerDataManager.hasDoubleJump = false;
+			PlayerDataManager.save();
+		}
+		#end
 
 		if (player.isTouching(FlxDirection.LEFT) || player.isTouching(FlxDirection.RIGHT))
 			player.acceleration.x = 0;

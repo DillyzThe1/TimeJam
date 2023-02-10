@@ -19,6 +19,7 @@ class Player extends FlxSprite
 	public var facingLeft:Bool = false;
 
 	public var onGround:Bool = false;
+	public var mayDoubleJump:Bool = false;
 
 	public function new(x:Float, y:Float)
 	{
