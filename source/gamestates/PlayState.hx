@@ -66,6 +66,8 @@ class PlayState extends TJState
 		player.drag.set(2150, 2250);
 	}
 
+	public var lastSkid:Int = -1;
+
 	override public function update(elapsed:Float)
 	{
 		if (FlxG.keys.justPressed.ESCAPE)
@@ -88,20 +90,36 @@ class PlayState extends TJState
 				{
 					case 0:
 						player.facingLeft = true;
-						if (player.onGround)
+						if (player.onGround || (player.getAnim() == "skid" && player.animFinished()))
 							player.playAnim("walk");
 
 						player.acceleration.x -= player.maxVelocity.x * (player.onGround ? 3.75 : 2.25);
 						if (player.acceleration.x > 0)
+						{
 							player.acceleration.x *= (player.onGround ? 0.15 : 0.35);
+
+							if (lastSkid != 2)
+							{
+								player.playAnim("skid", true);
+								lastSkid = 2;
+							}
+						}
 					case 1:
 						player.facingLeft = false;
-						if (player.onGround)
+						if (player.onGround || (player.getAnim() == "skid" && player.animFinished()))
 							player.playAnim("walk");
 
 						player.acceleration.x += player.maxVelocity.x * (player.onGround ? 3.75 : 2.25);
 						if (player.acceleration.x < 0)
+						{
 							player.acceleration.x *= (player.onGround ? 0.15 : 0.35);
+
+							if (lastSkid != 1)
+							{
+								player.playAnim("skid", true);
+								lastSkid = 1;
+							}
+						}
 					case 2 | 4:
 						if (player.onGround)
 						{
@@ -122,7 +140,9 @@ class PlayState extends TJState
 			player.playAnim("idle");
 		}
 
+		#if debug
 		zoomMAIN = FlxG.keys.pressed.SPACE ? 0.2 : 1;
+		#end
 
 		var lastBeat:Int = MusicManager.currentBeat;
 		MusicManager.updatePosition();
@@ -140,7 +160,10 @@ class PlayState extends TJState
 		if (player.isTouching(FlxDirection.LEFT) || player.isTouching(FlxDirection.RIGHT))
 			player.acceleration.x = 0;
 		if (player.isTouching(FlxDirection.UP) && player.acceleration.y > 0)
+		{
 			player.acceleration.y = 0;
+			player.playAnim("jump hit", true);
+		}
 
 		if (player.y + player.height > FlxG.worldBounds.y + FlxG.worldBounds.height)
 		{

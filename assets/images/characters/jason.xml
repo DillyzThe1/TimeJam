@@ -2,76 +2,113 @@
 <TextureAtlas imagePath="jason.png">
 	<!-- Created with Adobe Animate version 23.0.1.70 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="jason idle0000" x="539" y="275" width="69" height="270" frameX="0" frameY="-2" frameWidth="69" frameHeight="272"/>
-	<SubTexture name="jason idle0001" x="539" y="275" width="69" height="270" frameX="0" frameY="-2" frameWidth="69" frameHeight="272"/>
-	<SubTexture name="jason idle0002" x="539" y="549" width="69" height="269" frameX="0" frameY="-3" frameWidth="69" frameHeight="272"/>
-	<SubTexture name="jason idle0003" x="539" y="549" width="69" height="269" frameX="0" frameY="-3" frameWidth="69" frameHeight="272"/>
-	<SubTexture name="jason idle0004" x="466" y="552" width="69" height="269" frameX="0" frameY="-3" frameWidth="69" frameHeight="272"/>
-	<SubTexture name="jason idle0005" x="466" y="552" width="69" height="269" frameX="0" frameY="-3" frameWidth="69" frameHeight="272"/>
-	<SubTexture name="jason idle0006" x="543" y="0" width="69" height="270" frameX="0" frameY="-2" frameWidth="69" frameHeight="272"/>
-	<SubTexture name="jason idle0007" x="543" y="0" width="69" height="270" frameX="0" frameY="-2" frameWidth="69" frameHeight="272"/>
-	<SubTexture name="jason idle0008" x="470" y="0" width="69" height="271" frameX="0" frameY="-1" frameWidth="69" frameHeight="272"/>
-	<SubTexture name="jason idle0009" x="470" y="0" width="69" height="271" frameX="0" frameY="-1" frameWidth="69" frameHeight="272"/>
-	<SubTexture name="jason idle0010" x="397" y="0" width="69" height="272"/>
-	<SubTexture name="jason idle0011" x="397" y="0" width="69" height="272"/>
-	<SubTexture name="jason idle0012" x="397" y="0" width="69" height="272"/>
-	<SubTexture name="jason idle0013" x="397" y="0" width="69" height="272"/>
-	<SubTexture name="jason idle0014" x="397" y="0" width="69" height="272"/>
-	<SubTexture name="jason idle0015" x="397" y="0" width="69" height="272"/>
-	<SubTexture name="jason idle0016" x="397" y="0" width="69" height="272"/>
-	<SubTexture name="jason idle0017" x="397" y="0" width="69" height="272"/>
-	<SubTexture name="jason idle0018" x="397" y="0" width="69" height="272"/>
-	<SubTexture name="jason idle0019" x="397" y="0" width="69" height="272"/>
-	<SubTexture name="jason idle0020" x="397" y="0" width="69" height="272"/>
-	<SubTexture name="jason idle0021" x="397" y="0" width="69" height="272"/>
-	<SubTexture name="jason idle0022" x="397" y="0" width="69" height="272"/>
-	<SubTexture name="jason idle0023" x="397" y="0" width="69" height="272"/>
-	<SubTexture name="jason idle0024" x="397" y="0" width="69" height="272"/>
-	<SubTexture name="jason jump0000" x="466" y="276" width="69" height="272" frameX="-32" frameY="-7" frameWidth="128" frameHeight="279"/>
-	<SubTexture name="jason jump0001" x="140" y="267" width="128" height="264" frameX="0" frameY="0" frameWidth="128" frameHeight="279"/>
-	<SubTexture name="jason jump0002" x="140" y="267" width="128" height="264" frameX="0" frameY="0" frameWidth="128" frameHeight="279"/>
-	<SubTexture name="jason jump0003" x="272" y="267" width="121" height="265" frameX="-4" frameY="-5" frameWidth="128" frameHeight="279"/>
-	<SubTexture name="jason jump0004" x="272" y="267" width="121" height="265" frameX="-4" frameY="-5" frameWidth="128" frameHeight="279"/>
-	<SubTexture name="jason jump0005" x="129" y="535" width="111" height="263" frameX="-4" frameY="-9" frameWidth="128" frameHeight="279"/>
-	<SubTexture name="jason jump0006" x="129" y="535" width="111" height="263" frameX="-4" frameY="-9" frameWidth="128" frameHeight="279"/>
-	<SubTexture name="jason jump0007" x="355" y="536" width="107" height="265" frameX="-6" frameY="-9" frameWidth="128" frameHeight="279"/>
-	<SubTexture name="jason jump0008" x="355" y="536" width="107" height="265" frameX="-6" frameY="-9" frameWidth="128" frameHeight="279"/>
-	<SubTexture name="jason jump0009" x="244" y="536" width="107" height="266" frameX="-6" frameY="-8" frameWidth="128" frameHeight="279"/>
-	<SubTexture name="jason jump0010" x="244" y="536" width="107" height="266" frameX="-6" frameY="-8" frameWidth="128" frameHeight="279"/>
-	<SubTexture name="jason jump0011" x="244" y="536" width="107" height="266" frameX="-6" frameY="-8" frameWidth="128" frameHeight="279"/>
-	<SubTexture name="jason jump0012" x="244" y="536" width="107" height="266" frameX="-6" frameY="-8" frameWidth="128" frameHeight="279"/>
-	<SubTexture name="jason jump0013" x="244" y="536" width="107" height="266" frameX="-6" frameY="-8" frameWidth="128" frameHeight="279"/>
-	<SubTexture name="jason jump0014" x="244" y="536" width="107" height="266" frameX="-6" frameY="-8" frameWidth="128" frameHeight="279"/>
-	<SubTexture name="jason jump0015" x="244" y="536" width="107" height="266" frameX="-6" frameY="-8" frameWidth="128" frameHeight="279"/>
-	<SubTexture name="jason jump0016" x="244" y="536" width="107" height="266" frameX="-6" frameY="-8" frameWidth="128" frameHeight="279"/>
-	<SubTexture name="jason jump0017" x="244" y="536" width="107" height="266" frameX="-6" frameY="-8" frameWidth="128" frameHeight="279"/>
-	<SubTexture name="jason jump0018" x="244" y="536" width="107" height="266" frameX="-6" frameY="-8" frameWidth="128" frameHeight="279"/>
-	<SubTexture name="jason jump0019" x="244" y="536" width="107" height="266" frameX="-6" frameY="-8" frameWidth="128" frameHeight="279"/>
-	<SubTexture name="jason jump0020" x="244" y="536" width="107" height="266" frameX="-6" frameY="-8" frameWidth="128" frameHeight="279"/>
-	<SubTexture name="jason jump0021" x="244" y="536" width="107" height="266" frameX="-6" frameY="-8" frameWidth="128" frameHeight="279"/>
-	<SubTexture name="jason jump0022" x="244" y="536" width="107" height="266" frameX="-6" frameY="-8" frameWidth="128" frameHeight="279"/>
-	<SubTexture name="jason jump0023" x="244" y="536" width="107" height="266" frameX="-6" frameY="-8" frameWidth="128" frameHeight="279"/>
-	<SubTexture name="jason jump0024" x="244" y="536" width="107" height="266" frameX="-6" frameY="-8" frameWidth="128" frameHeight="279"/>
-	<SubTexture name="jason walk0000" x="0" y="263" width="136" height="266" frameX="-2" frameY="0" frameWidth="156" frameHeight="282"/>
-	<SubTexture name="jason walk0001" x="0" y="263" width="136" height="266" frameX="-2" frameY="0" frameWidth="156" frameHeight="282"/>
-	<SubTexture name="jason walk0002" x="0" y="263" width="136" height="266" frameX="-2" frameY="0" frameWidth="156" frameHeight="282"/>
-	<SubTexture name="jason walk0003" x="0" y="533" width="125" height="268" frameX="-9" frameY="-5" frameWidth="156" frameHeight="282"/>
-	<SubTexture name="jason walk0004" x="0" y="533" width="125" height="268" frameX="-9" frameY="-5" frameWidth="156" frameHeight="282"/>
-	<SubTexture name="jason walk0005" x="612" y="274" width="66" height="272" frameX="-44" frameY="-9" frameWidth="156" frameHeight="282"/>
-	<SubTexture name="jason walk0006" x="612" y="274" width="66" height="272" frameX="-44" frameY="-9" frameWidth="156" frameHeight="282"/>
-	<SubTexture name="jason walk0007" x="681" y="550" width="63" height="272" frameX="-45" frameY="-10" frameWidth="156" frameHeight="282"/>
-	<SubTexture name="jason walk0008" x="681" y="550" width="63" height="272" frameX="-45" frameY="-10" frameWidth="156" frameHeight="282"/>
-	<SubTexture name="jason walk0009" x="681" y="550" width="63" height="272" frameX="-45" frameY="-10" frameWidth="156" frameHeight="282"/>
-	<SubTexture name="jason walk0010" x="681" y="550" width="63" height="272" frameX="-45" frameY="-10" frameWidth="156" frameHeight="282"/>
+	<SubTexture name="jason idle0000" x="716" y="269" width="69" height="270" frameX="0" frameY="-2" frameWidth="69" frameHeight="272"/>
+	<SubTexture name="jason idle0001" x="716" y="269" width="69" height="270" frameX="0" frameY="-2" frameWidth="69" frameHeight="272"/>
+	<SubTexture name="jason idle0002" x="297" y="270" width="69" height="269" frameX="0" frameY="-3" frameWidth="69" frameHeight="272"/>
+	<SubTexture name="jason idle0003" x="297" y="270" width="69" height="269" frameX="0" frameY="-3" frameWidth="69" frameHeight="272"/>
+	<SubTexture name="jason idle0004" x="370" y="270" width="69" height="269" frameX="0" frameY="-3" frameWidth="69" frameHeight="272"/>
+	<SubTexture name="jason idle0005" x="370" y="270" width="69" height="269" frameX="0" frameY="-3" frameWidth="69" frameHeight="272"/>
+	<SubTexture name="jason idle0006" x="1857" y="269" width="69" height="270" frameX="0" frameY="-2" frameWidth="69" frameHeight="272"/>
+	<SubTexture name="jason idle0007" x="1857" y="269" width="69" height="270" frameX="0" frameY="-2" frameWidth="69" frameHeight="272"/>
+	<SubTexture name="jason idle0008" x="1099" y="268" width="69" height="271" frameX="0" frameY="-1" frameWidth="69" frameHeight="272"/>
+	<SubTexture name="jason idle0009" x="1099" y="268" width="69" height="271" frameX="0" frameY="-1" frameWidth="69" frameHeight="272"/>
+	<SubTexture name="jason idle0010" x="1968" y="0" width="69" height="272"/>
+	<SubTexture name="jason idle0011" x="1968" y="0" width="69" height="272"/>
+	<SubTexture name="jason idle0012" x="1968" y="0" width="69" height="272"/>
+	<SubTexture name="jason idle0013" x="1968" y="0" width="69" height="272"/>
+	<SubTexture name="jason idle0014" x="1968" y="0" width="69" height="272"/>
+	<SubTexture name="jason idle0015" x="1968" y="0" width="69" height="272"/>
+	<SubTexture name="jason idle0016" x="1968" y="0" width="69" height="272"/>
+	<SubTexture name="jason idle0017" x="1968" y="0" width="69" height="272"/>
+	<SubTexture name="jason idle0018" x="1968" y="0" width="69" height="272"/>
+	<SubTexture name="jason idle0019" x="1968" y="0" width="69" height="272"/>
+	<SubTexture name="jason idle0020" x="1968" y="0" width="69" height="272"/>
+	<SubTexture name="jason idle0021" x="1968" y="0" width="69" height="272"/>
+	<SubTexture name="jason idle0022" x="1968" y="0" width="69" height="272"/>
+	<SubTexture name="jason idle0023" x="1968" y="0" width="69" height="272"/>
+	<SubTexture name="jason idle0024" x="1968" y="0" width="69" height="272"/>
+	<SubTexture name="jason jump0000" x="1026" y="268" width="69" height="272" frameX="-32" frameY="-7" frameWidth="128" frameHeight="279"/>
+	<SubTexture name="jason jump0001" x="455" y="0" width="128" height="264" frameX="0" frameY="0" frameWidth="128" frameHeight="279"/>
+	<SubTexture name="jason jump0002" x="455" y="0" width="128" height="264" frameX="0" frameY="0" frameWidth="128" frameHeight="279"/>
+	<SubTexture name="jason jump0003" x="716" y="0" width="121" height="265" frameX="-4" frameY="-5" frameWidth="128" frameHeight="279"/>
+	<SubTexture name="jason jump0004" x="716" y="0" width="121" height="265" frameX="-4" frameY="-5" frameWidth="128" frameHeight="279"/>
+	<SubTexture name="jason jump0005" x="962" y="0" width="111" height="263" frameX="-4" frameY="-9" frameWidth="128" frameHeight="279"/>
+	<SubTexture name="jason jump0006" x="962" y="0" width="111" height="263" frameX="-4" frameY="-9" frameWidth="128" frameHeight="279"/>
+	<SubTexture name="jason jump0007" x="1857" y="0" width="107" height="265" frameX="-6" frameY="-9" frameWidth="128" frameHeight="279"/>
+	<SubTexture name="jason jump0008" x="1857" y="0" width="107" height="265" frameX="-6" frameY="-9" frameWidth="128" frameHeight="279"/>
+	<SubTexture name="jason jump0009" x="1191" y="0" width="107" height="266" frameX="-6" frameY="-8" frameWidth="128" frameHeight="279"/>
+	<SubTexture name="jason jump0010" x="1191" y="0" width="107" height="266" frameX="-6" frameY="-8" frameWidth="128" frameHeight="279"/>
+	<SubTexture name="jason jump0011" x="1191" y="0" width="107" height="266" frameX="-6" frameY="-8" frameWidth="128" frameHeight="279"/>
+	<SubTexture name="jason jump0012" x="1191" y="0" width="107" height="266" frameX="-6" frameY="-8" frameWidth="128" frameHeight="279"/>
+	<SubTexture name="jason jump0013" x="1191" y="0" width="107" height="266" frameX="-6" frameY="-8" frameWidth="128" frameHeight="279"/>
+	<SubTexture name="jason jump0014" x="1191" y="0" width="107" height="266" frameX="-6" frameY="-8" frameWidth="128" frameHeight="279"/>
+	<SubTexture name="jason jump0015" x="1191" y="0" width="107" height="266" frameX="-6" frameY="-8" frameWidth="128" frameHeight="279"/>
+	<SubTexture name="jason jump0016" x="1191" y="0" width="107" height="266" frameX="-6" frameY="-8" frameWidth="128" frameHeight="279"/>
+	<SubTexture name="jason jump0017" x="1191" y="0" width="107" height="266" frameX="-6" frameY="-8" frameWidth="128" frameHeight="279"/>
+	<SubTexture name="jason jump0018" x="1191" y="0" width="107" height="266" frameX="-6" frameY="-8" frameWidth="128" frameHeight="279"/>
+	<SubTexture name="jason jump0019" x="1191" y="0" width="107" height="266" frameX="-6" frameY="-8" frameWidth="128" frameHeight="279"/>
+	<SubTexture name="jason jump0020" x="1191" y="0" width="107" height="266" frameX="-6" frameY="-8" frameWidth="128" frameHeight="279"/>
+	<SubTexture name="jason jump0021" x="1191" y="0" width="107" height="266" frameX="-6" frameY="-8" frameWidth="128" frameHeight="279"/>
+	<SubTexture name="jason jump0022" x="1191" y="0" width="107" height="266" frameX="-6" frameY="-8" frameWidth="128" frameHeight="279"/>
+	<SubTexture name="jason jump0023" x="1191" y="0" width="107" height="266" frameX="-6" frameY="-8" frameWidth="128" frameHeight="279"/>
+	<SubTexture name="jason jump0024" x="1191" y="0" width="107" height="266" frameX="-6" frameY="-8" frameWidth="128" frameHeight="279"/>
+	<SubTexture name="jason jump hit0000" x="841" y="0" width="117" height="260" frameX="0" frameY="-5" frameWidth="117" frameHeight="266"/>
+	<SubTexture name="jason jump hit0001" x="841" y="0" width="117" height="260" frameX="0" frameY="-5" frameWidth="117" frameHeight="266"/>
+	<SubTexture name="jason jump hit0002" x="1077" y="0" width="110" height="264" frameX="-3" frameY="-1" frameWidth="117" frameHeight="266"/>
+	<SubTexture name="jason jump hit0003" x="1077" y="0" width="110" height="264" frameX="-3" frameY="-1" frameWidth="117" frameHeight="266"/>
+	<SubTexture name="jason jump hit0004" x="1302" y="0" width="107" height="266" frameX="-5" frameY="0" frameWidth="117" frameHeight="266"/>
+	<SubTexture name="jason jump hit0005" x="1302" y="0" width="107" height="266" frameX="-5" frameY="0" frameWidth="117" frameHeight="266"/>
+	<SubTexture name="jason jump hit0006" x="1302" y="0" width="107" height="266" frameX="-5" frameY="0" frameWidth="117" frameHeight="266"/>
+	<SubTexture name="jason jump hit0007" x="1302" y="0" width="107" height="266" frameX="-5" frameY="0" frameWidth="117" frameHeight="266"/>
+	<SubTexture name="jason jump hit0008" x="1302" y="0" width="107" height="266" frameX="-5" frameY="0" frameWidth="117" frameHeight="266"/>
+	<SubTexture name="jason jump hit0009" x="1302" y="0" width="107" height="266" frameX="-5" frameY="0" frameWidth="117" frameHeight="266"/>
+	<SubTexture name="jason jump hit0010" x="1413" y="0" width="107" height="266" frameX="-5" frameY="0" frameWidth="117" frameHeight="266"/>
+	<SubTexture name="jason jump hit0011" x="1413" y="0" width="107" height="266" frameX="-5" frameY="0" frameWidth="117" frameHeight="266"/>
+	<SubTexture name="jason jump hit0012" x="1524" y="0" width="107" height="266" frameX="-5" frameY="0" frameWidth="117" frameHeight="266"/>
+	<SubTexture name="jason jump hit0013" x="1524" y="0" width="107" height="266" frameX="-5" frameY="0" frameWidth="117" frameHeight="266"/>
+	<SubTexture name="jason jump hit0014" x="1635" y="0" width="107" height="266" frameX="-5" frameY="0" frameWidth="117" frameHeight="266"/>
+	<SubTexture name="jason jump hit0015" x="1635" y="0" width="107" height="266" frameX="-5" frameY="0" frameWidth="117" frameHeight="266"/>
+	<SubTexture name="jason jump hit0016" x="1746" y="0" width="107" height="266" frameX="-5" frameY="0" frameWidth="117" frameHeight="266"/>
+	<SubTexture name="jason jump hit0017" x="1746" y="0" width="107" height="266" frameX="-5" frameY="0" frameWidth="117" frameHeight="266"/>
+	<SubTexture name="jason jump hit0018" x="1746" y="0" width="107" height="266" frameX="-5" frameY="0" frameWidth="117" frameHeight="266"/>
+	<SubTexture name="jason skid0000" x="841" y="264" width="96" height="270" frameX="-5" frameY="0" frameWidth="102" frameHeight="271"/>
+	<SubTexture name="jason skid0001" x="841" y="264" width="96" height="270" frameX="-5" frameY="0" frameWidth="102" frameHeight="271"/>
+	<SubTexture name="jason skid0002" x="101" y="267" width="95" height="270" frameX="-7" frameY="0" frameWidth="102" frameHeight="271"/>
+	<SubTexture name="jason skid0003" x="101" y="267" width="95" height="270" frameX="-7" frameY="0" frameWidth="102" frameHeight="271"/>
+	<SubTexture name="jason skid0004" x="0" y="263" width="97" height="270" frameX="-4" frameY="0" frameWidth="102" frameHeight="271"/>
+	<SubTexture name="jason skid0005" x="0" y="263" width="97" height="270" frameX="-4" frameY="0" frameWidth="102" frameHeight="271"/>
+	<SubTexture name="jason skid0006" x="841" y="264" width="96" height="270" frameX="-5" frameY="0" frameWidth="102" frameHeight="271"/>
+	<SubTexture name="jason skid0007" x="841" y="264" width="96" height="270" frameX="-5" frameY="0" frameWidth="102" frameHeight="271"/>
+	<SubTexture name="jason skid0008" x="101" y="267" width="95" height="270" frameX="-7" frameY="0" frameWidth="102" frameHeight="271"/>
+	<SubTexture name="jason skid0009" x="101" y="267" width="95" height="270" frameX="-7" frameY="0" frameWidth="102" frameHeight="271"/>
+	<SubTexture name="jason skid0010" x="0" y="263" width="97" height="270" frameX="-4" frameY="0" frameWidth="102" frameHeight="271"/>
+	<SubTexture name="jason skid0011" x="0" y="263" width="97" height="270" frameX="-4" frameY="0" frameWidth="102" frameHeight="271"/>
+	<SubTexture name="jason skid0012" x="841" y="264" width="96" height="270" frameX="-5" frameY="0" frameWidth="102" frameHeight="271"/>
+	<SubTexture name="jason skid0013" x="841" y="264" width="96" height="270" frameX="-5" frameY="0" frameWidth="102" frameHeight="271"/>
+	<SubTexture name="jason skid0014" x="841" y="264" width="96" height="270" frameX="-5" frameY="0" frameWidth="102" frameHeight="271"/>
+	<SubTexture name="jason skid0015" x="101" y="267" width="95" height="270" frameX="-7" frameY="0" frameWidth="102" frameHeight="271"/>
+	<SubTexture name="jason skid0016" x="101" y="267" width="95" height="270" frameX="-7" frameY="0" frameWidth="102" frameHeight="271"/>
+	<SubTexture name="jason skid0017" x="101" y="267" width="95" height="270" frameX="-7" frameY="0" frameWidth="102" frameHeight="271"/>
+	<SubTexture name="jason skid0018" x="200" y="267" width="93" height="270" frameX="0" frameY="0" frameWidth="102" frameHeight="271"/>
+	<SubTexture name="jason skid0019" x="200" y="267" width="93" height="270" frameX="0" frameY="0" frameWidth="102" frameHeight="271"/>
+	<SubTexture name="jason skid0020" x="455" y="268" width="78" height="270" frameX="-13" frameY="0" frameWidth="102" frameHeight="271"/>
+	<SubTexture name="jason skid0021" x="941" y="267" width="81" height="271" frameX="-7" frameY="0" frameWidth="102" frameHeight="271"/>
+	<SubTexture name="jason walk0000" x="315" y="0" width="136" height="266" frameX="-2" frameY="0" frameWidth="156" frameHeight="282"/>
+	<SubTexture name="jason walk0001" x="315" y="0" width="136" height="266" frameX="-2" frameY="0" frameWidth="156" frameHeight="282"/>
+	<SubTexture name="jason walk0002" x="315" y="0" width="136" height="266" frameX="-2" frameY="0" frameWidth="156" frameHeight="282"/>
+	<SubTexture name="jason walk0003" x="587" y="0" width="125" height="268" frameX="-9" frameY="-5" frameWidth="156" frameHeight="282"/>
+	<SubTexture name="jason walk0004" x="587" y="0" width="125" height="268" frameX="-9" frameY="-5" frameWidth="156" frameHeight="282"/>
+	<SubTexture name="jason walk0005" x="1172" y="270" width="66" height="272" frameX="-44" frameY="-9" frameWidth="156" frameHeight="282"/>
+	<SubTexture name="jason walk0006" x="1172" y="270" width="66" height="272" frameX="-44" frameY="-9" frameWidth="156" frameHeight="282"/>
+	<SubTexture name="jason walk0007" x="1311" y="270" width="63" height="272" frameX="-45" frameY="-10" frameWidth="156" frameHeight="282"/>
+	<SubTexture name="jason walk0008" x="1311" y="270" width="63" height="272" frameX="-45" frameY="-10" frameWidth="156" frameHeight="282"/>
+	<SubTexture name="jason walk0009" x="0" y="0" width="156" height="259" frameX="0" frameY="0" frameWidth="156" frameHeight="282"/>
+	<SubTexture name="jason walk0010" x="0" y="0" width="156" height="259" frameX="0" frameY="0" frameWidth="156" frameHeight="282"/>
 	<SubTexture name="jason walk0011" x="0" y="0" width="156" height="259" frameX="0" frameY="0" frameWidth="156" frameHeight="282"/>
-	<SubTexture name="jason walk0012" x="0" y="0" width="156" height="259" frameX="0" frameY="0" frameWidth="156" frameHeight="282"/>
-	<SubTexture name="jason walk0013" x="0" y="0" width="156" height="259" frameX="0" frameY="0" frameWidth="156" frameHeight="282"/>
-	<SubTexture name="jason walk0014" x="160" y="0" width="151" height="263" frameX="-2" frameY="-5" frameWidth="156" frameHeight="282"/>
-	<SubTexture name="jason walk0015" x="160" y="0" width="151" height="263" frameX="-2" frameY="-5" frameWidth="156" frameHeight="282"/>
-	<SubTexture name="jason walk0016" x="612" y="550" width="65" height="272" frameX="-45" frameY="-8" frameWidth="156" frameHeight="282"/>
-	<SubTexture name="jason walk0017" x="612" y="550" width="65" height="272" frameX="-45" frameY="-8" frameWidth="156" frameHeight="282"/>
-	<SubTexture name="jason walk0018" x="681" y="550" width="63" height="272" frameX="-45" frameY="-10" frameWidth="156" frameHeight="282"/>
-	<SubTexture name="jason walk0019" x="681" y="550" width="63" height="272" frameX="-45" frameY="-10" frameWidth="156" frameHeight="282"/>
-	<SubTexture name="jason walk0020" x="681" y="550" width="63" height="272" frameX="-45" frameY="-10" frameWidth="156" frameHeight="282"/>
-	<SubTexture name="jason walk0021" x="681" y="550" width="63" height="272" frameX="-45" frameY="-10" frameWidth="156" frameHeight="282"/>
+	<SubTexture name="jason walk0012" x="160" y="0" width="151" height="263" frameX="-2" frameY="-5" frameWidth="156" frameHeight="282"/>
+	<SubTexture name="jason walk0013" x="160" y="0" width="151" height="263" frameX="-2" frameY="-5" frameWidth="156" frameHeight="282"/>
+	<SubTexture name="jason walk0014" x="1242" y="270" width="65" height="272" frameX="-45" frameY="-8" frameWidth="156" frameHeight="282"/>
+	<SubTexture name="jason walk0015" x="1242" y="270" width="65" height="272" frameX="-45" frameY="-8" frameWidth="156" frameHeight="282"/>
+	<SubTexture name="jason walk0016" x="1311" y="270" width="63" height="272" frameX="-45" frameY="-10" frameWidth="156" frameHeight="282"/>
+	<SubTexture name="jason walk0017" x="1311" y="270" width="63" height="272" frameX="-45" frameY="-10" frameWidth="156" frameHeight="282"/>
 </TextureAtlas>
