@@ -7,6 +7,7 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import managers.MusicManager;
+import objects.ArcahicCrystal.ArchaicCrystal;
 
 class MainMenuState extends TJState
 {
@@ -50,6 +51,8 @@ class MainMenuState extends TJState
 
 			new FlxTimer().start(1.5, function(bruh:FlxTimer)
 			{
+				for (i in 0...ArchaicCrystal.crystalsCollected.length)
+					ArchaicCrystal.crystalsCollected.pop();
 				FlxG.switchState(new PlayState());
 			});
 		}

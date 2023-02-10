@@ -9,6 +9,7 @@ import flixel.util.FlxDirection;
 import gamesubstates.CutsceneSubState;
 import managers.MusicManager;
 import managers.PlayerDataManager;
+import objects.ArcahicCrystal.ArchaicCrystal;
 import objects.Player;
 import objects.TMXLevel;
 
@@ -174,8 +175,28 @@ class PlayState extends TJState
 		if (player.onGround)
 		{
 			lastTimeOnGround = totalTime;
-			player.mayDoubleJump = PlayerDataManager.hasDoubleJump;
+			player.mayDoubleJump = PlayerDataManager.hasDoubleJump
+				|| (levelName != "Tutorial" || ArchaicCrystal.crystalsCollected.contains(0));
 		}
+
+		for (crystal in ArchaicCrystal.allCrystals)
+			if (FlxG.overlap(crystal, player))
+			{
+				ArchaicCrystal.crystalsCollected.push(crystal.curIndex);
+
+				switch (levelName.toLowerCase())
+				{
+					case "tutorial":
+						switch (crystal.curIndex)
+						{
+							case 0:
+								PlayerDataManager.hasDoubleJump = true;
+								PlayerDataManager.save();
+						}
+				}
+
+				crystal.destroy();
+			}
 
 		#if debug
 		if (FlxG.keys.justPressed.I)
@@ -187,6 +208,10 @@ class PlayState extends TJState
 		{
 			PlayerDataManager.hasDoubleJump = false;
 			PlayerDataManager.save();
+		}
+		if (FlxG.keys.justPressed.R)
+		{
+			FlxG.switchState(new PlayState());
 		}
 		#end
 

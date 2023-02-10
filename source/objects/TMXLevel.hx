@@ -19,6 +19,7 @@ import flixel.math.FlxPoint;
 import flixel.tile.FlxBaseTilemap.FlxTilemapAutoTiling;
 import flixel.tile.FlxTilemap;
 import managers.PlayerPreferenceManager;
+import objects.ArcahicCrystal.ArchaicCrystal;
 
 using StringTools; // based on https://github.com/HaxeFlixel/flixel-demos/blob/dev/Editors/TiledEditor/source/TiledLevel.hx
 
@@ -138,6 +139,13 @@ class TMXLevel extends TiledMap
 		{
 			case "player_start":
 				playerStart.set(pos.x, pos.y);
+			case "crystal":
+				var crystalIndex = Std.parseInt(obj.properties.get("crystal_index"));
+				if (!ArchaicCrystal.crystalsCollected.contains(crystalIndex))
+				{
+					var crystal:ArchaicCrystal = new ArchaicCrystal(pos.x + obj.width / 2, pos.y + obj.height / 2, crystalIndex);
+					objGroup.add(crystal);
+				}
 			default:
 				trace('Warning! Object summon "$summonName" unaccounted for! (On object "${obj.name}")');
 		}
