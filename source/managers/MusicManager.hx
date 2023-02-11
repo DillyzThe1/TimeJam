@@ -31,6 +31,7 @@ class MusicManager
 	{
 		if (FlxG.sound.music == null)
 			return;
+		songTitle = "";
 		FlxG.sound.music.stop();
 	}
 

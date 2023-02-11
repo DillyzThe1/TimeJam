@@ -263,7 +263,10 @@ class PlayState extends TJState
 		}
 
 		if (FlxG.keys.justPressed.ESCAPE)
+		{
+			MusicManager.forceStop();
 			FlxG.switchState(new TitleScreenState());
+		}
 
 		if (FlxG.keys.justPressed.ONE)
 			openSubState(new CutsceneSubState());
