@@ -36,6 +36,8 @@ class TMXLevel extends TiledMap
 
 	public var playerStart:FlxPoint = FlxPoint.get();
 
+	public var wizard:PNGWizard;
+
 	public function new(tilelevel:FlxTiledMapAsset)
 	{
 		super(tilelevel);
@@ -149,6 +151,16 @@ class TMXLevel extends TiledMap
 					var crystal:ArchaicCrystal = new ArchaicCrystal(pos.x + obj.width / 2, pos.y + obj.height / 2, crystalIndex);
 					objGroup.add(crystal);
 				}
+			case "pngwizard":
+				if (wizard != null)
+				{
+					trace('Warning! Too many wizards have been attempted to have been indexed!');
+					return;
+				}
+
+				wizard = new PNGWizard(obj.x + obj.width / 2, obj.y + obj.height);
+				objGroup.add(wizard.dialogueIndication);
+				objGroup.add(wizard);
 			default:
 				trace('Warning! Object summon "$summonName" unaccounted for! (On object "${obj.name}")');
 		}

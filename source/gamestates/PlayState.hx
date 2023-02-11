@@ -243,6 +243,9 @@ class PlayState extends TJState
 			player.playAnim("jump hit", true);
 		}
 
+		if (lvl.wizard != null)
+			lvl.wizard.dialogueEnabled = player.getGraphicMidpoint().getDist(lvl.wizard.getGraphicMidpoint()) < 175;
+
 		if (player.y + player.height > FlxG.worldBounds.y + FlxG.worldBounds.height)
 		{
 			player.y = FlxG.worldBounds.y;
