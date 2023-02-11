@@ -31,6 +31,8 @@ class PlayState extends TJState
 	var crystal_pickupSfx:Array<FlxSound>;
 	var crystal_swooshSfx:FlxSound;
 
+	public var nextCrystals:Array<Int> = [];
+
 	override public function create()
 	{
 		super.create();
@@ -191,7 +193,7 @@ class PlayState extends TJState
 		for (crystal in ArchaicCrystal.allCrystals)
 			if (FlxG.overlap(crystal, player))
 			{
-				ArchaicCrystal.crystalsCollected.push(crystal.curIndex);
+				nextCrystals.push(crystal.curIndex);
 
 				var sfx:FlxSound = crystal_pickupSfx[FlxG.random.int(0, crystal_pickupSfx.length - 1)];
 				sfx.volume = 0.5 * FlxG.sound.volume;
@@ -226,6 +228,8 @@ class PlayState extends TJState
 		}
 		if (FlxG.keys.justPressed.R)
 		{
+			for (i in 0...nextCrystals.length)
+				ArchaicCrystal.crystalsCollected.push(nextCrystals.pop());
 			FlxG.switchState(new PlayState());
 		}
 		#end
