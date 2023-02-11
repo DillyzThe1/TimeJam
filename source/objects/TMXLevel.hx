@@ -31,6 +31,7 @@ class TMXLevel extends TiledMap
 	public var objGroup:FlxGroup;
 	public var fgGroup:FlxGroup;
 
+	var semiSolids:Array<FlxTilemap>;
 	var collisionTiles:Array<FlxTilemap>;
 
 	public var playerStart:FlxPoint = FlxPoint.get();
@@ -47,6 +48,7 @@ class TMXLevel extends TiledMap
 		fgGroup = new FlxGroup();
 
 		collisionTiles = new Array<FlxTilemap>();
+		semiSolids = new Array<FlxTilemap>();
 
 		initiateGraphics();
 		initiateAllObjects();
@@ -190,9 +192,15 @@ class TMXLevel extends TiledMap
 				FlxTilemapAutoTiling.OFF, tileSet.firstGID, 1, 1);
 			tilemap.antialiasing = PlayerPreferenceManager.antialiasing;
 
-			tilemap.allowCollisions = FlxDirectionFlags.fromBools(tileLayer.properties.get("leftDisabled") != "true",
-				tileLayer.properties.get("rightDisabled") != "true", tileLayer.properties.get("upDisabled") != "true",
-				tileLayer.properties.get("downDisabled") != "true");
+			var leftdis:Bool = tileLayer.properties.get("leftDisabled") == "true";
+			var rightdis:Bool = tileLayer.properties.get("rightDisabled") == "true";
+			var updis:Bool = tileLayer.properties.get("upDisabled") == "true";
+			var downdis:Bool = tileLayer.properties.get("downDisabled") == "true";
+
+			if (leftdis && rightdis && !updis && downdis)
+				semiSolids.push(tilemap);
+
+			tilemap.allowCollisions = FlxDirectionFlags.fromBools(!leftdis, !rightdis, !updis, !downdis);
 
 			if (tileLayer.properties.contains("animated"))
 			{
@@ -239,11 +247,15 @@ class TMXLevel extends TiledMap
 		return false;
 	}
 
-	public function checkCollisionAlt(target:FlxObject)
+	public function checkCollisionAlt(target:FlxObject, ?ignoreSemis:Bool = false)
 	{
 		for (map in collisionTiles)
+		{
+			if (ignoreSemis && semiSolids.contains(map))
+				continue;
 			if (FlxG.collide(map, target))
 				return true;
+		}
 		return false;
 	}
 }

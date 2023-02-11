@@ -80,12 +80,7 @@ class PlayState extends TJState
 			new FlxSound().loadEmbedded(Paths.sound("crystal0")), new FlxSound().loadEmbedded(Paths.sound("crystal1")),
 			new FlxSound().loadEmbedded(Paths.sound("crystal2")), new FlxSound().loadEmbedded(Paths.sound("crystal3"))
 		];
-
-		for (s in crystal_pickupSfx)
-			s.volume = 0.5;
-
 		crystal_swooshSfx = new FlxSound().loadEmbedded(Paths.sound("swoosh low"));
-		crystal_swooshSfx.volume = 2.5;
 	}
 
 	var lastSkid:Int = -1;
@@ -101,7 +96,7 @@ class PlayState extends TJState
 			FlxG.keys.pressed.LEFT,
 			FlxG.keys.pressed.RIGHT,
 			FlxG.keys.justPressed.UP,
-			FlxG.keys.justPressed.DOWN,
+			FlxG.keys.pressed.DOWN,
 			FlxG.keys.justPressed.SPACE
 		];
 		if (controls[1])
@@ -177,7 +172,7 @@ class PlayState extends TJState
 				FlxG.worldBounds.width - FlxG.width / 2),
 			(player.y + player.height / 2).clampFloat(FlxG.worldBounds.y + FlxG.height / 2, FlxG.worldBounds.height - FlxG.height / 2));
 
-		lvl.checkCollisionAlt(player);
+		lvl.checkCollisionAlt(player, controls[3]);
 		FlxG.collide(leftBound, player);
 		FlxG.collide(rightBound, player);
 
@@ -194,7 +189,10 @@ class PlayState extends TJState
 			{
 				ArchaicCrystal.crystalsCollected.push(crystal.curIndex);
 
-				crystal_pickupSfx[FlxG.random.int(0, crystal_pickupSfx.length - 1)].play(true, 0.001);
+				var sfx:FlxSound = crystal_pickupSfx[FlxG.random.int(0, crystal_pickupSfx.length - 1)];
+				sfx.volume = 0.5 * FlxG.sound.volume;
+				sfx.play(true, 0.001);
+				crystal_swooshSfx.volume = FlxG.sound.volume;
 				crystal_swooshSfx.play();
 
 				switch (levelName.toLowerCase())
