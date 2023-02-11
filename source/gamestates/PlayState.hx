@@ -4,9 +4,11 @@ import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxSubState;
+import flixel.math.FlxPoint;
 import flixel.system.FlxSound;
 import flixel.util.FlxColor;
 import flixel.util.FlxDirection;
+import flixel.util.FlxTimer;
 import gamesubstates.CutsceneSubState;
 import managers.MusicManager;
 import managers.PlayerDataManager;
@@ -32,6 +34,8 @@ class PlayState extends TJState
 	var crystal_swooshSfx:FlxSound;
 
 	public var nextCrystals:Array<Int> = [];
+
+	public static var seenCutscene:Bool = false;
 
 	override public function create()
 	{
@@ -83,6 +87,29 @@ class PlayState extends TJState
 			new FlxSound().loadEmbedded(Paths.sound("crystal2")), new FlxSound().loadEmbedded(Paths.sound("crystal3"))
 		];
 		crystal_swooshSfx = new FlxSound().loadEmbedded(Paths.sound("swoosh low"));
+
+		switch (levelName.toLowerCase())
+		{
+			case "tutorial":
+				if (!seenCutscene)
+				{
+					camMAIN.alpha = camHUD.alpha = 0;
+
+					var timeeerr:FlxTimer = new FlxTimer();
+
+					timeeerr.start(1.5, function(t:FlxTimer)
+					{
+						CutsceneSubState.nextCutscene = "cutscene 1";
+						CutsceneSubState.nextOffset.put();
+						CutsceneSubState.nextOffset = FlxPoint.get(-800, -500);
+						openSubState(new CutsceneSubState());
+
+						timeeerr.destroy();
+					});
+				}
+				else
+					camHUD.fade(FlxColor.BLACK, 1, true);
+		}
 	}
 
 	var lastSkid:Int = -1;
@@ -267,9 +294,6 @@ class PlayState extends TJState
 			MusicManager.forceStop();
 			FlxG.switchState(new TitleScreenState());
 		}
-
-		if (FlxG.keys.justPressed.ONE)
-			openSubState(new CutsceneSubState());
 	}
 
 	override function destroy()
@@ -295,13 +319,19 @@ class PlayState extends TJState
 		@:privateAccess
 		var subname:String = Type.getClassName(Type.getClass(subState));
 		trace("closing sub " + subname);
-
 		switch (subname)
 		{
 			case "gamesubstates.CutsceneSubState":
+				seenCutscene = true;
 				camHUD.flash(FlxColor.BLACK);
-		}
+				camMAIN.alpha = camHUD.alpha = 1;
 
+				switch (levelName.toLowerCase())
+				{
+					case "tutorial":
+						MusicManager.play("lvl_overworld", 140, 0.4);
+				}
+		}
 		super.closeSubState();
 	}
 }
