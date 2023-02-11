@@ -18,6 +18,7 @@ import flixel.group.FlxGroup;
 import flixel.math.FlxPoint;
 import flixel.tile.FlxBaseTilemap.FlxTilemapAutoTiling;
 import flixel.tile.FlxTilemap;
+import flixel.util.FlxDirectionFlags;
 import managers.PlayerPreferenceManager;
 import objects.ArcahicCrystal.ArchaicCrystal;
 
@@ -188,6 +189,10 @@ class TMXLevel extends TiledMap
 			tilemap.loadMapFromArray(tileLayer.tileArray, width, height, Paths.imagetmx(tileSet.imageSource), tileSet.tileWidth, tileSet.tileHeight,
 				FlxTilemapAutoTiling.OFF, tileSet.firstGID, 1, 1);
 			tilemap.antialiasing = PlayerPreferenceManager.antialiasing;
+
+			tilemap.allowCollisions = FlxDirectionFlags.fromBools(tileLayer.properties.get("leftDisabled") != "true",
+				tileLayer.properties.get("rightDisabled") != "true", tileLayer.properties.get("upDisabled") != "true",
+				tileLayer.properties.get("downDisabled") != "true");
 
 			if (tileLayer.properties.contains("animated"))
 			{
