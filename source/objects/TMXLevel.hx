@@ -247,6 +247,8 @@ class TMXLevel extends TiledMap
 		return false;
 	}
 
+	public var lastWasSemi:Bool = false;
+
 	public function checkCollisionAlt(target:FlxObject, ?ignoreSemis:Bool = false)
 	{
 		for (map in collisionTiles)
@@ -254,8 +256,12 @@ class TMXLevel extends TiledMap
 			if (ignoreSemis && semiSolids.contains(map))
 				continue;
 			if (FlxG.collide(map, target))
+			{
+				lastWasSemi = semiSolids.contains(map);
 				return true;
+			}
 		}
+		lastWasSemi = false;
 		return false;
 	}
 }

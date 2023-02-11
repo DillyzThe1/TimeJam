@@ -155,9 +155,9 @@ class Player extends FlxSprite
 		updateSpr();
 	}
 
-	public function playAnim(anim:String, ?fullForce:Bool = false)
+	public function playAnim(anim:String, ?fullForce:Bool = false, ?frame:Int = 0)
 	{
-		playerSpr.animation.play(anim, getAnim() != anim || fullForce);
+		playerSpr.animation.play(anim, getAnim() != anim || fullForce, false, frame);
 		evaluateOffset(getAnim());
 	}
 

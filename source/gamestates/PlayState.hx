@@ -172,9 +172,13 @@ class PlayState extends TJState
 				FlxG.worldBounds.width - FlxG.width / 2),
 			(player.y + player.height / 2).clampFloat(FlxG.worldBounds.y + FlxG.height / 2, FlxG.worldBounds.height - FlxG.height / 2));
 
+		var oldSemi:Bool = lvl.lastWasSemi;
 		lvl.checkCollisionAlt(player, controls[3]);
 		FlxG.collide(leftBound, player);
 		FlxG.collide(rightBound, player);
+
+		if (oldSemi && controls[3])
+			player.playAnim("jump", true, 7);
 
 		player.onGround = player.isTouching(FlxDirection.DOWN);
 		if (player.onGround)
