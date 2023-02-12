@@ -54,7 +54,7 @@ class DialogueArea extends FlxSpriteGroup
 
 	var onComplete:() -> Void;
 
-	var ssssss:FlxSound;
+	// var ssssss:FlxSound;
 
 	public function new(dialogueName:String, onComplete:() -> Void)
 	{
@@ -83,8 +83,8 @@ class DialogueArea extends FlxSpriteGroup
 		dialogueText.borderStyle = FlxTextBorderStyle.OUTLINE;
 		dialogueText.visible = false;
 		dialogueText.delay = 0.035;
-		ssssss = new FlxSound().loadEmbedded(Paths.sound("type"));
-		dialogueText.sounds = [ssssss];
+		// ssssss = new FlxSound().loadEmbedded(Paths.sound("type"));
+		// dialogueText.sounds = [ssssss];
 
 		dialogueData = Json.parse(Assets.getText(Paths.json("dialogue/pngintro")));
 		dialogueSfx = new FlxSound().loadEmbedded(Paths.sound("dialogue continue"));
@@ -224,7 +224,7 @@ class DialogueArea extends FlxSpriteGroup
 			dialogueText.x = dialogueBox.x + dialogueSpaceLeft;
 			dialogueText.y = dialogueBox.y + dialogueBox.height / 3;
 			dialogueText.fieldWidth = (dialogueBox.width * 0.75) - dialogueSpaceRight;
-			ssssss.volume = 0.35 * FlxG.sound.volume;
+			// ssssss.volume = 0.35 * FlxG.sound.volume;
 		}
 
 		if ((FlxG.keys.justPressed.ENTER && allowInput) || (skipWhenDone && !dialogueInProgress))

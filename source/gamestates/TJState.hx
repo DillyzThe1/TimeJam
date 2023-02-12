@@ -33,7 +33,8 @@ class TJState extends FlxState
 		FlxG.cameras.reset(camMAIN);
 		FlxG.cameras.add(camHUD, false);
 		targetObject = new FlxObject(FlxG.width / 2, FlxG.height / 2, 1, 1);
-		camMAIN.follow(targetObject, LOCKON, 0.0315 / (FlxG.updateFramerate / 60));
+		// TEMPORARY SOLUTION
+		camMAIN.follow(targetObject, LOCKON, #if html5 0.05 #else 0.0315 #end / (FlxG.updateFramerate / 60));
 		targetPoint = targetObject.getPosition();
 		camMAIN.focusOn(targetPoint);
 
