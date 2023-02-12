@@ -139,7 +139,9 @@ class DialogueArea extends FlxSpriteGroup
 	var skipWhenDone:Bool = true;
 	var cur:DialogueInstance;
 
-	public function nextDialogue()
+	var pretext:String = "";
+
+	function nextDialogue()
 	{
 		if (closing)
 			return;
@@ -149,6 +151,12 @@ class DialogueArea extends FlxSpriteGroup
 		{
 			dialogueInProgress = false;
 			dialogueText.skip();
+			dialogueText.text = pretext + cur.dialogue;
+			if (skipWhenDone)
+			{
+				nextDialogue();
+				return;
+			}
 			allowInput = true;
 			return;
 		}
@@ -163,33 +171,7 @@ class DialogueArea extends FlxSpriteGroup
 
 		if (dialogueIndex >= dialogueData.dialogue.length)
 		{
-			skipWhenDone = false;
-			dialogueText.visible = false;
-			if (introTween != null)
-			{
-				introTween.cancel();
-				introTween.destroy();
-			}
-
-			if (leftSprite != null)
-				leftSprite.visible = false;
-			if (rightSprite != null)
-				rightSprite.visible = false;
-
-			FlxG.sound.music.fadeIn(1, FlxG.sound.music.volume, 0.4);
-			introTween = FlxTween.tween(this, {
-				"bg.alpha": 0,
-				"dialogueBox.y": FlxG.height + dialogueBox.height + 100,
-				"dialogueBox.scale.x": 1.3,
-				"dialogueBox.scale.y": 1.25
-			}, 1.5, {
-				ease: FlxEase.cubeInOut,
-				onComplete: function(t:FlxTween)
-				{
-					if (this.onComplete != null)
-						this.onComplete();
-				}
-			});
+			endDialogue();
 			return;
 		}
 
@@ -201,6 +183,7 @@ class DialogueArea extends FlxSpriteGroup
 			@:privateAccess
 			if (!cur.clear)
 			{
+				pretext = dialogueText.text;
 				dialogueText._finalText = dialogueText.text + cur.dialogue;
 				dialogueText._typing = false;
 				dialogueText._erasing = false;
@@ -209,7 +192,10 @@ class DialogueArea extends FlxSpriteGroup
 				dialogueText._length = dialogueText.text.length;
 			}
 			else
+			{
+				pretext = "";
 				dialogueText.resetText(cur.dialogue);
+			}
 			dialogueText.delay = (defaultDelay / (cur.speed == null ? 1 : cur.speed));
 			dialogueText.start(null, cur.clear, false, [], function()
 			{
@@ -283,6 +269,40 @@ class DialogueArea extends FlxSpriteGroup
 		allowInput = true;
 	}
 
+	function endDialogue()
+	{
+		if (dialogueInProgress)
+			dialogueText.skip();
+
+		skipWhenDone = false;
+		dialogueText.visible = false;
+		if (introTween != null)
+		{
+			introTween.cancel();
+			introTween.destroy();
+		}
+
+		if (leftSprite != null)
+			leftSprite.visible = false;
+		if (rightSprite != null)
+			rightSprite.visible = false;
+
+		FlxG.sound.music.fadeIn(1, FlxG.sound.music.volume, 0.4);
+		introTween = FlxTween.tween(this, {
+			"bg.alpha": 0,
+			"dialogueBox.y": FlxG.height + dialogueBox.height + 100,
+			"dialogueBox.scale.x": 1.3,
+			"dialogueBox.scale.y": 1.25
+		}, 1.5, {
+			ease: FlxEase.cubeInOut,
+			onComplete: function(t:FlxTween)
+			{
+				if (this.onComplete != null)
+					this.onComplete();
+			}
+		});
+	}
+
 	var lastLength:Int = 0;
 	var charBlacklist:Array<String> = [",", ".", "/", "!", "-", " ", "", "]", "[", "(", ")"];
 
@@ -312,7 +332,9 @@ class DialogueArea extends FlxSpriteGroup
 			rightSprite.y = dialogueBox.y + dialogueBox.height - rightSprite.height - 33;
 		}
 
-		if ((FlxG.keys.justPressed.ENTER && allowInput) || (skipWhenDone && !dialogueInProgress))
+		if (FlxG.keys.justPressed.ENTER && FlxG.keys.pressed.SHIFT && allowInput)
+			endDialogue();
+		else if ((FlxG.keys.justPressed.ENTER && allowInput) || (skipWhenDone && !dialogueInProgress))
 			nextDialogue();
 
 		checkDialogue();
@@ -414,6 +436,7 @@ class DialogueArea extends FlxSpriteGroup
 			for (i in 0...animNames.length)
 				leftSprite.animation.addByPrefix(animNames[i], animValues[i], 24, animLooped[i]);
 			add(leftSprite);
+			leftSprite.x = -1000;
 			trace("loaded " + name + " on the left");
 
 			replayAnim(true, true);
@@ -431,7 +454,7 @@ class DialogueArea extends FlxSpriteGroup
 				rightSprite.animation.addByPrefix(animNames[i], animValues[i], 24, animLooped[i]);
 			}
 			add(rightSprite);
-
+			rightSprite.x = -1000;
 			trace("loaded " + name + " on the right");
 
 			replayAnim(false, true);
