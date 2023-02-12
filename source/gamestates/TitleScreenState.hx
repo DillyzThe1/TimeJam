@@ -282,7 +282,7 @@ class TitleScreenState extends TJState
 						break;
 					}
 
-					mb.forcePosition = true;
+					// mb.forcePosition = true;
 
 					inputAllowed = false;
 					menuActive = false;

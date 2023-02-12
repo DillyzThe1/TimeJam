@@ -123,7 +123,10 @@ class PlayState extends TJState
 				{
 					player.inputDisabled = true;
 					camMAIN.alpha = camHUD.alpha = 0;
-					startDialogue("tutorial_end_demo");
+					startDialogue("tutorial_end_demo", function()
+					{
+						FlxG.switchState(new TitleScreenState());
+					});
 				}
 				else
 				{
@@ -146,13 +149,21 @@ class PlayState extends TJState
 		}
 	}
 
-	function startDialogue(dialogueName:String)
+	function startDialogue(dialogueName:String, ?onComplete:() -> Void)
 	{
 		player.inputDisabled = true;
-		var dialogue:DialogueArea = new DialogueArea(dialogueName, function()
-		{
-			player.inputDisabled = false;
-		});
+
+		var onCompleteToUse:() -> Void;
+
+		if (onComplete == null)
+			onCompleteToUse = function()
+			{
+				player.inputDisabled = false;
+			}
+		else
+			onCompleteToUse = onComplete;
+
+		var dialogue:DialogueArea = new DialogueArea(dialogueName, onCompleteToUse);
 		dialogue.cameras = [camDIALOGUE];
 		add(dialogue);
 	}

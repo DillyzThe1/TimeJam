@@ -34,7 +34,7 @@
 			"music_vol_mult": 0
 		},
 		{
-			"boxtype": "right",
+			"boxtype": "both",
 			"leftchar": "jason",
 			"rightchar": "pngwizard",
 			"speaking": "left",
@@ -50,7 +50,7 @@
 			"speed": 0.85
 		},
 		{
-			"boxtype": "right",
+			"boxtype": "both",
 			"leftchar": "jason",
 			"rightchar": "pngwizard",
 			"speaking": "left",
@@ -65,7 +65,7 @@
 			"music_vol_mult": 0
 		},
 		{
-			"boxtype": "right",
+			"boxtype": "both",
 			"leftchar": "jason",
 			"rightchar": "pngwizard",
 			"speaking": "right",
@@ -80,7 +80,7 @@
 			"music_vol_mult": 0
 		},
 		{
-			"boxtype": "right",
+			"boxtype": "both",
 			"leftchar": "jason",
 			"rightchar": "pngwizard",
 			"speaking": "right",
@@ -93,10 +93,10 @@
 			"dialogue": "ol",
 			"skip_prompt": true,
 			"music_vol_mult": 0,
-			"speed": 1.75,
+			"speed": 1.75
 		},
 		{
-			"boxtype": "right",
+			"boxtype": "both",
 			"leftchar": "jason",
 			"rightchar": "pngwizard",
 			"speaking": "left",
@@ -112,7 +112,7 @@
 			"speed": 2.5
 		},
 		{
-			"boxtype": "right",
+			"boxtype": "both",
 			"leftchar": "jason",
 			"rightchar": "pngwizard",
 			"speaking": "right",
@@ -128,7 +128,7 @@
 			"speed": 0.5
 		},
 		{
-			"boxtype": "right",
+			"boxtype": "both",
 			"leftchar": "jason",
 			"rightchar": "pngwizard",
 			"speaking": "right",
@@ -144,7 +144,7 @@
 			"speed": 2
 		},
 		{
-			"boxtype": "right",
+			"boxtype": "both",
 			"leftchar": "jason",
 			"rightchar": "pngwizard",
 			"speaking": "right",
@@ -160,7 +160,7 @@
 			"speed": 0.2
 		},
 		{
-			"boxtype": "right",
+			"boxtype": "both",
 			"leftchar": "jason",
 			"rightchar": "pngwizard",
 			"speaking": "right",
@@ -175,7 +175,7 @@
 			"music_vol_mult": 0
 		},
 		{
-			"boxtype": "right",
+			"boxtype": "both",
 			"leftchar": "jason",
 			"rightchar": "pngwizard",
 			"speaking": "left",
@@ -185,12 +185,12 @@
 			"forceright": true,
 			"clear": true,
 			"clipname": "",
-			"dialogue": "oh phew i thught i was gonna have to do that again like the name of some sort of stupid week long challenge",
+			"dialogue": "oh phew i thought i was gonna have to do that again like the name of some sort of stupid week long challenge",
 			"skip_prompt": false,
 			"music_vol_mult": 0
 		},
 		{
-			"boxtype": "right",
+			"boxtype": "both",
 			"leftchar": "jason",
 			"rightchar": "pngwizard",
 			"speaking": "right",
@@ -206,7 +206,7 @@
 			"speed": 0.5
 		},
 		{
-			"boxtype": "right",
+			"boxtype": "both",
 			"leftchar": "jason",
 			"rightchar": "pngwizard",
 			"speaking": "right",
@@ -222,7 +222,7 @@
 			"speed": 0.9
 		},
 		{
-			"boxtype": "right",
+			"boxtype": "both",
 			"leftchar": "jason",
 			"rightchar": "pngwizard",
 			"speaking": "left",
@@ -238,7 +238,7 @@
 			"speed": 0.5
 		},
 		{
-			"boxtype": "right",
+			"boxtype": "both",
 			"leftchar": "jason",
 			"rightchar": "pngwizard",
 			"speaking": "left",
@@ -254,7 +254,7 @@
 			"speed": 0.2
 		},
 		{
-			"boxtype": "right",
+			"boxtype": "both",
 			"leftchar": "jason",
 			"rightchar": "pngwizard",
 			"speaking": "left",
@@ -269,7 +269,7 @@
 			"music_vol_mult": 0
 		},
 		{
-			"boxtype": "right",
+			"boxtype": "both",
 			"leftchar": "jason",
 			"rightchar": "pngwizard",
 			"speaking": "right",
@@ -284,7 +284,7 @@
 			"music_vol_mult": 0
 		},
 		{
-			"boxtype": "right",
+			"boxtype": "both",
 			"leftchar": "jason",
 			"rightchar": "pngwizard",
 			"speaking": "right",
@@ -299,7 +299,7 @@
 			"music_vol_mult": 0
 		},
 		{
-			"boxtype": "right",
+			"boxtype": "both",
 			"leftchar": "jason",
 			"rightchar": "pngwizard",
 			"speaking": "right",
@@ -314,7 +314,7 @@
 			"music_vol_mult": 0
 		},
 		{
-			"boxtype": "right",
+			"boxtype": "left",
 			"leftchar": "jason",
 			"rightchar": "",
 			"speaking": "left",
@@ -329,7 +329,7 @@
 			"music_vol_mult": 0
 		},
 		{
-			"boxtype": "right",
+			"boxtype": "left",
 			"leftchar": "jason",
 			"rightchar": "",
 			"speaking": "left",
@@ -345,7 +345,7 @@
 			"speed": 0.1
 		},
 		{
-			"boxtype": "right",
+			"boxtype": "left",
 			"leftchar": "jason",
 			"rightchar": "",
 			"speaking": "left",
@@ -360,7 +360,7 @@
 			"music_vol_mult": 0
 		},
 		{
-			"boxtype": "right",
+			"boxtype": "left",
 			"leftchar": "jason",
 			"rightchar": "",
 			"speaking": "left",

@@ -218,7 +218,6 @@ class DialogueArea extends FlxSpriteGroup
 		}
 		skipWhenDone = cur.skip_prompt;
 		FlxG.sound.music.volume = 0.2 * cur.music_vol_mult;
-
 		dialogueBox.animation.play(cur.boxtype.toLowerCase(), true);
 		switch (cur.boxtype.toLowerCase())
 		{
@@ -230,6 +229,8 @@ class DialogueArea extends FlxSpriteGroup
 					leftSprite.visible = false;
 				if (rightSprite != null)
 					rightSprite.visible = false;
+
+				dialogueText.alignment = LEFT;
 			case "left":
 				dialogueSpaceLeft = 275;
 				dialogueSpaceRight = 75;
@@ -240,6 +241,8 @@ class DialogueArea extends FlxSpriteGroup
 					rightSprite.visible = false;
 
 				checkCharacter(cur.leftchar, true);
+
+				dialogueText.alignment = LEFT;
 			case "right":
 				dialogueSpaceLeft = 25;
 				dialogueSpaceRight = 75;
@@ -253,6 +256,8 @@ class DialogueArea extends FlxSpriteGroup
 					rightSprite.visible = true;
 
 				checkCharacter(cur.rightchar, false);
+
+				dialogueText.alignment = LEFT;
 			case "both":
 				dialogueSpaceLeft = dialogueSpaceRight = 275;
 
@@ -301,7 +306,7 @@ class DialogueArea extends FlxSpriteGroup
 		if (rightSprite != null && rightSprite.visible)
 		{
 			var wizardOffset:Int = 0;
-			if (cur.rightchar == "pngwizard" && cur.expressionright == "png")
+			if (cur.rightchar == "pngwizard" && (cur.expressionright == "png" || cur.expressionright == "out4milk"))
 				wizardOffset = 365;
 			rightSprite.x = dialogueBox.x + dialogueBox.width - rightSprite.width - 20 + wizardOffset;
 			rightSprite.y = dialogueBox.y + dialogueBox.height - rightSprite.height - 33;
