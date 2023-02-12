@@ -139,7 +139,7 @@
 			"clear": false,
 			"clipname": "",
 			"dialogue": " Yes",
-			"skip_prompt": false,
+			"skip_prompt": true,
 			"music_vol_mult": 0,
 			"speed": 2
 		},
@@ -155,7 +155,7 @@
 			"clear": false,
 			"clipname": "",
 			"dialogue": "...",
-			"skip_prompt": false,
+			"skip_prompt": true,
 			"music_vol_mult": 0,
 			"speed": 0.2
 		},
@@ -185,7 +185,22 @@
 			"forceright": true,
 			"clear": true,
 			"clipname": "",
-			"dialogue": "oh phew i thought i was gonna have to do that again like the name of some sort of stupid week long challenge",
+			"dialogue": "oh phew i thought i was gonna have to do that again",
+			"skip_prompt": false,
+			"music_vol_mult": 0
+		},
+		{
+			"boxtype": "both",
+			"leftchar": "jason",
+			"rightchar": "pngwizard",
+			"speaking": "left",
+			"expressionleft": "hold-crystal-relief",
+			"forceleft": true,
+			"expressionright": "png",
+			"forceright": true,
+			"clear": true,
+			"clipname": "",
+			"dialogue": "like some sort of stupid week long challenge",
 			"skip_prompt": false,
 			"music_vol_mult": 0
 		},
@@ -233,7 +248,7 @@
 			"clear": true,
 			"clipname": "",
 			"dialogue": "uh",
-			"skip_prompt": false,
+			"skip_prompt": true,
 			"music_vol_mult": 0,
 			"speed": 0.5
 		},
@@ -249,7 +264,7 @@
 			"clear": false,
 			"clipname": "",
 			"dialogue": "...",
-			"skip_prompt": false,
+			"skip_prompt": true,
 			"music_vol_mult": 0,
 			"speed": 0.2
 		},
@@ -309,7 +324,7 @@
 			"forceright": true,
 			"clear": false,
 			"clipname": "",
-			"dialogue": "",
+			"dialogue": "__continue",
 			"skip_prompt": false,
 			"music_vol_mult": 0
 		},
@@ -324,7 +339,7 @@
 			"forceright": false,
 			"clear": true,
 			"clipname": "",
-			"dialogue": "and just like someone's da",
+			"dialogue": "and just like someone's dad",
 			"skip_prompt": true,
 			"music_vol_mult": 0
 		},
@@ -339,7 +354,7 @@
 			"forceright": false,
 			"clear": false,
 			"clipname": "",
-			"dialogue": "d,",
+			"dialogue": ",",
 			"skip_prompt": true,
 			"music_vol_mult": 0,
 			"speed": 0.1
@@ -371,7 +386,7 @@
 			"clear": false,
 			"clipname": "",
 			"dialogue": "...",
-			"skip_prompt": true,
+			"skip_prompt": false,
 			"music_vol_mult": 0,
 			"speed": 0.1
 		}

@@ -158,8 +158,6 @@ class DialogueArea extends FlxSpriteGroup
 			dialogueSfx.volume = FlxG.sound.volume;
 			dialogueSfx.play(true, 0);
 		}
-		else
-			trace("trying to autoskip");
 
 		dialogueIndex++;
 
@@ -212,8 +210,8 @@ class DialogueArea extends FlxSpriteGroup
 			}
 			else
 				dialogueText.resetText(cur.dialogue);
-			var speed:Int = cur.speed == null ? 1 : cur.speed;
-			dialogueText.start(defaultDelay / speed, cur.clear, false, [], function()
+			dialogueText.delay = (defaultDelay / (cur.speed == null ? 1 : cur.speed));
+			dialogueText.start(null, cur.clear, false, [], function()
 			{
 				dialogueInProgress = false;
 			});
