@@ -15,9 +15,12 @@ enum ButtonTypes
 class MenuButton extends FlxSprite
 {
 	var type:ButtonTypes;
-	var enabled:Bool = true;
+
+	public var enabled:Bool = true;
 
 	public var hitbox:FlxSprite;
+	public var hovering:Bool = false;
+	public var forcePosition:Bool = false;
 
 	public function new(x:Float, y:Float, buttonType:ButtonTypes)
 	{
@@ -26,30 +29,36 @@ class MenuButton extends FlxSprite
 		type = buttonType;
 		this.frames = Paths.sparrowv2("menu buttons");
 		var smallButton:Bool = false;
+		var prefix:String = "";
 
-		switch buttonType
+		switch (buttonType)
 		{
 			case PLAY:
-				this.animation.addByPrefix("static", "play static", 24);
-				this.animation.addByPrefix("hover", "play hover animated", 24, false);
+				prefix = "play";
 			case OPTIONS:
-				this.animation.addByPrefix("static", "options static", 24);
-				this.animation.addByPrefix("hover", "options hover animated", 24, false);
+				prefix = "options";
+				enabled = false;
 			case ISSUES:
-				this.animation.addByPrefix("static", "issues static", 24);
-				this.animation.addByPrefix("hover", "issues hover animated", 24, false);
+				prefix = "issues";
 				smallButton = true;
 			case QUIT:
-				this.animation.addByPrefix("static", "quit static", 24);
-				this.animation.addByPrefix("hover", "quit hover animated", 24, false);
+				prefix = "quit";
 				smallButton = true;
+
+				#if !sys
+				enabled = false;
+				#end
 		}
+		this.animation.addByPrefix("static", prefix + " static0", 24);
+		this.animation.addByPrefix("hover", prefix + " hover animated0", 24, false);
+		this.animation.addByPrefix("disabled", prefix + " disabled0", 24);
 
 		this.animation.play("static");
 		this.centerOffsets();
 
 		hitbox = new FlxSprite(0, 0).makeGraphic(smallButton ? 200 : 400, smallButton ? 50 : 75, FlxColor.RED);
-		hitbox.alpha = #if debug 0.25 #else 0 #end;
+		// hitbox.alpha = #if debug 0.25 #else 0 #end;
+		hitbox.visible = false;
 	}
 
 	override public function update(elapsed:Float)
@@ -59,15 +68,59 @@ class MenuButton extends FlxSprite
 		hitbox.x = x + this.width / 2 - hitbox.width / 2;
 		hitbox.y = y + this.height / 2 - hitbox.height / 2;
 
-		if (FlxG.mouse.overlaps(hitbox) && this.animation.curAnim.name == "static")
+		if (!enabled)
+		{
+			if (this.animation.curAnim.name != "disabled")
+			{
+				this.animation.play("disabled");
+				this.centerOffsets();
+			}
+			hovering = false;
+			return;
+		}
+
+		if (FlxG.mouse.overlaps(hitbox) && this.animation.curAnim.name != "hover")
 		{
 			this.animation.play("hover");
 			this.centerOffsets();
+			hovering = true;
 		}
-		else if (!FlxG.mouse.overlaps(hitbox) && this.animation.curAnim.name == "hover")
+		else if (!FlxG.mouse.overlaps(hitbox) && this.animation.curAnim.name != "static")
 		{
 			this.animation.play("static");
 			this.centerOffsets();
+			hovering = false;
 		}
+	}
+
+	public function getOff_X()
+	{
+		switch (type)
+		{
+			case ISSUES:
+				return -100;
+			case QUIT:
+				return 100;
+			default:
+				return 0;
+		}
+	}
+
+	public function getOff_Y()
+	{
+		switch (type)
+		{
+			case OPTIONS:
+				return 100;
+			case ISSUES | QUIT:
+				return 190;
+			default:
+				return 0;
+		}
+	}
+
+	public function getType()
+	{
+		return type;
 	}
 }

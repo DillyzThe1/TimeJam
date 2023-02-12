@@ -2,15 +2,20 @@ package gamestates;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 import flixel.math.FlxMath;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
+import flixel.util.FlxSort;
 import flixel.util.FlxTimer;
 import gamestates.menus.MainMenuState;
 import managers.MusicManager;
+import objects.ArcahicCrystal.ArchaicCrystal;
 import objects.MenuButton.ButtonTypes;
 import objects.MenuButton;
+
+using TJUtil;
 
 class TitleScreenState extends TJState
 {
@@ -21,6 +26,11 @@ class TitleScreenState extends TJState
 
 	var bgTween:FlxTween;
 	var logoTween:FlxTween;
+
+	var ogBgY:Float = 0;
+	var ogLogoY:Float = 0;
+
+	var menuButtons:FlxTypedSpriteGroup<MenuButton>;
 
 	public override function create()
 	{
@@ -35,10 +45,12 @@ class TitleScreenState extends TJState
 		bg = new FlxSprite().loadGraphic(Paths.image('bg'));
 		bg.screenCenter();
 		add(bg);
+		ogBgY = bg.y;
 
 		logoSpr = new FlxSprite().loadGraphic(Paths.image('glowy logo'));
 		logoSpr.screenCenter();
 		add(logoSpr);
+		ogLogoY = logoSpr.y;
 
 		textSpr = new FlxSprite(0, 590);
 		textSpr.frames = Paths.sparrowv2("press enter");
@@ -52,6 +64,7 @@ class TitleScreenState extends TJState
 			if (n == "begin")
 			{
 				textSpr.animation.play("static", true);
+				textSpr.visible = true;
 				textSpr.offset.x = 0;
 				textSpr.offset.y = 0;
 			}
@@ -91,6 +104,9 @@ class TitleScreenState extends TJState
 
 		if (MusicManager.exists())
 			FlxG.sound.music.fadeIn(1, FlxG.sound.music.volume);
+
+		menuButtons = new FlxTypedSpriteGroup<MenuButton>();
+		add(menuButtons);
 	}
 
 	var totalElapsed:Float = 0;
@@ -107,6 +123,12 @@ class TitleScreenState extends TJState
 	var logoScalingAllowed:Bool = false;
 
 	var logoScales:Array<Float> = [0.645, 0.65, 0.655, 0.7, 1];
+
+	var inputAllowed:Bool = true;
+
+	var generatedButtons:Bool = false;
+
+	var ofofofofofofoofoffofofofofoofoffoofofoffoofofofoffofoofofoffofooofofosetfofofofoofofosetofofofofofofoset:Int = 75;
 
 	public override function update(elapsed:Float)
 	{
@@ -140,8 +162,54 @@ class TitleScreenState extends TJState
 			logoSpr.angle = (Math.cos(logoElapsed) * 2.5) + 2.5;
 		}
 
-		if (FlxG.keys.justPressed.ENTER && !menuActive)
+		if (FlxG.keys.justPressed.ESCAPE && menuActive && inputAllowed)
 		{
+			inputAllowed = false;
+			menuActive = false;
+			logoScalingAllowed = false;
+			logoElapsed = 0;
+			if (MusicManager.exists())
+				FlxG.sound.music.fadeIn(0.5, 0.75, 1);
+			textSpr.animation.play("begin", true);
+			textSpr.visible = true;
+			textSpr.offset.x = 31;
+			textSpr.offset.y = 0;
+
+			if (bgTween != null)
+			{
+				bgTween.cancel();
+				bgTween.destroy();
+			}
+			FlxTween.tween(bg, {y: ogBgY}, 0.75, {ease: FlxEase.cubeOut});
+			menuActive = false;
+			logoScalingAllowed = false;
+			logoElapsed = 0;
+
+			if (logoTween != null)
+			{
+				logoTween.cancel();
+				logoTween.destroy();
+			}
+			FlxTween.tween(logoSpr, {
+				y: ogLogoY,
+				"scale.x": 0.65,
+				"scale.y": 0.65,
+				"offset.x": 0,
+				"offset.y": 0,
+				angle: 0
+			}, 0.75, {
+				ease: FlxEase.cubeOut,
+				onComplete: function(t:FlxTween)
+				{
+					logoScalingAllowed = inputAllowed = true;
+					logoScales = [0.645, 0.65, 0.655, 0.7, 1];
+				}
+			});
+		}
+
+		if (FlxG.keys.justPressed.ENTER && !menuActive && inputAllowed)
+		{
+			inputAllowed = false;
 			menuActive = true;
 			logoScalingAllowed = false;
 			logoElapsed = 0;
@@ -158,7 +226,8 @@ class TitleScreenState extends TJState
 				bgTween.cancel();
 				bgTween.destroy();
 			}
-			FlxTween.tween(bg, {y: bg.y - 230}, 0.75, {ease: FlxEase.cubeOut});
+			FlxTween.tween(bg, {y: ogBgY - 230 + ofofofofofofoofoffofofofofoofoffoofofoffoofofofoffofoofofoffofooofofosetfofofofoofofosetofofofofofofoset},
+				0.75, {ease: FlxEase.cubeOut});
 
 			// vsc please stop trolling me
 			if (logoTween != null)
@@ -167,17 +236,17 @@ class TitleScreenState extends TJState
 				logoTween.destroy();
 			}
 			FlxTween.tween(logoSpr, {
-				y: logoSpr.y - 230,
+				y: ogLogoY - 230 + ofofofofofofoofoffofofofofoofoffoofofoffoofofofoffofoofofoffofooofofosetfofofofoofofosetofofofofofofoset,
 				"scale.x": 0.25,
 				"scale.y": 0.25,
 				"offset.x": 0,
 				"offset.y": 0,
-				"angle": 0
+				angle: 0
 			}, 0.75, {
 				ease: FlxEase.cubeOut,
 				onComplete: function(t:FlxTween)
 				{
-					logoScalingAllowed = true;
+					logoScalingAllowed = inputAllowed = true;
 					logoScales = [0.245, 0.25, 0.255, 0.3, 0.5];
 				}
 			});
@@ -185,34 +254,112 @@ class TitleScreenState extends TJState
 			new FlxTimer().start(1.5, function(bruh:FlxTimer)
 			{
 				// FlxG.switchState(new MainMenuState());
-				for (i in 0...buttons.length)
+				if (!generatedButtons)
 				{
-					var button:MenuButton = new MenuButton(0, 0, buttons[i]);
-					switch buttons[i]
+					for (i in 0...buttons.length)
 					{
-						case PLAY:
-							button.screenCenter(X);
-							button.screenCenter(Y);
-						case OPTIONS:
-							button.screenCenter(X);
-							button.screenCenter(Y);
-							button.y += 100;
-						case ISSUES:
-							button.screenCenter(X);
-							button.x -= 100;
-							button.screenCenter(Y);
-							button.y += 190;
-						case QUIT:
-							button.screenCenter(X);
-							button.x += 100;
-							button.screenCenter(Y);
-							button.y += 190;
+						var button:MenuButton = new MenuButton(0, 0, buttons[i]);
+						button.screenCenter(X);
+						button.screenCenter(Y);
+						button.x += button.getOff_X();
+						button.y += 1500 + ofofofofofofoofoffofofofofoofoffoofofoffoofofofoffofoofofoffofooofofosetfofofofoofofosetofofofofofofoset * 0.85;
+						menuButtons.add(button);
+						add(button.hitbox);
 					}
-					add(button);
-					add(button.hitbox);
+					generatedButtons = true;
 				}
 			});
 		}
+
+		if (FlxG.mouse.justPressed && menuActive)
+			for (mb in menuButtons)
+				if (mb.hovering && mb.enabled)
+				{
+					// no need for fancy stuff
+					if (mb.getType() == ISSUES)
+					{
+						FlxG.openURL("https://github.com/DillyzThe1/TimeJam/issues");
+						break;
+					}
+
+					mb.forcePosition = true;
+
+					inputAllowed = false;
+					menuActive = false;
+					logoScalingAllowed = false;
+					logoElapsed = 0;
+
+					FlxG.camera.flash(FlxColor.WHITE, 1.15);
+					FlxG.sound.play(Paths.sound("select"), 1.15);
+
+					if (MusicManager.exists())
+						FlxG.sound.music.fadeOut(0.5, mb.getType() == OPTIONS ? 0.75 : 0);
+
+					if (bgTween != null)
+					{
+						bgTween.cancel();
+						bgTween.destroy();
+					}
+					FlxTween.tween(bg, {alpha: 0}, 0.75, {ease: FlxEase.cubeOut});
+
+					if (logoTween != null)
+					{
+						logoTween.cancel();
+						logoTween.destroy();
+					}
+					FlxTween.tween(logoSpr, {
+						"scale.x": 0.25,
+						"scale.y": 0.25,
+						"offset.x": 0,
+						"offset.y": 0,
+						angle: 0,
+						alpha: 0
+					}, 0.75, {
+						ease: FlxEase.cubeOut,
+						onComplete: function(t:FlxTween)
+						{
+							logoScalingAllowed = inputAllowed = true;
+							logoScales = [0.245, 0.25, 0.255, 0.3, 0.5];
+						}
+					});
+					new FlxTimer().start(1.25, function(bruh:FlxTimer)
+					{
+						switch (mb.getType())
+						{
+							case PLAY:
+								for (i in 0...ArchaicCrystal.crystalsCollected.length)
+									ArchaicCrystal.crystalsCollected.pop();
+								for (i in 0...PlayState.flags.length)
+									PlayState.flags.pop();
+								PlayState.seenOpeningCutscene = false;
+								ArchaicCrystal.lastAdded = -1;
+								FlxG.switchState(new PlayState());
+							#if sys
+							case QUIT:
+								trace("funny mailbox prank");
+								Sys.exit(0);
+							#end
+							default:
+								FlxG.switchState(new TitleScreenState());
+						}
+					});
+					break;
+				}
+
+		menuButtons.sort(mbsort);
+
+		for (mb in menuButtons)
+		{
+			// just bc i hate the formatting
+			var off:Float = ((menuActive || mb.forcePosition) ? mb.getOff_Y() : 1500);
+			off += ofofofofofofoofoffofofofofoofoffoofofoffoofofofoffofoofofoffofooofofosetfofofofoofofosetofofofofofofoset * 0.85;
+			mb.y = FlxMath.lerp(FlxG.height / 2 - mb.height / 2 + off, mb.y, (elapsed * 114).clampFloat(0.01, 0.99));
+		}
+	}
+
+	function mbsort(idk:Int, b1:MenuButton, b2:MenuButton)
+	{
+		return FlxSort.byValues(FlxSort.ASCENDING, b1.hovering ? 1 : -1, 0);
 	}
 
 	function clampFloat(val:Float, min:Float, max:Float)
