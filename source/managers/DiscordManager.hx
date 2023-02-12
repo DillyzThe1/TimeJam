@@ -57,8 +57,8 @@ class DiscordManager
 			state: state,
 			details: menuName,
 			startTimestamp: startTimestamp,
-			largeImageKey: 'haxejam',
-			largeImageText: 'Will be revealed on February 12th, 2023',
+			largeImageKey: 'logo',
+			largeImageText: 'v0.5.0-HaxeJam',
 			#if debug
 			smallImageKey: 'flixel', smallImageText: 'Playing a dev build.',
 			#else
