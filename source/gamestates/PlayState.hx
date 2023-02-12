@@ -244,7 +244,10 @@ class PlayState extends TJState
 								PlayerDataManager.hasDoubleJump = true;
 								PlayerDataManager.save();
 
-								var dialogue:DialogueArea = new DialogueArea("pngintro");
+								var dialogue:DialogueArea = new DialogueArea("pngintro", function()
+								{
+									player.inputDisabled = false;
+								});
 								dialogue.cameras = [camHUD];
 								add(dialogue);
 

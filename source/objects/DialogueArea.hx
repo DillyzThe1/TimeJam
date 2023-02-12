@@ -52,11 +52,12 @@ class DialogueArea extends FlxSpriteGroup
 
 	public var dialogueSfx:FlxSound;
 
-	public function new(dialogueName:String)
+	var onComplete:() -> Void;
+
+	public function new(dialogueName:String, onComplete:() -> Void)
 	{
 		super();
-
-		dialogueSfx = new FlxSound().loadEmbedded(Paths.sound("dialogue continue"));
+		this.onComplete = onComplete;
 
 		bg = new FlxSprite(-FlxG.width / 2, -FlxG.height / 2).makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
 		bg.alpha = 0;
@@ -81,6 +82,7 @@ class DialogueArea extends FlxSpriteGroup
 		dialogueText.visible = false;
 
 		dialogueData = Json.parse(Assets.getText(Paths.json("dialogue/pngintro")));
+		dialogueSfx = new FlxSound().loadEmbedded(Paths.sound("dialogue continue"));
 
 		add(bg);
 		add(dialogueBox);
@@ -143,7 +145,8 @@ class DialogueArea extends FlxSpriteGroup
 				ease: FlxEase.cubeInOut,
 				onComplete: function(t:FlxTween)
 				{
-					trace("stage 7 walter");
+					if (this.onComplete != null)
+						this.onComplete();
 				}
 			});
 			return;
