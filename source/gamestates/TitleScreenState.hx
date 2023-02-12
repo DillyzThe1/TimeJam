@@ -106,7 +106,7 @@ class TitleScreenState extends TJState
 
 	var logoScalingAllowed:Bool = false;
 
-	var logoScales:Array<Float> = [0.645, 0.65, 0.655, 0.7];
+	var logoScales:Array<Float> = [0.645, 0.65, 0.655, 0.7, 1];
 
 	public override function update(elapsed:Float)
 	{
@@ -135,8 +135,8 @@ class TitleScreenState extends TJState
 		if (logoScalingAllowed)
 		{
 			logoElapsed += elapsed;
-			logoSpr.offset.y = Math.sin(logoElapsed) * 35;
-			logoSpr.offset.x = (Math.cos(logoElapsed) * 25) + 30;
+			logoSpr.offset.y = (Math.sin(logoElapsed) * 35) * logoScales[4];
+			logoSpr.offset.x = ((Math.cos(logoElapsed) * 25) + 30) * logoScales[4];
 			logoSpr.angle = (Math.cos(logoElapsed) * 2.5) + 2.5;
 		}
 
@@ -178,7 +178,7 @@ class TitleScreenState extends TJState
 				onComplete: function(t:FlxTween)
 				{
 					logoScalingAllowed = true;
-					logoScales = [0.245, 0.25, 0.255, 0.3];
+					logoScales = [0.245, 0.25, 0.255, 0.3, 0.5];
 				}
 			});
 
