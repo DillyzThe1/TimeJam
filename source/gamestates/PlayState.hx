@@ -302,7 +302,8 @@ class PlayState extends TJState
 		{
 			lvl.wizard.dialogueEnabled = player.getGraphicMidpoint().getDist(lvl.wizard.getGraphicMidpoint()) < 175;
 
-			if (ArchaicCrystal.lastCrystal() == 1
+			if (levelName.toLowerCase() == "tutorial"
+				&& ArchaicCrystal.lastCrystal() == 1
 				&& !flags.contains("crystal1_wizard_dialogue")
 				&& player.getGraphicMidpoint().getDist(lvl.wizard.getGraphicMidpoint()) < 350)
 			{
