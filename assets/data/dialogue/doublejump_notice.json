@@ -1,0 +1,36 @@
+{
+	"box": "normal",
+	"bgAlpha": 0.35,
+	"dialogue": [
+		{
+			"boxtype": "none",
+			"leftchar": "",
+			"rightchar": "",
+			"speaking": "",
+			"expressionleft": "",
+			"forceleft": false,
+			"expressionright": "",
+			"forceright": false,
+			"clear": true,
+			"clipname": "",
+			"dialogue": "You may now double jump.",
+			"skip_prompt": false,
+			"music_vol_mult": 1
+		},
+		{
+			"boxtype": "none",
+			"leftchar": "",
+			"rightchar": "",
+			"speaking": "",
+			"expressionleft": "",
+			"forceleft": false,
+			"expressionright": "",
+			"forceright": false,
+			"clear": true,
+			"clipname": "",
+			"dialogue": "Try looking for higher platforms that may have been previously unreachable.",
+			"skip_prompt": false,
+			"music_vol_mult": 1
+		}
+	]
+}

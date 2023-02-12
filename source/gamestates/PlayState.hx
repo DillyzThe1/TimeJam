@@ -36,7 +36,10 @@ class PlayState extends TJState
 
 	public var nextCrystals:Array<Int> = [];
 
-	public static var seenCutscene:Bool = false;
+	public static var seenOpeningCutscene:Bool = false;
+
+	// a bunch of flags a level can use to determine what has and has not happened
+	public static var flags:Array<String> = [];
 
 	override public function create()
 	{
@@ -92,7 +95,7 @@ class PlayState extends TJState
 		switch (levelName.toLowerCase())
 		{
 			case "tutorial":
-				if (!seenCutscene)
+				if (!seenOpeningCutscene)
 				{
 					player.inputDisabled = true;
 					camMAIN.alpha = camHUD.alpha = 0;
@@ -111,10 +114,34 @@ class PlayState extends TJState
 				}
 				else
 				{
+					player.inputDisabled = true;
 					camMAIN.zoom = 7.5;
-					camHUD.fade(FlxColor.BLACK, 1, true);
+					camHUD.fade(FlxColor.BLACK, 1, true, function()
+					{
+						switch (ArchaicCrystal.lastCrystal())
+						{
+							case 0:
+								startDialogue("doublejump_notice");
+							default:
+								player.inputDisabled = false;
+						}
+					});
 				}
+			default:
+				camMAIN.zoom = 7.5;
+				camHUD.fade(FlxColor.BLACK, 1, true);
 		}
+	}
+
+	function startDialogue(dialogueName:String)
+	{
+		player.inputDisabled = true;
+		var dialogue:DialogueArea = new DialogueArea(dialogueName, function()
+		{
+			player.inputDisabled = false;
+		});
+		dialogue.cameras = [camHUD];
+		add(dialogue);
 	}
 
 	var lastSkid:Int = -1;
@@ -243,14 +270,7 @@ class PlayState extends TJState
 								PlayerDataManager.hasDoubleJump = true;
 								PlayerDataManager.save();
 
-								var dialogue:DialogueArea = new DialogueArea("pngintro", function()
-								{
-									player.inputDisabled = false;
-								});
-								dialogue.cameras = [camHUD];
-								add(dialogue);
-
-								player.inputDisabled = true;
+								startDialogue("pngintro");
 						}
 				}
 
@@ -279,7 +299,17 @@ class PlayState extends TJState
 		}
 
 		if (lvl.wizard != null)
+		{
 			lvl.wizard.dialogueEnabled = player.getGraphicMidpoint().getDist(lvl.wizard.getGraphicMidpoint()) < 175;
+
+			if (ArchaicCrystal.lastCrystal() == 1
+				&& !flags.contains("crystal1_wizard_dialogue")
+				&& player.getGraphicMidpoint().getDist(lvl.wizard.getGraphicMidpoint()) < 350)
+			{
+				flags.push("crystal1_wizard_dialogue");
+				startDialogue("wizard_crystal1");
+			}
+		}
 
 		if (player.y + player.height > FlxG.worldBounds.y + FlxG.worldBounds.height)
 		{
@@ -330,7 +360,7 @@ class PlayState extends TJState
 		switch (subname)
 		{
 			case "gamesubstates.CutsceneSubState":
-				seenCutscene = true;
+				seenOpeningCutscene = true;
 				camHUD.flash(FlxColor.BLACK);
 				camMAIN.alpha = camHUD.alpha = 1;
 				player.inputDisabled = false;

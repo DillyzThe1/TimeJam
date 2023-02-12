@@ -86,7 +86,7 @@ class DialogueArea extends FlxSpriteGroup
 		// ssssss = new FlxSound().loadEmbedded(Paths.sound("type"));
 		// dialogueText.sounds = [ssssss];
 
-		dialogueData = Json.parse(Assets.getText(Paths.json("dialogue/pngintro")));
+		dialogueData = Json.parse(Assets.getText(Paths.json("dialogue/" + dialogueName)));
 		dialogueSfx = new FlxSound().loadEmbedded(Paths.sound("dialogue continue"));
 
 		add(bg);
@@ -188,13 +188,14 @@ class DialogueArea extends FlxSpriteGroup
 		skipWhenDone = cur.skip_prompt;
 		FlxG.sound.music.volume = 0.2 * cur.music_vol_mult;
 
-		dialogueText.alignment = cur.speaking == "left" ? LEFT : RIGHT;
+		dialogueText.alignment = cur.speaking != "right" ? LEFT : RIGHT;
 
 		dialogueBox.animation.play(cur.boxtype.toLowerCase(), true);
 		switch (cur.boxtype.toLowerCase())
 		{
 			case "none":
-				dialogueSpaceLeft = dialogueSpaceRight = 75;
+				dialogueSpaceLeft = 75;
+				dialogueSpaceRight = 75;
 			case "left":
 				dialogueSpaceLeft = 275;
 				dialogueSpaceRight = 75;
@@ -214,7 +215,7 @@ class DialogueArea extends FlxSpriteGroup
 		if (dialogueText.visible)
 		{
 			dialogueText.x = dialogueBox.x + dialogueSpaceLeft;
-			dialogueText.y = dialogueBox.y + dialogueBox.height / 3;
+			dialogueText.y = dialogueBox.y + dialogueBox.height / 3 + 5;
 			dialogueText.fieldWidth = (dialogueBox.width * 0.75) - dialogueSpaceRight;
 			// ssssss.volume = 0.35 * FlxG.sound.volume;
 		}

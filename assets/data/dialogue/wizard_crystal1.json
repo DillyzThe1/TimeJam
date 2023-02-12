@@ -1,0 +1,51 @@
+{
+	"box": "normal",
+	"bgAlpha": 0.35,
+	"dialogue": [
+		{
+			"boxtype": "right",
+			"leftchar": "",
+			"rightchar": "pngwizard",
+			"speaking": "right",
+			"expressionleft": "",
+			"forceleft": false,
+			"expressionright": "png",
+			"forceright": true,
+			"clear": true,
+			"clipname": "",
+			"dialogue": "Hey, once you've collected and returned one of those archaic crystals, they'll bring you right to a more corrected timeline!",
+			"skip_prompt": false,
+			"music_vol_mult": 1
+		},
+		{
+			"boxtype": "right",
+			"leftchar": "",
+			"rightchar": "pngwizard",
+			"speaking": "right",
+			"expressionleft": "",
+			"forceleft": false,
+			"expressionright": "png",
+			"forceright": true,
+			"clear": true,
+			"clipname": "",
+			"dialogue": "It seems like they usually cause areas close to where you collected them to appear, though I can't remember...",
+			"skip_prompt": false,
+			"music_vol_mult": 1
+		},
+		{
+			"boxtype": "right",
+			"leftchar": "",
+			"rightchar": "pngwizard",
+			"speaking": "right",
+			"expressionleft": "",
+			"forceleft": false,
+			"expressionright": "png",
+			"forceright": true,
+			"clear": true,
+			"clipname": "",
+			"dialogue": "Wouldya mind checking back up there, kid?",
+			"skip_prompt": false,
+			"music_vol_mult": 1
+		}
+	]
+}

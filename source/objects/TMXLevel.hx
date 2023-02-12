@@ -6,6 +6,7 @@ import flixel.FlxSprite;
 import flixel.addons.editors.tiled.TiledImageLayer;
 import flixel.addons.editors.tiled.TiledImageTile;
 import flixel.addons.editors.tiled.TiledLayer.TiledLayerType;
+import flixel.addons.editors.tiled.TiledLayer;
 import flixel.addons.editors.tiled.TiledMap;
 import flixel.addons.editors.tiled.TiledObject;
 import flixel.addons.editors.tiled.TiledObjectLayer;
@@ -19,6 +20,7 @@ import flixel.math.FlxPoint;
 import flixel.tile.FlxBaseTilemap.FlxTilemapAutoTiling;
 import flixel.tile.FlxTilemap;
 import flixel.util.FlxDirectionFlags;
+import gamestates.PlayState;
 import managers.PlayerPreferenceManager;
 import objects.ArcahicCrystal.ArchaicCrystal;
 
@@ -61,6 +63,10 @@ class TMXLevel extends TiledMap
 		{
 			if (layer.type != TiledLayerType.TILE)
 				continue;
+
+			if (isLayerDisabled(layer))
+				continue;
+
 			var tileLayer:TiledTileLayer = cast layer;
 
 			for (set in tilesets)
@@ -79,12 +85,29 @@ class TMXLevel extends TiledMap
 		trace('[${FlxG.worldBounds.x}, ${FlxG.worldBounds.y}, ${FlxG.worldBounds.width}, ${FlxG.worldBounds.height}]');
 	}
 
+	function isLayerDisabled(curLayer:TiledLayer)
+	{
+		var tryproperty:String = curLayer.properties.get("spawn_whenhas");
+		var spawnwhen:Int = (tryproperty == null) ? -1 : Std.parseInt(tryproperty);
+		if (spawnwhen != -1 && !ArchaicCrystal.crystalsCollected.contains(spawnwhen))
+			return true;
+		tryproperty = curLayer.properties.get("despawn_whenhas");
+		var despawnwhen:Int = (tryproperty == null) ? -1 : Std.parseInt(tryproperty);
+		if (despawnwhen != -1 && ArchaicCrystal.crystalsCollected.contains(despawnwhen))
+			return true;
+		return curLayer.properties.get("disabled") == "true";
+	}
+
 	function initiateGraphics()
 	{
 		for (layer in layers)
 		{
 			if (layer.type != TiledLayerType.IMAGE)
 				continue;
+
+			if (isLayerDisabled(layer))
+				continue;
+
 			var imgLayer:TiledImageLayer = cast layer;
 			sprGroup.add(new FlxSprite(imgLayer.x, imgLayer.y, Paths.imagetmx(imgLayer.imagePath)));
 		}
@@ -97,12 +120,15 @@ class TMXLevel extends TiledMap
 			if (layer.type != TiledLayerType.OBJECT)
 				continue;
 
+			if (isLayerDisabled(layer))
+				continue;
+
 			var objLayer:TiledObjectLayer = cast layer;
 
 			if (objLayer.name == "images")
 				for (o in objLayer.objects)
 					loadIndividualGraphicalObject(o);
-			else if (objLayer.name == "objects")
+			else if (objLayer.name.startsWith("objects"))
 				for (o in objLayer.objects)
 					loadIndividualObject(o, objLayer);
 		}
@@ -178,6 +204,10 @@ class TMXLevel extends TiledMap
 		{
 			if (layer.type != TiledLayerType.TILE)
 				continue;
+
+			if (isLayerDisabled(layer))
+				continue;
+
 			var tileLayer:TiledTileLayer = cast layer;
 			var tileSetName:String = tileLayer.properties.get("tileset");
 

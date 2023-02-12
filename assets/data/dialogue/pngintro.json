@@ -58,7 +58,7 @@
 			"forceright": true,
 			"clear": true,
 			"clipname": "dialogue/pngwizard_name",
-			"dialogue": "Of what name resides under your title?",
+			"dialogue": "What is your name?",
 			"skip_prompt": false,
 			"music_vol_mult": 1
 		},
@@ -247,7 +247,7 @@
 			"leftchar": "jason",
 			"rightchar": "pngwizard",
 			"speaking": "left",
-			"expressionleft": "hold-crystal-ANGER",
+			"expressionleft": "jpeg-quality",
 			"forceleft": true,
 			"expressionright": "png",
 			"forceright": true,

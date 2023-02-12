@@ -53,7 +53,9 @@ class MainMenuState extends TJState
 			{
 				for (i in 0...ArchaicCrystal.crystalsCollected.length)
 					ArchaicCrystal.crystalsCollected.pop();
-				PlayState.seenCutscene = false;
+				for (i in 0...PlayState.flags.length)
+					PlayState.flags.pop();
+				PlayState.seenOpeningCutscene = false;
 				FlxG.switchState(new PlayState());
 			});
 		}

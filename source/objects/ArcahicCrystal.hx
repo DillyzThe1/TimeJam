@@ -61,4 +61,9 @@ class ArchaicCrystal extends FlxSprite
 		allCrystals.remove(this);
 		super.destroy();
 	}
+
+	public static function lastCrystal()
+	{
+		return crystalsCollected[crystalsCollected.length];
+	}
 }
