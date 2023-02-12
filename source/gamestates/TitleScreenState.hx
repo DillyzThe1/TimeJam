@@ -359,7 +359,8 @@ class TitleScreenState extends TJState
 			// just bc i hate the formatting
 			var off:Float = ((menuActive || mb.forcePosition) ? mb.getOff_Y() : 1500);
 			off += ofofofofofofoofoffofofofofoofoffoofofoffoofofofoffofoofofoffofooofofosetfofofofoofofosetofofofofofofoset * 0.7;
-			mb.y = FlxMath.lerp(FlxG.height / 2 - mb.height / 2 + off, mb.y, (elapsed * 114).clampFloat(0.01, 0.99));
+			mb.y = FlxMath.lerp(FlxG.height / 2 - mb.height / 2 + off, mb.y,
+				(elapsed * #if html5 55 #else 114 #end / (FlxG.updateFramerate / 60)).clampFloat(0.01, 0.99));
 		}
 	}
 
