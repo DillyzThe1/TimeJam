@@ -34,7 +34,7 @@ class PlayState extends TJState
 	var crystal_pickupSfx:Array<FlxSound>;
 	var crystal_swooshSfx:FlxSound;
 
-	public var nextCrystals:Array<Int> = [];
+	public var nextCrystal:Int = -1;
 
 	public static var seenOpeningCutscene:Bool = false;
 
@@ -250,32 +250,33 @@ class PlayState extends TJState
 				&& (levelName != "Tutorial" || ArchaicCrystal.crystalsCollected.contains(0));
 		}
 
-		for (crystal in ArchaicCrystal.allCrystals)
-			if (FlxG.overlap(crystal, player))
-			{
-				nextCrystals.push(crystal.curIndex);
-
-				var sfx:FlxSound = crystal_pickupSfx[FlxG.random.int(0, crystal_pickupSfx.length - 1)];
-				sfx.volume = 0.5 * FlxG.sound.volume;
-				sfx.play(true, 0.001);
-				crystal_swooshSfx.volume = FlxG.sound.volume;
-				crystal_swooshSfx.play();
-
-				switch (levelName.toLowerCase())
+		if (nextCrystal == -1)
+			for (crystal in ArchaicCrystal.allCrystals)
+				if (FlxG.overlap(crystal, player))
 				{
-					case "tutorial":
-						switch (crystal.curIndex)
-						{
-							case 0:
-								PlayerDataManager.hasDoubleJump = true;
-								PlayerDataManager.save();
+					nextCrystal = crystal.curIndex;
 
-								startDialogue("pngintro");
-						}
+					var sfx:FlxSound = crystal_pickupSfx[FlxG.random.int(0, crystal_pickupSfx.length - 1)];
+					sfx.volume = 0.5 * FlxG.sound.volume;
+					sfx.play(true, 0.001);
+					crystal_swooshSfx.volume = FlxG.sound.volume;
+					crystal_swooshSfx.play();
+
+					switch (levelName.toLowerCase())
+					{
+						case "tutorial":
+							switch (crystal.curIndex)
+							{
+								case 0:
+									PlayerDataManager.hasDoubleJump = true;
+									PlayerDataManager.save();
+
+									startDialogue("pngintro");
+							}
+					}
+
+					crystal.destroy();
 				}
-
-				crystal.destroy();
-			}
 
 		if (player.isTouching(FlxDirection.LEFT) || player.isTouching(FlxDirection.RIGHT))
 			player.acceleration.x = 0;
@@ -288,12 +289,11 @@ class PlayState extends TJState
 
 		if (lvl.timelineReflector != null)
 		{
-			if (FlxG.overlap(lvl.timelineReflector, player) && !player.inputDisabled && nextCrystals.length > 0)
+			if (FlxG.overlap(lvl.timelineReflector, player) && !player.inputDisabled && nextCrystal != -1)
 			{
 				FlxG.sound.play(Paths.sound("crystal_insert")).persist = true;
 				player.inputDisabled = true;
-				for (i in 0...nextCrystals.length)
-					ArchaicCrystal.crystalsCollected.push(nextCrystals.pop());
+				ArchaicCrystal.addCrystal(nextCrystal);
 				FlxG.switchState(new PlayState());
 			}
 		}

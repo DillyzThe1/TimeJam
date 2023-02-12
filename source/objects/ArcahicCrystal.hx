@@ -6,6 +6,7 @@ class ArchaicCrystal extends FlxSprite
 {
 	public static var allCrystals:Array<ArchaicCrystal> = [];
 	public static var crystalsCollected:Array<Int> = [];
+	public static var lastAdded:Int = -1;
 
 	public static function getHighestIndex()
 	{
@@ -62,8 +63,16 @@ class ArchaicCrystal extends FlxSprite
 		super.destroy();
 	}
 
+	public static function addCrystal(crystal:Int)
+	{
+		if (crystal < 0)
+			return;
+		lastAdded = crystal;
+		crystalsCollected.push(crystal);
+	}
+
 	public static function lastCrystal()
 	{
-		return crystalsCollected[crystalsCollected.length];
+		return lastAdded;
 	}
 }

@@ -68,6 +68,8 @@ class DialogueArea extends FlxSpriteGroup
 
 	var closing:Bool = false;
 
+	var allowInput:Bool = false;
+
 	public function new(dialogueName:String, onComplete:() -> Void)
 	{
 		super();
@@ -125,8 +127,6 @@ class DialogueArea extends FlxSpriteGroup
 	var dialogueSpaceLeft:Int = 75;
 	var dialogueSpaceRight:Int = 75;
 	var dialogueInProgress:Bool = false;
-
-	var allowInput:Bool = false;
 
 	var skipWhenDone:Bool = true;
 	var cur:DialogueInstance;

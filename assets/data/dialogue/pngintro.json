@@ -325,7 +325,7 @@
 			"expressionleft": "smirk-look",
 			"forceleft": true,
 			"expressionright": "deathstare",
-			"forceright": false,
+			"forceright": true,
 			"clear": false,
 			"clipname": "__continue",
 			"dialogue": "ho",
