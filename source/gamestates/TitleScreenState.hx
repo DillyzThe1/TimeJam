@@ -195,8 +195,8 @@ class TitleScreenState extends TJState
 				FlxG.sound.music.fadeIn(0.5, 0.75, 1);
 			textSpr.animation.play("begin", true);
 			textSpr.visible = true;
-			textSpr.offset.x = 31;
-			textSpr.offset.y = 0;
+			textSpr.offset.x = 0;
+			textSpr.offset.y = 37;
 
 			if (bgTween != null)
 			{
@@ -358,7 +358,7 @@ class TitleScreenState extends TJState
 		{
 			// just bc i hate the formatting
 			var off:Float = ((menuActive || mb.forcePosition) ? mb.getOff_Y() : 1500);
-			off += ofofofofofofoofoffofofofofoofoffoofofoffoofofofoffofoofofoffofooofofosetfofofofoofofosetofofofofofofoset * 0.85;
+			off += ofofofofofofoofoffofofofofoofoffoofofoffoofofofoffofoofofoffofooofofosetfofofofoofofosetofofofofofofoset * 0.7;
 			mb.y = FlxMath.lerp(FlxG.height / 2 - mb.height / 2 + off, mb.y, (elapsed * 114).clampFloat(0.01, 0.99));
 		}
 	}
