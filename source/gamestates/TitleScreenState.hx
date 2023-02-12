@@ -2,8 +2,10 @@ package gamestates;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
+import flixel.addons.text.FlxTypeText;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 import flixel.math.FlxMath;
+import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
@@ -32,6 +34,8 @@ class TitleScreenState extends TJState
 
 	var menuButtons:FlxTypedSpriteGroup<MenuButton>;
 
+	var creditsText:FlxTypeText;
+
 	public override function create()
 	{
 		super.create();
@@ -58,6 +62,14 @@ class TitleScreenState extends TJState
 		textSpr.animation.addByIndices("static", "press enter static", [1], "", 24, true, false, false);
 		textSpr.animation.addByPrefix("vanish", "press enter vanish", 24, false, false, false);
 		textSpr.screenCenter(X);
+
+		creditsText = new FlxTypeText(0, FlxG.height * 0.9, 0, "", 24, true);
+		creditsText.borderSize = 2;
+		creditsText.borderColor = FlxColor.BLACK;
+		creditsText.borderStyle = FlxTextBorderStyle.OUTLINE;
+		creditsText.alignment = CENTER;
+		creditsText.resetText("A game by DillyzThe1 & Impostor5875.");
+		add(creditsText);
 
 		textSpr.animation.finishCallback = function(n:String)
 		{
@@ -107,6 +119,17 @@ class TitleScreenState extends TJState
 
 		menuButtons = new FlxTypedSpriteGroup<MenuButton>();
 		add(menuButtons);
+
+		for (i in 0...buttons.length)
+		{
+			var button:MenuButton = new MenuButton(0, 0, buttons[i]);
+			button.screenCenter(X);
+			button.screenCenter(Y);
+			button.x += button.getOff_X();
+			button.y += 1500 + ofofofofofofoofoffofofofofoofoffoofofoffoofofofoffofoofofoffofooofofosetfofofofoofofosetofofofofofofoset * 0.85;
+			menuButtons.add(button);
+			add(button.hitbox);
+		}
 	}
 
 	var totalElapsed:Float = 0;
@@ -126,14 +149,13 @@ class TitleScreenState extends TJState
 
 	var inputAllowed:Bool = true;
 
-	var generatedButtons:Bool = false;
-
-	var ofofofofofofoofoffofofofofoofoffoofofoffoofofofoffofoofofoffofooofofosetfofofofoofofosetofofofofofofoset:Int = 75;
+	var ofofofofofofoofoffofofofofoofoffoofofoffoofofofoffofoofofoffofooofofosetfofofofoofofosetofofofofofofoset:Int = 60;
 
 	public override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 		totalElapsed += elapsed;
+		creditsText.screenCenter(X);
 
 		// lastStep = MusicManager.currentStep;
 		lastBeat = MusicManager.currentBeat;
@@ -164,6 +186,7 @@ class TitleScreenState extends TJState
 
 		if (FlxG.keys.justPressed.ESCAPE && menuActive && inputAllowed)
 		{
+			creditsText.erase(0.0125, true);
 			inputAllowed = false;
 			menuActive = false;
 			logoScalingAllowed = false;
@@ -248,25 +271,7 @@ class TitleScreenState extends TJState
 				{
 					logoScalingAllowed = inputAllowed = true;
 					logoScales = [0.245, 0.25, 0.255, 0.3, 0.5];
-				}
-			});
-
-			new FlxTimer().start(1.5, function(bruh:FlxTimer)
-			{
-				// FlxG.switchState(new MainMenuState());
-				if (!generatedButtons)
-				{
-					for (i in 0...buttons.length)
-					{
-						var button:MenuButton = new MenuButton(0, 0, buttons[i]);
-						button.screenCenter(X);
-						button.screenCenter(Y);
-						button.x += button.getOff_X();
-						button.y += 1500 + ofofofofofofoofoffofofofofoofoffoofofoffoofofofoffofoofofoffofooofofosetfofofofoofofosetofofofofofofoset * 0.85;
-						menuButtons.add(button);
-						add(button.hitbox);
-					}
-					generatedButtons = true;
+					creditsText.start(0.02, true);
 				}
 			});
 		}
@@ -284,6 +289,7 @@ class TitleScreenState extends TJState
 
 					// mb.forcePosition = true;
 
+					creditsText.erase(0.0125, true);
 					inputAllowed = false;
 					menuActive = false;
 					logoScalingAllowed = false;
