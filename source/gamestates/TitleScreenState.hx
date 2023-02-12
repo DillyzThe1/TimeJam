@@ -9,12 +9,15 @@ import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import gamestates.menus.MainMenuState;
 import managers.MusicManager;
+import objects.MenuButton.ButtonTypes;
+import objects.MenuButton;
 
 class TitleScreenState extends TJState
 {
 	var bg:FlxSprite;
 	var logoSpr:FlxSprite;
 	var textSpr:FlxSprite;
+	var buttons:Array<ButtonTypes> = [PLAY, OPTIONS, ISSUES, QUIT];
 
 	var bgTween:FlxTween;
 	var logoTween:FlxTween;
@@ -152,7 +155,7 @@ class TitleScreenState extends TJState
 				bgTween.cancel();
 				bgTween.destroy();
 			}
-			FlxTween.tween(bg, {alpha: 0}, 0.5, {ease: FlxEase.cubeInOut});
+			FlxTween.tween(bg, {y: bg.y - 230}, 0.75, {ease: FlxEase.cubeOut});
 
 			// vsc please stop trolling me
 			if (logoTween != null)
@@ -161,9 +164,9 @@ class TitleScreenState extends TJState
 				logoTween.destroy();
 			}
 			FlxTween.tween(logoSpr, {
-				alpha: 0,
-				"scale.x": 0.1,
-				"scale.y": 0.1,
+				y: logoSpr.y - 230,
+				"scale.x": 0.25,
+				"scale.y": 0.25,
 				"offset.x": 0,
 				"offset.y": 0,
 				"angle": 0
@@ -171,7 +174,33 @@ class TitleScreenState extends TJState
 
 			new FlxTimer().start(1.5, function(bruh:FlxTimer)
 			{
-				FlxG.switchState(new MainMenuState());
+				// FlxG.switchState(new MainMenuState());
+				for (i in 0...buttons.length)
+				{
+					var button:MenuButton = new MenuButton(0, 0, buttons[i]);
+					switch buttons[i]
+					{
+						case PLAY:
+							button.screenCenter(X);
+							button.screenCenter(Y);
+						case OPTIONS:
+							button.screenCenter(X);
+							button.screenCenter(Y);
+							button.y += 100;
+						case ISSUES:
+							button.screenCenter(X);
+							button.x -= 100;
+							button.screenCenter(Y);
+							button.y += 190;
+						case QUIT:
+							button.screenCenter(X);
+							button.x += 100;
+							button.screenCenter(Y);
+							button.y += 190;
+					}
+					add(button);
+					add(button.hitbox);
+				}
 			});
 		}
 	}
