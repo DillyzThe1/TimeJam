@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="jason.png">
+	<!-- Created with Adobe Animate version 23.0.1.70 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="jason - akward speaking0000" x="1403" y="451" width="210" height="232" frameX="0" frameY="-1" frameWidth="225" frameHeight="233"/>
+	<SubTexture name="jason - akward speaking0001" x="1403" y="451" width="210" height="232" frameX="0" frameY="-1" frameWidth="225" frameHeight="233"/>
+	<SubTexture name="jason - akward speaking0002" x="456" y="1180" width="216" height="232" frameX="0" frameY="-1" frameWidth="225" frameHeight="233"/>
+	<SubTexture name="jason - akward speaking0003" x="456" y="1180" width="216" height="232" frameX="0" frameY="-1" frameWidth="225" frameHeight="233"/>
+	<SubTexture name="jason - akward speaking0004" x="458" y="943" width="223" height="233" frameX="0" frameY="0" frameWidth="225" frameHeight="233"/>
+	<SubTexture name="jason - akward speaking0005" x="458" y="943" width="223" height="233" frameX="0" frameY="0" frameWidth="225" frameHeight="233"/>
+	<SubTexture name="jason - akward speaking0006" x="560" y="0" width="225" height="233"/>
+	<SubTexture name="jason - akward speaking0007" x="560" y="0" width="225" height="233"/>
+	<SubTexture name="jason - akward speaking0008" x="560" y="0" width="225" height="233"/>
+	<SubTexture name="jason - akward speaking0009" x="560" y="0" width="225" height="233"/>
+	<SubTexture name="jason - back away 10000" x="1110" y="1407" width="208" height="233" frameX="0" frameY="0" frameWidth="215" frameHeight="233"/>
+	<SubTexture name="jason - back away 10001" x="1110" y="1407" width="208" height="233" frameX="0" frameY="0" frameWidth="215" frameHeight="233"/>
+	<SubTexture name="jason - back away 10002" x="1246" y="0" width="214" height="233" frameX="0" frameY="0" frameWidth="215" frameHeight="233"/>
+	<SubTexture name="jason - back away 10003" x="1246" y="0" width="214" height="233" frameX="0" frameY="0" frameWidth="215" frameHeight="233"/>
+	<SubTexture name="jason - back away 10004" x="1184" y="473" width="215" height="233"/>
+	<SubTexture name="jason - back away 10005" x="1184" y="473" width="215" height="233"/>
+	<SubTexture name="jason - back away 10006" x="1184" y="473" width="215" height="233"/>
+	<SubTexture name="jason - back away 10007" x="1184" y="473" width="215" height="233"/>
+	<SubTexture name="jason - back away 10008" x="1184" y="473" width="215" height="233"/>
+	<SubTexture name="jason - back away 10009" x="1184" y="473" width="215" height="233"/>
+	<SubTexture name="jason - back away 20000" x="227" y="1416" width="208" height="233" frameX="0" frameY="0" frameWidth="216" frameHeight="233"/>
+	<SubTexture name="jason - back away 20001" x="227" y="1416" width="208" height="233" frameX="0" frameY="0" frameWidth="216" frameHeight="233"/>
+	<SubTexture name="jason - back away 20002" x="1181" y="710" width="214" height="233" frameX="0" frameY="0" frameWidth="216" frameHeight="233"/>
+	<SubTexture name="jason - back away 20003" x="1181" y="710" width="214" height="233" frameX="0" frameY="0" frameWidth="216" frameHeight="233"/>
+	<SubTexture name="jason - back away 20004" x="1021" y="236" width="216" height="233"/>
+	<SubTexture name="jason - back away 20005" x="1021" y="236" width="216" height="233"/>
+	<SubTexture name="jason - back away 20006" x="1021" y="236" width="216" height="233"/>
+	<SubTexture name="jason - back away 20007" x="1021" y="236" width="216" height="233"/>
+	<SubTexture name="jason - back away 20008" x="1021" y="236" width="216" height="233"/>
+	<SubTexture name="jason - back away 20009" x="1021" y="236" width="216" height="233"/>
+	<SubTexture name="jason - back away speak0000" x="0" y="1417" width="208" height="233" frameX="0" frameY="0" frameWidth="216" frameHeight="233"/>
+	<SubTexture name="jason - back away speak0001" x="0" y="1417" width="208" height="233" frameX="0" frameY="0" frameWidth="216" frameHeight="233"/>
+	<SubTexture name="jason - back away speak0002" x="1395" y="947" width="214" height="233" frameX="0" frameY="0" frameWidth="216" frameHeight="233"/>
+	<SubTexture name="jason - back away speak0003" x="1395" y="947" width="214" height="233" frameX="0" frameY="0" frameWidth="216" frameHeight="233"/>
+	<SubTexture name="jason - back away speak0004" x="964" y="473" width="216" height="233"/>
+	<SubTexture name="jason - back away speak0005" x="964" y="473" width="216" height="233"/>
+	<SubTexture name="jason - back away speak0006" x="1021" y="236" width="216" height="233"/>
+	<SubTexture name="jason - back away speak0007" x="1021" y="236" width="216" height="233"/>
+	<SubTexture name="jason - back away speak0008" x="1021" y="236" width="216" height="233"/>
+	<SubTexture name="jason - back away speak0009" x="1021" y="236" width="216" height="233"/>
+	<SubTexture name="jason - bored0000" x="1464" y="0" width="210" height="232" frameX="0" frameY="-1" frameWidth="225" frameHeight="233"/>
+	<SubTexture name="jason - bored0001" x="1464" y="0" width="210" height="232" frameX="0" frameY="-1" frameWidth="225" frameHeight="233"/>
+	<SubTexture name="jason - bored0002" x="955" y="1171" width="216" height="232" frameX="0" frameY="-1" frameWidth="225" frameHeight="233"/>
+	<SubTexture name="jason - bored0003" x="955" y="1171" width="216" height="232" frameX="0" frameY="-1" frameWidth="225" frameHeight="233"/>
+	<SubTexture name="jason - bored0004" x="728" y="935" width="223" height="233" frameX="0" frameY="0" frameWidth="225" frameHeight="233"/>
+	<SubTexture name="jason - bored0005" x="728" y="935" width="223" height="233" frameX="0" frameY="0" frameWidth="225" frameHeight="233"/>
+	<SubTexture name="jason - bored0006" x="270" y="705" width="225" height="233"/>
+	<SubTexture name="jason - bored0007" x="270" y="705" width="225" height="233"/>
+	<SubTexture name="jason - bored0008" x="270" y="705" width="225" height="233"/>
+	<SubTexture name="jason - bored0009" x="270" y="705" width="225" height="233"/>
+	<SubTexture name="jason - confused looking away0000" x="560" y="237" width="224" height="232"/>
+	<SubTexture name="jason - confused looking away0001" x="1018" y="0" width="224" height="232"/>
+	<SubTexture name="jason - confused speaking0000" x="439" y="1416" width="208" height="231" frameX="0" frameY="-1" frameWidth="224" frameHeight="232"/>
+	<SubTexture name="jason - confused speaking0001" x="439" y="1416" width="208" height="231" frameX="0" frameY="-1" frameWidth="224" frameHeight="232"/>
+	<SubTexture name="jason - confused speaking0002" x="1399" y="710" width="214" height="231" frameX="0" frameY="-1" frameWidth="224" frameHeight="232"/>
+	<SubTexture name="jason - confused speaking0003" x="1399" y="710" width="214" height="231" frameX="0" frameY="-1" frameWidth="224" frameHeight="232"/>
+	<SubTexture name="jason - confused speaking0004" x="955" y="935" width="222" height="232" frameX="0" frameY="0" frameWidth="224" frameHeight="232"/>
+	<SubTexture name="jason - confused speaking0005" x="955" y="935" width="222" height="232" frameX="0" frameY="0" frameWidth="224" frameHeight="232"/>
+	<SubTexture name="jason - confused speaking0006" x="793" y="237" width="224" height="232"/>
+	<SubTexture name="jason - confused speaking0007" x="793" y="237" width="224" height="232"/>
+	<SubTexture name="jason - confused speaking0008" x="793" y="237" width="224" height="232"/>
+	<SubTexture name="jason - confused speaking0009" x="793" y="237" width="224" height="232"/>
+	<SubTexture name="jason - deathstare0000" x="282" y="473" width="267" height="228"/>
+	<SubTexture name="jason - deathstare0001" x="0" y="474" width="266" height="228" frameX="0" frameY="0" frameWidth="267" frameHeight="228"/>
+	<SubTexture name="jason - flabber gasted0000" x="229" y="942" width="225" height="233"/>
+	<SubTexture name="jason - flabber gasted0001" x="0" y="943" width="225" height="233"/>
+	<SubTexture name="jason - holding crystal0000" x="283" y="0" width="273" height="232" frameX="0" frameY="-1" frameWidth="279" frameHeight="233"/>
+	<SubTexture name="jason - holding crystal0001" x="283" y="0" width="273" height="232" frameX="0" frameY="-1" frameWidth="279" frameHeight="233"/>
+	<SubTexture name="jason - holding crystal0002" x="282" y="237" width="274" height="232" frameX="0" frameY="-1" frameWidth="279" frameHeight="233"/>
+	<SubTexture name="jason - holding crystal0003" x="282" y="237" width="274" height="232" frameX="0" frameY="-1" frameWidth="279" frameHeight="233"/>
+	<SubTexture name="jason - holding crystal0004" x="0" y="237" width="278" height="233" frameX="0" frameY="0" frameWidth="279" frameHeight="233"/>
+	<SubTexture name="jason - holding crystal0005" x="0" y="237" width="278" height="233" frameX="0" frameY="0" frameWidth="279" frameHeight="233"/>
+	<SubTexture name="jason - holding crystal0006" x="0" y="0" width="279" height="233"/>
+	<SubTexture name="jason - holding crystal0007" x="0" y="0" width="279" height="233"/>
+	<SubTexture name="jason - holding crystal0008" x="0" y="0" width="279" height="233"/>
+	<SubTexture name="jason - holding crystal0009" x="0" y="0" width="279" height="233"/>
+	<SubTexture name="jason - jpeg0000" x="553" y="473" width="236" height="229" frameX="-3" frameY="0" frameWidth="239" frameHeight="229"/>
+	<SubTexture name="jason - jpeg0001" x="728" y="706" width="232" height="225" frameX="-4" frameY="-4" frameWidth="239" frameHeight="229"/>
+	<SubTexture name="jason - jpeg0002" x="1403" y="237" width="235" height="210" frameX="0" frameY="-19" frameWidth="239" frameHeight="229"/>
+	<SubTexture name="jason - smirk0000" x="1395" y="1184" width="210" height="232" frameX="0" frameY="-1" frameWidth="225" frameHeight="233"/>
+	<SubTexture name="jason - smirk0001" x="1395" y="1184" width="210" height="232" frameX="0" frameY="-1" frameWidth="225" frameHeight="233"/>
+	<SubTexture name="jason - smirk0002" x="676" y="1180" width="216" height="232" frameX="0" frameY="-1" frameWidth="225" frameHeight="233"/>
+	<SubTexture name="jason - smirk0003" x="676" y="1180" width="216" height="232" frameX="0" frameY="-1" frameWidth="225" frameHeight="233"/>
+	<SubTexture name="jason - smirk0004" x="229" y="1179" width="223" height="233" frameX="0" frameY="0" frameWidth="225" frameHeight="233"/>
+	<SubTexture name="jason - smirk0005" x="229" y="1179" width="223" height="233" frameX="0" frameY="0" frameWidth="225" frameHeight="233"/>
+	<SubTexture name="jason - smirk0006" x="789" y="0" width="225" height="233"/>
+	<SubTexture name="jason - smirk0007" x="789" y="0" width="225" height="233"/>
+	<SubTexture name="jason - smirk0008" x="789" y="0" width="225" height="233"/>
+	<SubTexture name="jason - smirk0009" x="789" y="0" width="225" height="233"/>
+	<SubTexture name="jason - smirk-look0000" x="896" y="1407" width="210" height="232" frameX="0" frameY="-1" frameWidth="225" frameHeight="233"/>
+	<SubTexture name="jason - smirk-look0001" x="896" y="1407" width="210" height="232" frameX="0" frameY="-1" frameWidth="225" frameHeight="233"/>
+	<SubTexture name="jason - smirk-look0002" x="1175" y="1171" width="216" height="232" frameX="0" frameY="-1" frameWidth="225" frameHeight="233"/>
+	<SubTexture name="jason - smirk-look0003" x="1175" y="1171" width="216" height="232" frameX="0" frameY="-1" frameWidth="225" frameHeight="233"/>
+	<SubTexture name="jason - smirk-look0004" x="0" y="1180" width="223" height="233" frameX="0" frameY="0" frameWidth="225" frameHeight="233"/>
+	<SubTexture name="jason - smirk-look0005" x="0" y="1180" width="223" height="233" frameX="0" frameY="0" frameWidth="225" frameHeight="233"/>
+	<SubTexture name="jason - smirk-look0006" x="499" y="706" width="225" height="233"/>
+	<SubTexture name="jason - smirk-look0007" x="499" y="706" width="225" height="233"/>
+	<SubTexture name="jason - smirk-look0008" x="499" y="706" width="225" height="233"/>
+	<SubTexture name="jason - smirk-look0009" x="499" y="706" width="225" height="233"/>
+	<SubTexture name="jason - stare0000" x="0" y="706" width="225" height="233"/>
+	<SubTexture name="jason - stare0001" x="0" y="706" width="225" height="233"/>
+	<SubTexture name="jason - stare0002" x="0" y="706" width="225" height="233"/>
+	<SubTexture name="jason - stare0003" x="0" y="706" width="225" height="233"/>
+</TextureAtlas>
