@@ -110,7 +110,7 @@ class Player extends FlxSprite
 		velocity.y = -maxVelocity.y * 0.415;
 		onGround = false;
 		playAnim("jump", true);
-		jumpSfx.volume = 0.325;
+		jumpSfx.volume = 0.325 * FlxG.sound.volume;
 		jumpSfx.play(true, 0.01);
 	}
 
