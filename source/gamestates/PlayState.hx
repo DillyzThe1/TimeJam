@@ -110,7 +110,10 @@ class PlayState extends TJState
 					});
 				}
 				else
+				{
+					camMAIN.zoom = 7.5;
 					camHUD.fade(FlxColor.BLACK, 1, true);
+				}
 		}
 	}
 
@@ -193,10 +196,6 @@ class PlayState extends TJState
 			player.playAnim("idle");
 		}
 
-		#if debug
-		zoomMAIN = FlxG.keys.pressed.SPACE ? 0.2 : 1;
-		#end
-
 		var lastBeat:Int = MusicManager.currentBeat;
 		MusicManager.updatePosition();
 		if (MusicManager.currentBeat != lastBeat && lastBeat % 4 == 0)
@@ -258,25 +257,6 @@ class PlayState extends TJState
 				crystal.destroy();
 			}
 
-		#if debug
-		if (FlxG.keys.justPressed.I)
-		{
-			PlayerDataManager.hasDoubleJump = true;
-			PlayerDataManager.save();
-		}
-		if (FlxG.keys.justPressed.O)
-		{
-			PlayerDataManager.hasDoubleJump = false;
-			PlayerDataManager.save();
-		}
-		if (FlxG.keys.justPressed.R)
-		{
-			for (i in 0...nextCrystals.length)
-				ArchaicCrystal.crystalsCollected.push(nextCrystals.pop());
-			FlxG.switchState(new PlayState());
-		}
-		#end
-
 		if (player.isTouching(FlxDirection.LEFT) || player.isTouching(FlxDirection.RIGHT))
 			player.acceleration.x = 0;
 		if (player.isTouching(FlxDirection.UP) && player.acceleration.y > 0)
@@ -284,6 +264,18 @@ class PlayState extends TJState
 			player.acceleration.y = 0;
 			player.velocity.y = player.maxVelocity.y * 0.15;
 			player.playAnim("jump hit", true);
+		}
+
+		if (lvl.timelineReflector != null)
+		{
+			if (FlxG.overlap(lvl.timelineReflector, player) && !player.inputDisabled && nextCrystals.length > 0)
+			{
+				FlxG.sound.play(Paths.sound("crystal_insert")).persist = true;
+				player.inputDisabled = true;
+				for (i in 0...nextCrystals.length)
+					ArchaicCrystal.crystalsCollected.push(nextCrystals.pop());
+				FlxG.switchState(new PlayState());
+			}
 		}
 
 		if (lvl.wizard != null)
