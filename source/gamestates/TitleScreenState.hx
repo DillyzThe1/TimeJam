@@ -106,6 +106,8 @@ class TitleScreenState extends TJState
 
 	var logoScalingAllowed:Bool = false;
 
+	var logoScales:Array<Float> = [0.645, 0.65, 0.655, 0.7];
+
 	public override function update(elapsed:Float)
 	{
 		super.update(elapsed);
@@ -119,13 +121,14 @@ class TitleScreenState extends TJState
 		{
 			plusThis += 25;
 			if (logoScalingAllowed)
-				logoSpr.scale.x = 0.7;
+				logoSpr.scale.x = logoScales[3];
 		}
 
 		if (plusThis > 1.155)
 			plusThis = FlxMath.lerp(plusThis, 1.15, clampFloat(elapsed * 10 * (120 / FlxG.drawFramerate), 0.01, 0.9));
-		if (logoScalingAllowed && (logoSpr.scale.x > 0.655 || logoSpr.scale.x < 0.645))
-			logoSpr.scale.x = logoSpr.scale.y = FlxMath.lerp(logoSpr.scale.x, 0.65, clampFloat(elapsed * 3.5 * (120 / FlxG.drawFramerate), 0.01, 0.9));
+		if (logoScalingAllowed && (logoSpr.scale.x > logoScales[2] || logoSpr.scale.x < logoScales[0]))
+			logoSpr.scale.x = logoSpr.scale.y = FlxMath.lerp(logoSpr.scale.x, logoScales[1],
+				clampFloat(elapsed * 3.5 * (120 / FlxG.drawFramerate), 0.01, 0.9));
 
 		bg.angle += elapsed * (1.15 + plusThis);
 
@@ -170,7 +173,14 @@ class TitleScreenState extends TJState
 				"offset.x": 0,
 				"offset.y": 0,
 				"angle": 0
-			}, 0.75, {ease: FlxEase.cubeOut});
+			}, 0.75, {
+				ease: FlxEase.cubeOut,
+				onComplete: function(t:FlxTween)
+				{
+					logoScalingAllowed = true;
+					logoScales = [0.245, 0.25, 0.255, 0.3];
+				}
+			});
 
 			new FlxTimer().start(1.5, function(bruh:FlxTimer)
 			{
