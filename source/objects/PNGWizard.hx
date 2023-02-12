@@ -21,6 +21,8 @@ class PNGWizard extends FlxSprite
 		dialogueIndication = new FlxSprite(midX, groundY - sprSize.y - 20).loadGraphic(Paths.image("dialoguetemp"));
 		dialogueIndication.x -= dialogueIndication.width / 2;
 		dialogueIndication.y -= dialogueIndication.height;
+
+		dialogueIndication.visible = false;
 	}
 
 	var fullThing:Float = 0;

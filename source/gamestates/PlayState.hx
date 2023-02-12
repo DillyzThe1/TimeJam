@@ -13,6 +13,7 @@ import gamesubstates.CutsceneSubState;
 import managers.MusicManager;
 import managers.PlayerDataManager;
 import objects.ArcahicCrystal.ArchaicCrystal;
+import objects.DialogueArea;
 import objects.Player;
 import objects.TMXLevel;
 
@@ -93,6 +94,7 @@ class PlayState extends TJState
 			case "tutorial":
 				if (!seenCutscene)
 				{
+					player.inputDisabled = true;
 					camMAIN.alpha = camHUD.alpha = 0;
 
 					var timeeerr:FlxTimer = new FlxTimer();
@@ -128,6 +130,11 @@ class PlayState extends TJState
 			FlxG.keys.pressed.DOWN,
 			FlxG.keys.justPressed.SPACE
 		];
+
+		if (player.inputDisabled)
+			for (i in 0...controls.length)
+				controls[i] = false;
+
 		if (controls[1])
 		{
 			player.facingLeft = false;
@@ -236,6 +243,12 @@ class PlayState extends TJState
 							case 0:
 								PlayerDataManager.hasDoubleJump = true;
 								PlayerDataManager.save();
+
+								var dialogue:DialogueArea = new DialogueArea("pngintro");
+								dialogue.cameras = [camHUD];
+								add(dialogue);
+
+								player.inputDisabled = true;
 						}
 				}
 
@@ -325,6 +338,7 @@ class PlayState extends TJState
 				seenCutscene = true;
 				camHUD.flash(FlxColor.BLACK);
 				camMAIN.alpha = camHUD.alpha = 1;
+				player.inputDisabled = false;
 
 				switch (levelName.toLowerCase())
 				{

@@ -30,6 +30,8 @@ class Player extends FlxSprite
 	var walkFirst:Bool = true;
 	var lastWalkDir:Bool = false;
 
+	public var inputDisabled:Bool = false;
+
 	var grassSfx:Array<FlxSound>;
 	var jumpSfx:FlxSound;
 

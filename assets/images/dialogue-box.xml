@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="dialogue-box.png">
+	<!-- Created with Adobe Animate version 23.0.1.70 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="box both0000" x="0" y="594" width="1110" height="293"/>
+	<SubTexture name="box default0000" x="0" y="891" width="1110" height="293"/>
+	<SubTexture name="box left0000" x="0" y="0" width="1110" height="293"/>
+	<SubTexture name="box right0000" x="0" y="297" width="1110" height="293"/>
+</TextureAtlas>
