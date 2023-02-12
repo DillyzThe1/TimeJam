@@ -102,7 +102,7 @@ class TitleScreenState extends TJState
 
 	var plusThis:Float = 0;
 
-	var hasPressed:Bool = false;
+	var menuActive:Bool = false;
 
 	var logoScalingAllowed:Bool = false;
 
@@ -140,9 +140,9 @@ class TitleScreenState extends TJState
 			logoSpr.angle = (Math.cos(logoElapsed) * 2.5) + 2.5;
 		}
 
-		if (FlxG.keys.justPressed.ENTER && !hasPressed)
+		if (FlxG.keys.justPressed.ENTER && !menuActive)
 		{
-			hasPressed = true;
+			menuActive = true;
 			logoScalingAllowed = false;
 			logoElapsed = 0;
 			if (MusicManager.exists())
