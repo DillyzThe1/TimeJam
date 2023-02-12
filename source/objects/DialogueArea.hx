@@ -158,6 +158,8 @@ class DialogueArea extends FlxSpriteGroup
 			dialogueSfx.volume = FlxG.sound.volume;
 			dialogueSfx.play(true, 0);
 		}
+		else
+			trace("trying to autoskip");
 
 		dialogueIndex++;
 
