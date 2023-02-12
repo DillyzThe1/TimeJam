@@ -16,6 +16,7 @@ import managers.MusicManager;
 import objects.ArcahicCrystal.ArchaicCrystal;
 import objects.MenuButton.ButtonTypes;
 import objects.MenuButton;
+import openfl.Lib;
 
 using TJUtil;
 
@@ -35,6 +36,7 @@ class TitleScreenState extends TJState
 	var menuButtons:FlxTypedSpriteGroup<MenuButton>;
 
 	var creditsText:FlxTypeText;
+	var versText:FlxText;
 
 	public override function create()
 	{
@@ -70,6 +72,13 @@ class TitleScreenState extends TJState
 		creditsText.alignment = CENTER;
 		creditsText.resetText("A game by DillyzThe1 & Impostor5875.");
 		add(creditsText);
+
+		versText = new FlxText(10, FlxG.height * 0.965, 0, "TimeJam v0.5.0-HaxeJam", 16, true);
+		versText.borderSize = 2;
+		versText.borderColor = FlxColor.BLACK;
+		versText.borderStyle = FlxTextBorderStyle.OUTLINE;
+		versText.alignment = CENTER;
+		add(versText);
 
 		textSpr.animation.finishCallback = function(n:String)
 		{
@@ -328,6 +337,12 @@ class TitleScreenState extends TJState
 							logoScales = [0.245, 0.25, 0.255, 0.3, 0.5];
 						}
 					});
+					FlxTween.tween(versText, {
+						alpha: 0
+					}, 0.75, {
+						ease: FlxEase.cubeOut
+					});
+
 					new FlxTimer().start(1.25, function(bruh:FlxTimer)
 					{
 						switch (mb.getType())
