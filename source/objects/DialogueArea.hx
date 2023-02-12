@@ -75,18 +75,21 @@ class DialogueArea extends FlxSpriteGroup
 
 		dialogueBox.scale.set(1.3, 1.25);
 
-		dialogueText = new FlxTypeText(0, 0, 0, "", 16, true);
+		dialogueText = new FlxTypeText(0, 0, 0, "", 32, true);
 		dialogueText.borderSize = 2;
 		dialogueText.borderColor = FlxColor.BLACK;
 		dialogueText.borderStyle = FlxTextBorderStyle.OUTLINE;
 		dialogueText.visible = false;
+		dialogueText.delay = 0.035;
 
 		dialogueData = Json.parse(Assets.getText(Paths.json("dialogue/pngintro")));
 		dialogueSfx = new FlxSound().loadEmbedded(Paths.sound("dialogue continue"));
 
 		add(bg);
 		add(dialogueBox);
+		add(dialogueText);
 
+		FlxG.sound.music.fadeOut(1, 0.2);
 		introTween = FlxTween.tween(this, {
 			"bg.alpha": dialogueData.bgAlpha,
 			"dialogueBox.y": FlxG.height - dialogueBox.height - 40,
@@ -108,12 +111,17 @@ class DialogueArea extends FlxSpriteGroup
 
 	var allowInput:Bool = false;
 
+	var skipWhenDone:Bool = true;
+
 	public function nextDialogue()
 	{
 		allowInput = false;
 
-		dialogueSfx.volume = FlxG.sound.volume;
-		dialogueSfx.play(true, 0);
+		if (!skipWhenDone)
+		{
+			dialogueSfx.volume = FlxG.sound.volume;
+			dialogueSfx.play(true, 0);
+		}
 
 		if (dialogueInProgress)
 		{
@@ -128,6 +136,7 @@ class DialogueArea extends FlxSpriteGroup
 
 		if (dialogueIndex >= dialogueData.dialogue.length)
 		{
+			skipWhenDone = false;
 			dialogueText.visible = false;
 			trace("we done");
 			if (introTween != null)
@@ -136,6 +145,7 @@ class DialogueArea extends FlxSpriteGroup
 				introTween.destroy();
 			}
 
+			FlxG.sound.music.fadeIn(1, FlxG.sound.music.volume, 0.4);
 			introTween = FlxTween.tween(this, {
 				"bg.alpha": 0,
 				"dialogueBox.y": FlxG.height + dialogueBox.height + 100,
@@ -154,8 +164,9 @@ class DialogueArea extends FlxSpriteGroup
 
 		var cur:DialogueInstance = dialogueData.dialogue[dialogueIndex];
 		dialogueText.visible = (cur.dialogue != "");
-		if (dialogueText.visible)
+		if (dialogueText.visible && cur.dialogue != "__continue")
 		{
+			dialogueInProgress = true;
 			trace("do the thing");
 			@:privateAccess
 			if (!cur.clear)
@@ -166,11 +177,11 @@ class DialogueArea extends FlxSpriteGroup
 				dialogueText._erasing = false;
 				dialogueText.paused = false;
 				dialogueText._waiting = false;
-				dialogueText._length = 0;
+				dialogueText._length = dialogueText.text.length;
 			}
 			else
 				dialogueText.resetText(cur.dialogue);
-			dialogueText.start(0.15, true, false, [], function()
+			dialogueText.start(null, cur.clear, false, [], function()
 			{
 				trace("typed emoji");
 				dialogueInProgress = false;
@@ -178,6 +189,10 @@ class DialogueArea extends FlxSpriteGroup
 		}
 		else
 			trace("bruh");
+		skipWhenDone = cur.skip_prompt;
+		FlxG.sound.music.volume = 0.2 * cur.music_vol_mult;
+
+		dialogueText.alignment = cur.speaking == "left" ? LEFT : RIGHT;
 
 		dialogueBox.animation.play(cur.boxtype.toLowerCase(), true);
 		switch (cur.boxtype.toLowerCase())
@@ -203,11 +218,11 @@ class DialogueArea extends FlxSpriteGroup
 		if (dialogueText.visible)
 		{
 			dialogueText.x = dialogueBox.x + dialogueSpaceLeft;
-			dialogueText.y = dialogueBox.y + dialogueBox.height / 6;
-			dialogueText.fieldWidth = dialogueBox.width * 0.85 - dialogueSpaceLeft - dialogueSpaceRight;
+			dialogueText.y = dialogueBox.y + dialogueBox.height / 3;
+			dialogueText.fieldWidth = (dialogueBox.width * 0.75) - dialogueSpaceRight;
 		}
 
-		if (FlxG.keys.justPressed.ENTER && allowInput)
+		if ((FlxG.keys.justPressed.ENTER && allowInput) || (skipWhenDone && !dialogueInProgress))
 			nextDialogue();
 	}
 }

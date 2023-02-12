@@ -78,11 +78,7 @@ class Player extends FlxSprite
 		updateSpr();
 
 		if (lastGround != onGround && onGround)
-		{
-			var sfx:FlxSound = grassSfx[FlxG.random.int(0, grassSfx.length - 1)];
-			sfx.volume = 0.45 * FlxG.sound.volume;
-			sfx.play(true, 0.001);
-		}
+			playSound("grass");
 		lastGround = onGround;
 	}
 
@@ -98,20 +94,29 @@ class Player extends FlxSprite
 			playAnim("idle", true);
 	}
 
+	function playSound(name:String)
+	{
+		switch (name)
+		{
+			case "grass":
+				var sfx:FlxSound = grassSfx[FlxG.random.int(0, grassSfx.length - 1)];
+				sfx.volume = 0.875 * FlxG.sound.volume;
+				sfx.play(true, 0.001);
+			case "jump":
+				jumpSfx.volume = 0.825 * FlxG.sound.volume;
+				jumpSfx.play(true, 0.01);
+		}
+	}
+
 	public function jump()
 	{
 		if (onGround)
-		{
-			var sfx:FlxSound = grassSfx[FlxG.random.int(0, grassSfx.length - 1)];
-			sfx.volume = 0.45 * FlxG.sound.volume;
-			sfx.play(true, 0.001);
-		}
+			playSound("grass");
 
 		velocity.y = -maxVelocity.y * 0.415;
 		onGround = false;
 		playAnim("jump", true);
-		jumpSfx.volume = 0.325 * FlxG.sound.volume;
-		jumpSfx.play(true, 0.01);
+		playSound("jump");
 	}
 
 	public function walkCycle()
@@ -128,10 +133,7 @@ class Player extends FlxSprite
 		{
 			walkFirst = !walkFirst;
 			playAnim('walk${walkFirst ? 1 : 2}', true);
-
-			var sfx:FlxSound = grassSfx[FlxG.random.int(0, grassSfx.length - 1)];
-			sfx.volume = 0.45 * FlxG.sound.volume;
-			sfx.play(true, 0.001);
+			playSound("grass");
 		}
 	}
 
