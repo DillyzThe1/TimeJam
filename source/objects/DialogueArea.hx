@@ -103,7 +103,6 @@ class DialogueArea extends FlxSpriteGroup
 			ease: FlxEase.cubeInOut,
 			onComplete: function(t:FlxTween)
 			{
-				trace("stage 5 walter");
 				nextDialogue();
 			}
 		});
@@ -123,7 +122,6 @@ class DialogueArea extends FlxSpriteGroup
 
 		if (dialogueInProgress)
 		{
-			trace("skip");
 			dialogueInProgress = false;
 			dialogueText.skip();
 			allowInput = true;
@@ -142,7 +140,6 @@ class DialogueArea extends FlxSpriteGroup
 		{
 			skipWhenDone = false;
 			dialogueText.visible = false;
-			trace("we done");
 			if (introTween != null)
 			{
 				introTween.cancel();
@@ -171,11 +168,9 @@ class DialogueArea extends FlxSpriteGroup
 		if (dialogueText.visible && cur.dialogue != "__continue")
 		{
 			dialogueInProgress = true;
-			trace("do the thing");
 			@:privateAccess
 			if (!cur.clear)
 			{
-				trace("...but manually");
 				dialogueText._finalText = dialogueText.text + cur.dialogue;
 				dialogueText._typing = false;
 				dialogueText._erasing = false;
@@ -187,12 +182,9 @@ class DialogueArea extends FlxSpriteGroup
 				dialogueText.resetText(cur.dialogue);
 			dialogueText.start(null, cur.clear, false, [], function()
 			{
-				trace("typed emoji");
 				dialogueInProgress = false;
 			});
 		}
-		else
-			trace("bruh");
 		skipWhenDone = cur.skip_prompt;
 		FlxG.sound.music.volume = 0.2 * cur.music_vol_mult;
 

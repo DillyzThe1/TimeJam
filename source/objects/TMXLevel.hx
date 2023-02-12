@@ -37,6 +37,7 @@ class TMXLevel extends TiledMap
 	public var playerStart:FlxPoint = FlxPoint.get();
 
 	public var wizard:PNGWizard;
+	public var timelineReflector:TimelineReflector;
 
 	public function new(tilelevel:FlxTiledMapAsset)
 	{
@@ -159,8 +160,11 @@ class TMXLevel extends TiledMap
 				}
 
 				wizard = new PNGWizard(obj.x + obj.width / 2, obj.y + obj.height);
-				objGroup.add(wizard.dialogueIndication);
+				// objGroup.add(wizard.dialogueIndication);
 				objGroup.add(wizard);
+			case "timeline-reflector":
+				timelineReflector = new TimelineReflector(obj.x + obj.width / 2, obj.y + obj.height);
+				objGroup.add(timelineReflector);
 			default:
 				trace('Warning! Object summon "$summonName" unaccounted for! (On object "${obj.name}")');
 		}
