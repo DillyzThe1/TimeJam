@@ -37,6 +37,7 @@ typedef DialogueData =
 {
 	var box:String;
 	var bgAlpha:Float;
+	var autoSkipFirst:Bool;
 	var dialogue:Array<DialogueInstance>;
 }
 
@@ -119,7 +120,10 @@ class DialogueArea extends FlxSpriteGroup
 			ease: FlxEase.cubeInOut,
 			onComplete: function(t:FlxTween)
 			{
-				nextDialogue();
+				if (dialogueData.autoSkipFirst)
+					nextDialogue();
+				else
+					allowInput = true;
 			}
 		});
 	}
@@ -210,8 +214,6 @@ class DialogueArea extends FlxSpriteGroup
 		skipWhenDone = cur.skip_prompt;
 		FlxG.sound.music.volume = 0.2 * cur.music_vol_mult;
 
-		dialogueText.alignment = cur.speaking != "right" ? LEFT : RIGHT;
-
 		dialogueBox.animation.play(cur.boxtype.toLowerCase(), true);
 		switch (cur.boxtype.toLowerCase())
 		{
@@ -234,8 +236,11 @@ class DialogueArea extends FlxSpriteGroup
 
 				checkCharacter(cur.leftchar, true);
 			case "right":
-				dialogueSpaceLeft = 75;
-				dialogueSpaceRight = 275;
+				dialogueSpaceLeft = 25;
+				dialogueSpaceRight = 75;
+
+				// dialogueSpaceLeft = 75;
+				// dialogueSpaceRight = 275;
 
 				if (leftSprite != null)
 					leftSprite.visible = false;
@@ -253,6 +258,8 @@ class DialogueArea extends FlxSpriteGroup
 
 				checkCharacter(cur.leftchar, true);
 				checkCharacter(cur.rightchar, false);
+
+				dialogueText.alignment = cur.speaking != "right" ? LEFT : RIGHT;
 		}
 
 		intendedanim_left = cur.expressionleft;
@@ -284,13 +291,13 @@ class DialogueArea extends FlxSpriteGroup
 		if (leftSprite != null && leftSprite.visible)
 		{
 			leftSprite.x = dialogueBox.x + 20;
-			leftSprite.y = dialogueBox.y + dialogueBox.height - leftSprite.height - 18;
+			leftSprite.y = dialogueBox.y + dialogueBox.height - leftSprite.height - 16;
 		}
-		if (rightSprite != null && leftSprite.visible)
+		if (rightSprite != null && rightSprite.visible)
 		{
 			var wizardOffset:Int = 0;
 			if (cur.rightchar == "pngwizard" && cur.expressionright == "png")
-				wizardOffset = 355;
+				wizardOffset = 365;
 			rightSprite.x = dialogueBox.x + dialogueBox.width - rightSprite.width - 20 + wizardOffset;
 			rightSprite.y = dialogueBox.y + dialogueBox.height - rightSprite.height - 33;
 		}

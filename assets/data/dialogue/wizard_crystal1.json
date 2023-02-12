@@ -1,6 +1,7 @@
 {
 	"box": "normal",
 	"bgAlpha": 0.35,
+	"autoSkipFirst": false,
 	"dialogue": [
 		{
 			"boxtype": "right",

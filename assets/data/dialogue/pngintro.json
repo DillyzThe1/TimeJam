@@ -1,6 +1,7 @@
 {
 	"box": "normal",
 	"bgAlpha": 0.35,
+	"autoSkipFirst": true,
 	"dialogue": [
 		{
 			"boxtype": "left",
@@ -255,7 +256,8 @@
 			"clipname": "dialogue/jason_mynameisnot",
 			"dialogue": "\nFOR THE LAST TIME MY NAME IS NOT J",
 			"skip_prompt": true,
-			"music_vol_mult": 1
+			"music_vol_mult": 1,
+			"speed": 2
 		},
 		{
 			"boxtype": "both",
