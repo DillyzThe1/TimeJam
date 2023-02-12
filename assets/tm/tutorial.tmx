@@ -48,8 +48,11 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="7" name="Foreground_crystal1" width="128" height="32">
+ <layer id="7" name="SemiSolids_crystal1" width="128" height="32">
   <properties>
+   <property name="downDisabled" type="bool" value="true"/>
+   <property name="leftDisabled" type="bool" value="true"/>
+   <property name="rightDisabled" type="bool" value="true"/>
    <property name="spawn_whenhas" type="int" value="1"/>
    <property name="tileset" value="groundtiles"/>
   </properties>
