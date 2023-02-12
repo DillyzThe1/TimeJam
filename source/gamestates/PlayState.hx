@@ -1,5 +1,6 @@
 package gamestates;
 
+import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
@@ -41,9 +42,15 @@ class PlayState extends TJState
 	// a bunch of flags a level can use to determine what has and has not happened
 	public static var flags:Array<String> = [];
 
+	private var camDIALOGUE:FlxCamera;
+
 	override public function create()
 	{
 		super.create();
+
+		camDIALOGUE = new FlxCamera();
+		camDIALOGUE.bgColor.alpha = 0;
+		FlxG.cameras.add(camDIALOGUE, false);
 
 		skyObject = new FlxSprite().loadGraphic(Paths.image("sky"));
 		skyObject.screenCenter();
@@ -112,6 +119,12 @@ class PlayState extends TJState
 						timeeerr.destroy();
 					});
 				}
+				else if (ArchaicCrystal.lastCrystal() == 2)
+				{
+					player.inputDisabled = true;
+					camMAIN.alpha = camHUD.alpha = 0;
+					startDialogue("tutorial_end_demo");
+				}
 				else
 				{
 					player.inputDisabled = true;
@@ -140,7 +153,7 @@ class PlayState extends TJState
 		{
 			player.inputDisabled = false;
 		});
-		dialogue.cameras = [camHUD];
+		dialogue.cameras = [camDIALOGUE];
 		add(dialogue);
 	}
 

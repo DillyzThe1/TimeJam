@@ -31,6 +31,9 @@ typedef DialogueInstance =
 	var dialogue:String;
 	var skip_prompt:Bool;
 	var music_vol_mult:Float;
+
+	// optional variablles
+	var speed:Null<Int>;
 }
 
 typedef DialogueData =
@@ -71,6 +74,8 @@ class DialogueArea extends FlxSpriteGroup
 
 	var allowInput:Bool = false;
 
+	var defaultDelay:Float = 0.035;
+
 	public function new(dialogueName:String, onComplete:() -> Void)
 	{
 		super();
@@ -97,7 +102,6 @@ class DialogueArea extends FlxSpriteGroup
 		dialogueText.borderColor = FlxColor.BLACK;
 		dialogueText.borderStyle = FlxTextBorderStyle.OUTLINE;
 		dialogueText.visible = false;
-		dialogueText.delay = 0.035;
 		// ssssss = new FlxSound().loadEmbedded(Paths.sound("type"));
 		// dialogueText.sounds = [ssssss];
 
@@ -206,7 +210,8 @@ class DialogueArea extends FlxSpriteGroup
 			}
 			else
 				dialogueText.resetText(cur.dialogue);
-			dialogueText.start(null, cur.clear, false, [], function()
+			var speed:Int = cur.speed == null ? 1 : cur.speed;
+			dialogueText.start(defaultDelay / speed, cur.clear, false, [], function()
 			{
 				dialogueInProgress = false;
 			});
@@ -388,6 +393,7 @@ class DialogueArea extends FlxSpriteGroup
 			case "pngwizard":
 				pushAnim("png", "wizard - png0", false);
 				pushAnim("deathstare", "wizard - deathstare0", false);
+				pushAnim("out4milk", "wizard - out4milk0", false);
 		}
 
 		if (animNames.length == 0 || animNames.length != animValues.length || animNames.length != animLooped.length)
