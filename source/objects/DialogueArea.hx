@@ -54,6 +54,8 @@ class DialogueArea extends FlxSpriteGroup
 
 	var onComplete:() -> Void;
 
+	var ssssss:FlxSound;
+
 	public function new(dialogueName:String, onComplete:() -> Void)
 	{
 		super();
@@ -81,6 +83,8 @@ class DialogueArea extends FlxSpriteGroup
 		dialogueText.borderStyle = FlxTextBorderStyle.OUTLINE;
 		dialogueText.visible = false;
 		dialogueText.delay = 0.035;
+		ssssss = new FlxSound().loadEmbedded(Paths.sound("type"));
+		dialogueText.sounds = [ssssss];
 
 		dialogueData = Json.parse(Assets.getText(Paths.json("dialogue/pngintro")));
 		dialogueSfx = new FlxSound().loadEmbedded(Paths.sound("dialogue continue"));
@@ -117,12 +121,6 @@ class DialogueArea extends FlxSpriteGroup
 	{
 		allowInput = false;
 
-		if (!skipWhenDone)
-		{
-			dialogueSfx.volume = FlxG.sound.volume;
-			dialogueSfx.play(true, 0);
-		}
-
 		if (dialogueInProgress)
 		{
 			trace("skip");
@@ -130,6 +128,12 @@ class DialogueArea extends FlxSpriteGroup
 			dialogueText.skip();
 			allowInput = true;
 			return;
+		}
+
+		if (!skipWhenDone)
+		{
+			dialogueSfx.volume = FlxG.sound.volume;
+			dialogueSfx.play(true, 0);
 		}
 
 		dialogueIndex++;
@@ -220,6 +224,7 @@ class DialogueArea extends FlxSpriteGroup
 			dialogueText.x = dialogueBox.x + dialogueSpaceLeft;
 			dialogueText.y = dialogueBox.y + dialogueBox.height / 3;
 			dialogueText.fieldWidth = (dialogueBox.width * 0.75) - dialogueSpaceRight;
+			ssssss.volume = 0.35 * FlxG.sound.volume;
 		}
 
 		if ((FlxG.keys.justPressed.ENTER && allowInput) || (skipWhenDone && !dialogueInProgress))
