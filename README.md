@@ -20,7 +20,8 @@ Download the game [[here]](../../releases/latest/) for your platform and run it.
 <br>
 After you've launched the game, you'll be greeted with this screen:<br>
 ![TimeJam Title Screen](art/title-screen.png)<br>
-Hit enter and realize you are wasting your time, as you are on a pre-release dev build.
+Hit enter and continue over the play button, in which the game will start.<br>
+You must move all the way to the right to get some dialogue, and then you'll be greeted by someone to guide you.
 
 # Compiling
 don't
