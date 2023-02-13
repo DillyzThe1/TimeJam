@@ -23,5 +23,31 @@ After you've launched the game, you'll be greeted with this screen:<br>
 Hit enter and continue over the play button, in which the game will start.<br>
 You must move all the way to the right to get some dialogue, and then you'll be greeted by someone to guide you.
 
+# Dialogue Editing
+
+# Level Editing
+
+
 # Compiling
-don't
+<i>Note: IF you publish a public modification to this game, you <b>MUST</b> open source it on github & add a link to the source code.</i><br/>
+<i>Also Note: Pull requests of a full-on mod/engine will likely <u><b>not</b> be added</u>. Open an issue under the enhancement tag.</i><br/>
+<br/>
+Download Haxe [4.2.5 64-bit](https://haxe.org/download/file/4.2.5/haxe-4.2.5-win64.exe/) or [4.2.5 32-bit](https://haxe.org/download/file/4.2.5/haxe-4.2.5-win.exe/).
+<br/>
+Download the [source code of this repository](../..//archive/refs/heads/main.zip) or the [source code of the latest release](../../releases/latest).<br>
+*Note: You can also fork the repository and clone with Github Desktop!*<br>
+<br/>
+Extract the zip file and open the folder.<br>
+You'll need the following libraries:
+```batch
+haxelib install lime
+haxelib install openfl
+haxelib install flixel
+haxelib install flixel-addons
+haxelib install flxanimate
+haxelib git discord_rpc https://github.com/Aidan63/linc_discord-rpc
+```
+If discord presence is causing an error for you, make sure to remove [[this line]](https://github.com/DillyzThe1/TimeJam/blob/main/Project.xml#L53) before compiling.<br>
+Anyway, after you've done that just run [`[build.bat]`](https://github.com/DillyzThe1/TimeJam/blob/main/build.bat) from the source folder and look at the instructions.<br>
+<br/>
+<i>Note: Visual Studio Code is recommended for programming new features. Please install the appropiate plugins for haxeflixel in VSC.</i><br/>
