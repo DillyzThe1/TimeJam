@@ -24,6 +24,31 @@ Hit enter and continue over the play button, in which the game will start.<br>
 You must move all the way to the right to get some dialogue, and then you'll be greeted by someone to guide you.
 
 # Dialogue Editing
+Navigate to [`[assets/data/dialogue/]`](https://github.com/DillyzThe1/TimeJam/tree/main/assets/data/dialogue) in your installation of the game (or source code).<br>
+You can edit any json file you want, but let's edit `pngintro.json`.<br>
+Once you've opened that, you'll see an array called `dialogue`.<br>
+This array contains every instance of dialogue, including those which are skipped automatically to sequence something cool.<br>
+Let's go over every variable, so take this chart:
+- `boxtype` - Can be any kind of box. This can be `none`, `left`, `right`, or `both`.
+- `leftchar` - This is the character on the left hand side. Should either be `jason` or just the qoutes.
+- `rightchar` - This is the character on the right hand side. Should either be `pngwizard` or just the qoutes.
+- `speaking` - This is the side that is currently speaking. If put to `right` on when `boxtype` is `both`, the text comes from the right.
+- `expressionleft` - This is the animation name for the left hand side. Check the chart below for animation names.
+- `forceleft` - This determines if the left side animation should be restarted by force when this dialogue starts.
+- `expressionright` - This is the animation name for the right hand side. Check the chart below for animation names.
+- `forceright` - This determines if the right side animation should be restarted by force when this dialogue starts.
+- `clear` - Setting this to `true` will wipe the text from the last dialogue, and `false` will keep it.
+- `dialogue`- The raw spoken text. Can be literally anything in string qoutes.
+- `skip_prompt` - Setting this to `false` will keep the ability to hit enter or read, while `true` immediantly cuts to the next dialogue. Good for comedy.
+- `music_vol_mult` - The multiplier for the volume of the bg music relative to what the dialogue state sets it as.
+- `speed` - The multiplier of the speed at which the text is shown.
+
+Animation name chart:<br>
+![Animation Names.](art/anims.png)<br>
+<br>
+Reboot the game and open the dialogue you replaced.<br>
+And there you go!<br>
+![Animation Names.](art/customdailogue.png)
 
 # Level Editing
 To edit the level's tiles and metadata, you'll need to download & install [[Tiled]](https://www.mapeditor.org/).<br>
