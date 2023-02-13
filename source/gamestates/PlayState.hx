@@ -322,18 +322,14 @@ class PlayState extends TJState
 			}
 		}
 
-		if (lvl.wizard != null)
+		if (lvl.wizard != null
+			&& levelName.toLowerCase() == "tutorial"
+			&& ArchaicCrystal.lastCrystal() == 1
+			&& !flags.contains("crystal1_wizard_dialogue")
+			&& player.getGraphicMidpoint().getDist(lvl.wizard.getGraphicMidpoint()) < 350)
 		{
-			lvl.wizard.dialogueEnabled = player.getGraphicMidpoint().getDist(lvl.wizard.getGraphicMidpoint()) < 175;
-
-			if (levelName.toLowerCase() == "tutorial"
-				&& ArchaicCrystal.lastCrystal() == 1
-				&& !flags.contains("crystal1_wizard_dialogue")
-				&& player.getGraphicMidpoint().getDist(lvl.wizard.getGraphicMidpoint()) < 350)
-			{
-				flags.push("crystal1_wizard_dialogue");
-				startDialogue("wizard_crystal1");
-			}
+			flags.push("crystal1_wizard_dialogue");
+			startDialogue("wizard_crystal1");
 		}
 
 		if (player.y + player.height > FlxG.worldBounds.y + FlxG.worldBounds.height)
