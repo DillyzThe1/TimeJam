@@ -251,7 +251,7 @@
 			"expressionleft": "jpeg-quality",
 			"forceleft": true,
 			"expressionright": "png",
-			"forceright": true,
+			"forceright": false,
 			"clear": true,
 			"clipname": "dialogue/jason_mynameisnot",
 			"dialogue": "\nFOR THE LAST TIME MY NAME IS NOT J",
@@ -333,7 +333,7 @@
 			"dialogue": "ho",
 			"skip_prompt": true,
 			"music_vol_mult": 1,
-			"speed": 0.5
+			"speed": 0.9
 		},
 		{
 			"boxtype": "both",
@@ -349,7 +349,7 @@
 			"dialogue": " el",
 			"skip_prompt": true,
 			"music_vol_mult": 1,
-			"speed": 0.1
+			"speed": 0.7
 		},
 		{
 			"boxtype": "both",
