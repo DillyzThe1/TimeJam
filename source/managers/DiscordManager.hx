@@ -58,7 +58,7 @@ class DiscordManager
 			details: menuName,
 			startTimestamp: startTimestamp,
 			largeImageKey: 'logo',
-			largeImageText: 'v0.5.0-HaxeJam',
+			largeImageText: Main.getVersionName(),
 			#if debug
 			smallImageKey: 'flixel', smallImageText: 'Playing a dev build.',
 			#else
