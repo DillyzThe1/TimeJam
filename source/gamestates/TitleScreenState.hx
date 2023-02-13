@@ -73,7 +73,7 @@ class TitleScreenState extends TJState
 		creditsText.resetText("A game by DillyzThe1 & Impostor5875.");
 		add(creditsText);
 
-		versText = new FlxText(10, FlxG.height * 0.965, 0, "TimeJam v0.5.0-HaxeJam", 16, true);
+		versText = new FlxText(10, FlxG.height * 0.965, 0, "TimeJam " + Main.getVersionName(), 16, true);
 		versText.borderSize = 2;
 		versText.borderColor = FlxColor.BLACK;
 		versText.borderStyle = FlxTextBorderStyle.OUTLINE;

@@ -7,6 +7,7 @@ import flixel.FlxState;
 import flixel.util.FlxColor;
 import gamestates.TitleScreenState;
 import gamestates.UnsupportedPlatformState;
+import lime.app.Application;
 import managers.MusicManager;
 import managers.PlayerDataManager;
 import managers.PlayerPreferenceManager;
@@ -40,5 +41,13 @@ class Main extends Sprite
 		FlxG.sound.volume = 0.5;
 		#end
 		FlxG.autoPause = false;
+
+		trace("we're on " + getVersionName() + " (build num " + getBuildNum() + ")");
 	}
+
+	public static function getVersionName()
+		return "v" + Application.current.meta.get("version");
+
+	public static function getBuildNum()
+		return Std.parseInt(Application.current.meta.get("build"));
 }
