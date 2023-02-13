@@ -16,7 +16,7 @@ If you get the machine wrong or fail to get sufficent power, you must restart in
 
 # How To Play
 Download the game [[here]](../../releases/latest/) for your platform and run it.<br>
-<i>Note: Web builds are available [[here]](https://dillyzthe1.itch.io/)!</i><br>
+<i>Note: Web builds are available [[here]](https://dillyzthe1.itch.io/timejam)!</i><br>
 <br>
 After you've launched the game, you'll be greeted with this screen:<br>
 ![TimeJam Title Screen](art/title-screen.png)<br>
