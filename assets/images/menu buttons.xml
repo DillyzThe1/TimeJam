@@ -2,25 +2,28 @@
 <TextureAtlas imagePath="menu buttons.png">
 	<!-- Created with Adobe Animate version 23.0.1.70 -->
 	<!-- http://www.adobe.com/products/animate.html -->
-	<SubTexture name="issues disabled0000" x="0" y="826" width="185" height="85"/>
-	<SubTexture name="issues hover animated0000" x="388" y="667" width="283" height="160"/>
-	<SubTexture name="issues hover animated0001" x="388" y="667" width="283" height="160"/>
-	<SubTexture name="issues hover animated0002" x="675" y="667" width="275" height="156" frameX="-4" frameY="-2" frameWidth="283" frameHeight="160"/>
-	<SubTexture name="issues hover animated0003" x="675" y="667" width="275" height="156" frameX="-4" frameY="-2" frameWidth="283" frameHeight="160"/>
-	<SubTexture name="issues static0000" x="776" y="521" width="185" height="85"/>
-	<SubTexture name="options disabled0000" x="0" y="523" width="384" height="142"/>
+	<SubTexture name="issues disabled0000" x="776" y="521" width="185" height="85"/>
+	<SubTexture name="issues hover animated0000" x="679" y="667" width="283" height="160"/>
+	<SubTexture name="issues hover animated0001" x="679" y="667" width="283" height="160"/>
+	<SubTexture name="issues hover animated0002" x="0" y="830" width="275" height="156" frameX="-4" frameY="-2" frameWidth="283" frameHeight="160"/>
+	<SubTexture name="issues hover animated0003" x="0" y="830" width="275" height="156" frameX="-4" frameY="-2" frameWidth="283" frameHeight="160"/>
+	<SubTexture name="issues static0000" x="279" y="831" width="185" height="85"/>
+	<SubTexture name="options disabled0000" x="482" y="375" width="384" height="142"/>
 	<SubTexture name="options hover animated0000" x="0" y="0" width="489" height="185"/>
 	<SubTexture name="options hover animated0001" x="0" y="0" width="489" height="185"/>
 	<SubTexture name="options hover animated0002" x="482" y="189" width="478" height="182" frameX="-5" frameY="-2" frameWidth="489" frameHeight="185"/>
 	<SubTexture name="options hover animated0003" x="482" y="189" width="478" height="182" frameX="-5" frameY="-2" frameWidth="489" frameHeight="185"/>
-	<SubTexture name="options static0000" x="482" y="375" width="384" height="142"/>
+	<SubTexture name="options static0000" x="0" y="377" width="384" height="142"/>
 	<SubTexture name="play disabled0000" x="388" y="521" width="384" height="142"/>
 	<SubTexture name="play hover animated0000" x="493" y="0" width="488" height="185"/>
 	<SubTexture name="play hover animated0001" x="493" y="0" width="488" height="185"/>
 	<SubTexture name="play hover animated0002" x="0" y="189" width="478" height="184" frameX="-5" frameY="-1" frameWidth="488" frameHeight="185"/>
 	<SubTexture name="play hover animated0003" x="0" y="189" width="478" height="184" frameX="-5" frameY="-1" frameWidth="488" frameHeight="185"/>
-	<SubTexture name="play static0000" x="0" y="377" width="384" height="142"/>
-	<SubTexture name="quit disabled0000" x="675" y="827" width="184" height="85"/>
-	<SubTexture name="quit hover animated0000" x="0" y="669" width="266" height="153"/>
-	<SubTexture name="quit static0000" x="189" y="826" width="184" height="85"/>
+	<SubTexture name="play static0000" x="0" y="523" width="384" height="142"/>
+	<SubTexture name="quit disabled0000" x="468" y="831" width="184" height="85"/>
+	<SubTexture name="quit hover animated0000" x="388" y="667" width="287" height="160"/>
+	<SubTexture name="quit hover animated0001" x="388" y="667" width="287" height="160"/>
+	<SubTexture name="quit hover animated0002" x="0" y="669" width="275" height="157" frameX="-6" frameY="-2" frameWidth="287" frameHeight="160"/>
+	<SubTexture name="quit hover animated0003" x="0" y="669" width="275" height="157" frameX="-6" frameY="-2" frameWidth="287" frameHeight="160"/>
+	<SubTexture name="quit static0000" x="656" y="831" width="184" height="85"/>
 </TextureAtlas>
